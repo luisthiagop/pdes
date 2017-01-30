@@ -65,14 +65,19 @@
                 <div class="panel-body">
 
                     @if (session('erro'))
-                        <div class="alert alert-danger">
-                            {{ session('erro') }}
+                       <div class="alert alert-danger fade in alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                             {!! session('erro') !!}
                         </div>
+                           
+                        
                     @endif
                     @if (session('success'))
-                        <div class="alert alert-success">
-                            {{ session('success') }}
+                        <div class="alert alert-success fade in alert-dismissable">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                             {!! session('success') !!}
                         </div>
+                           
                     @endif
 
                      <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="{{ url('admin/eventos/update') }}">

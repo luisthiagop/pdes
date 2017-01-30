@@ -12,14 +12,19 @@
 <div class="container" >
     <div class="row">
         @if (session('erro'))
-            <div class="alert alert-danger">
-                {{ session('erro') }}
+           <div class="alert alert-danger fade in alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                 {!! session('erro') !!}
             </div>
+               
+            
         @endif
         @if (session('success'))
-            <div class="alert alert-success">
-                {!!session('success')!!}
+            <div class="alert alert-success fade in alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                 {!! session('success') !!}
             </div>
+               
         @endif
         
     </div>
@@ -261,9 +266,9 @@
                                     <td><a href="{{url('user/evento/'.$evento->id)}}">{{$evento->nome}}</a></td>
                                     <td>{{$evento->palestrante}}</td>
                                     <td>{{$evento->cargaHoraria}} horas</td>
-                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></a></span></td>
-                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><span style="color:red" style="color:red" class="glyphicon glyphicon-minus" aria-hidden="true"></span></a></td>
-                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><span style="color:green" class=" glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></td>
+                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><i class="material-icons">mode_edit</i></a></td>
+                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><i class="material-icons">delete</i></a></td>
+                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><i class="material-icons">menu</i></a></td>
                                    
                                 </tr>
                                 
@@ -306,9 +311,9 @@
                                     <td>{{date('d/m/Y', strtotime($evento->data_evento))}}</td>
                                     <td>{{date('d/m/Y', strtotime($evento->data_inicio))}}</td>
                                     <td>{{date('d/m/Y', strtotime($evento->data_fim))}}</td>
-                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></a></span></td>
-                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><span style="color:red" style="color:red" class="glyphicon glyphicon-minus" aria-hidden="true"></a></span></td>
-                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><span style="color:green" class=" glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></td>
+                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><i class="material-icons">mode_edit</i></a></td>
+                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><i class="material-icons">delete</i></a></td>
+                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><i class="material-icons">menu</i></a></td>
                                 </tr>
                                 
 
@@ -348,9 +353,9 @@
                                     <td>{{date('d/m/Y', strtotime($evento->data_evento))}}</td>
                                     <td>{{date('d/m/Y', strtotime($evento->data_inicio))}}</td>
                                     <td>{{date('d/m/Y', strtotime($evento->data_fim))}}</td>
-                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></a></span></td>
-                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><span style="color:red" style="color:red" class="glyphicon glyphicon-minus" aria-hidden="true"></a></span></td>
-                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><span style="color:green" class=" glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></td>
+                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><i class="material-icons">mode_edit</i></a></td>
+                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><i class="material-icons">delete</i></a></td>
+                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><i class="material-icons">menu</i></a></td>
                                 </tr>
                                 
 
@@ -387,9 +392,9 @@
                                     <td>{{date('d/m/Y', strtotime($evento->data_evento))}}</td>
                                     <td>{{date('d/m/Y', strtotime($evento->data_inicio))}}</td>
                                     <td>{{date('d/m/Y', strtotime($evento->data_fim))}}</td>
-                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></a></span></td>
-                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><span style="color:red" style="color:red" class="glyphicon glyphicon-minus" aria-hidden="true"></a></span></td>
-                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><span style="color:green" class=" glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></td>
+                                    <td><a href="{{url('/admin/evento/'.$evento->id)}}"><i class="material-icons">mode_edit</i></a></td>
+                                    <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><i class="material-icons">delete</i></a></td>
+                                    <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><i class="material-icons">menu</i></a></td>
                                 </tr>
                                 
 

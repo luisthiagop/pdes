@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+    <link href="/css/footer.css" rel="stylesheet">
 
 
 
@@ -32,13 +33,14 @@
     
 
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+   
+   <style type="text/css" src="/css/app.css"></style>
 
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
     <script>
         window.Laravel = <?php echo json_encode([
@@ -127,9 +129,12 @@
         @yield('content')
     </div>
 
-    
-    
-    
+<footer class="footer">
+      <div style="float:" class="container">
+        <p  class="text-muted">Desenvolvido por <a href="http://pitangui.uepg.br/nti/">NTI</a></p>
+        
+      </div>      
+    </footer>  
 
 </body>
 </html>
