@@ -20,7 +20,7 @@
     <!-- Scripts -->
 
      <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{URL::asset('/js/app.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.3/jquery.mask.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
