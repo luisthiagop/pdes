@@ -178,8 +178,11 @@ class EventoController extends Controller
 		$evento =  DB::table('events')->where('id',$id)->first(); 
 		$inscricao = new Evento;
 		$users = $inscricao->users()->orWhere('evento_id',$id)->get();
-		return view('admin.relatorio')->with('evento',$evento)->with('users',$users);
+		$inscricoes = Inscricao::where('evento_id',$evento->id);	
+		
+		return view('admin.relatorio')->with('evento',$evento)->with('users',$users)->with('ins',$inscricoes);
 	}
+
 
 	protected function exportaRelatorio($id){
 		$evento =  DB::table('events')->where('id',$id)->first();
@@ -213,6 +216,14 @@ class EventoController extends Controller
 		//deletar a imagem da pasta
 		$evento->save();
 
+	}
+
+	protected function updateCargaHoraria(Request $request){
+		$ins= Inscricao::where('evento_id','=',$request->evento_id)->where('user_id','=',$request->user_id)->first();
+		$ins->cargaHoraria = $request->cargaHoraria;
+		$ins->save();
+		return response(200);
+                  
 	}
 
 

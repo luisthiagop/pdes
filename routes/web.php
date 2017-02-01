@@ -59,18 +59,23 @@ Route::group(['middleware'=>['admin','auth']], function () {
     Route::post('admin/eventos/update', 'Admin\EventoController@update');
 
 
-    Route::get('admin/eventos/delete/{id}','Admin\EventoController@confirmDelete');
-    Route::post('admin/eventos/deletar','Admin\EventoController@delete');
+    Route::get('/admin/eventos/delete/{id}','Admin\EventoController@confirmDelete');
+    Route::post('/admin/eventos/deletar','Admin\EventoController@delete');
 
-    Route::post('admin/eventos/deletaImagem','Admin\EventoController@deletaImagem');
+    Route::post('/admin/eventos/deletaImagem','Admin\EventoController@deletaImagem');
 
-    Route::post('admin/eventos/finalizarEvento','Admin\EventoController@finalizarEvento');
+    Route::post('/admin/eventos/finalizarEvento','Admin\EventoController@finalizarEvento');
     Route::post('/admin/eventos/reativarEvento','Admin\EventoController@reativarEvento');
 
-    Route::post('admin/eventos/register_by_cpf','Admin\EventoController@register_by_cpf');
+    Route::post('/admin/eventos/register_by_cpf','Admin\EventoController@register_by_cpf');
+
+    Route::post('/admin/eventos/cargaHoraria','Admin\EventoController@updateCargaHoraria');
    
 
 });
+
+Route::post('/admin/eventos/cargaHoraria','Admin\EventoController@updateCargaHoraria');
+   
 
 //route user
 

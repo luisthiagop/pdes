@@ -1,4 +1,29 @@
 <?php $__env->startSection('content'); ?>
+
+<script type="text/javascript">
+    
+
+    function atualiza(user_id){
+        var name= '.id'+user_id;
+        var cargaHoraria = $(name).val();
+        $.ajax({
+                url: "<?php echo e(url('/admin/eventos/cargaHoraria')); ?>",
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: {
+                    "_token": "<?php echo e(csrf_token()); ?>",
+                    "user_id":user_id,
+                    "evento_id":<?php echo e($evento->id); ?>,
+                    "cargaHoraria":cargaHoraria,
+                }
+                
+                
+            });
+
+        }
+    
+</script>
 <div class="container container-fluid">
     <div class="row">
         <?php if(session('erro')): ?>
@@ -39,6 +64,7 @@
         
 
 
+
         </div>
     </div>
 
@@ -58,6 +84,7 @@
                             <th>Tipo</th>
                             <th>Curso</th>
                             <th>Instituição</th>
+                            <th>Horas</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -70,6 +97,12 @@
                                     <td><?php echo e($user->tipo); ?></td>
                                     <td><?php echo e($user->curso); ?></td>
                                     <td><?php echo e($user->instituicao); ?></td>
+                                    <td>
+
+                                        <input class="id<?php echo e($user->id); ?>" min="0" max="<?php echo e($evento->cargaHoraria); ?>" type="number" onblur="atualiza(<?php echo e($user->id); ?>);"  name="horas">
+
+
+                                    </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?> 
                         </tbody>

@@ -1,6 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
+
+<script type="text/javascript">
+    
+
+    function atualiza(user_id){
+        var name= '.id'+user_id;
+        var cargaHoraria = $(name).val();
+        $.ajax({
+                url: "{{url('/admin/eventos/cargaHoraria')}}",
+                dataType: 'text',
+                type: 'post',
+                contentType: 'application/x-www-form-urlencoded',
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    "user_id":user_id,
+                    "evento_id":{{$evento->id}},
+                    "cargaHoraria":cargaHoraria,
+                }
+                
+                
+            });
+
+        }
+    
+</script>
 <div class="container container-fluid">
     <div class="row">
         @if (session('erro'))
@@ -39,6 +64,7 @@
         
 
 
+
         </div>
     </div>
 
@@ -58,6 +84,7 @@
                             <th>Tipo</th>
                             <th>Curso</th>
                             <th>Instituição</th>
+                            <th>Horas</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -70,6 +97,12 @@
                                     <td>{{$user->tipo}}</td>
                                     <td>{{$user->curso}}</td>
                                     <td>{{$user->instituicao}}</td>
+                                    <td>
+
+                                        <input class="id{{$user->id}}" min="0" max="{{$evento->cargaHoraria}}" type="number" onblur="atualiza({{$user->id}});"  name="horas">
+
+
+                                    </td>
                                 </tr>
                             @endforeach 
                         </tbody>
