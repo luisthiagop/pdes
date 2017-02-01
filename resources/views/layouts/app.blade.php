@@ -11,9 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{URL::asset('css/app.css')}}" rel="stylesheet">
 
-    <link href="/css/footer.css" rel="stylesheet">
+    <link href="{{URL::asset('css/footer.css')}}" rel="stylesheet">
 
 
 
