@@ -90,7 +90,7 @@
 
 
 
-                        <div class="form-group{{ $errors->has('cargaHoraria') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('vagas') ? ' has-error' : '' }}">
                             <label for="vagas" class="col-md-4 control-label">Número de vagas</label>
 
                             <div class="col-md-2">
@@ -118,7 +118,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>                      
+                        </div>          
 
 
                    

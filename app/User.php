@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-   public function eventos()
+    public function eventos()
     {
         return $this->belongsToMany('App\Evento', 'inscricoes', 'user_id', 'evento_id');
     }

@@ -91,7 +91,7 @@
 
 
 
-                        <div class="form-group<?php echo e($errors->has('cargaHoraria') ? ' has-error' : ''); ?>">
+                        <div class="form-group<?php echo e($errors->has('vagas') ? ' has-error' : ''); ?>">
                             <label for="vagas" class="col-md-4 control-label">Número de vagas</label>
 
                             <div class="col-md-2">
@@ -119,7 +119,7 @@
                                     </span>
                                 <?php endif; ?>
                             </div>
-                        </div>                      
+                        </div>          
 
 
                    
@@ -261,7 +261,7 @@
                                 <th>Relatório</th>
                             </tr>
 
-                            <?php $__currentLoopData = $hoje; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $hoje; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 
                                 <tr>
                                     <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
@@ -274,7 +274,7 @@
                                 </tr>
                                 
 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>  
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
 
                             </table>
                         </div>
@@ -303,7 +303,7 @@
                                 <th>Relatório</th>
                             </tr>
 
-                            <?php $__currentLoopData = $atuais; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $atuais; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 
                                 <tr>
                                     <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
@@ -318,7 +318,7 @@
                                 </tr>
                                 
 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>  
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
 
                             </table>
                         </div>
@@ -345,7 +345,7 @@
                                 <th>Relatório</th>
                             </tr>
 
-                            <?php $__currentLoopData = $futuros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $futuros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 
                                 <tr>
                                     <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
@@ -360,7 +360,7 @@
                                 </tr>
                                 
 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>  
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
 
                             </table>
                         </div>
@@ -384,7 +384,7 @@
                                 <th>Relatório</th>
                             </tr>
 
-                            <?php $__currentLoopData = $passados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $passados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 
                                 <tr>
                                     <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
@@ -399,7 +399,7 @@
                                 </tr>
                                 
 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>  
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
 
                             </table>
                         </div>
@@ -420,9 +420,9 @@
                     <?php if(count($errors) > 0): ?>
                         <div class="alert alert-danger">
                             <ul>
-                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li><?php echo e($error); ?></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
                     <?php endif; ?>

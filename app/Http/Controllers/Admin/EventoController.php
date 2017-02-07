@@ -55,7 +55,7 @@ class EventoController extends Controller
 
 		$evento->save();  
 		if($request->banner){
-			$imageName = $evento->id.'.'.$request->banner->getClientOriginalExtension();
+			$imageName = $evento->id.'.jpg';
 			$evento->name_banner = $imageName;
 			$evento->save();
 			$request->banner->move('assets/upload/imagens_eventos/', $imageName); 
@@ -100,7 +100,9 @@ class EventoController extends Controller
 		$evento->save();
 		
 		if($request->banner){
-			$imageName = $evento->id.'.'.$request->banner->getClientOriginalExtension();
+			if(is_dir(('assets/upload/imagens_eventos/'.$evento->name_banner)))
+				unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
+			$imageName = $evento->id.'.jpg';
 			$evento->name_banner = $imageName;
 			$evento->save();
 			$request->banner->move('assets/upload/imagens_eventos/', $imageName); 
@@ -145,6 +147,11 @@ class EventoController extends Controller
 
 	protected function delete(Request $request){
 		$evento = Evento::find($request->id);
+		//dd($evento->name_banner);
+		if(is_dir('assets/upload/imagens_eventos/'.$evento->name_banner)){
+				unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
+		}
+
 		if($evento->data_evento > $this->today||($evento->data_evento == $this->today && $evento->horario_evento >  $this->now  )){	
 			$evento->delete();
 			return back()->with('success','Evento deletado')->with('evento',$evento);
@@ -176,11 +183,17 @@ class EventoController extends Controller
 
 	protected function relatorio($id){
 		$evento =  DB::table('events')->where('id',$id)->first(); 
-		$inscricao = new Evento;
-		$users = $inscricao->users()->orWhere('evento_id',$id)->get();
-		$inscricoes = Inscricao::where('evento_id',$evento->id);	
+		//$inscricao = new Inscricao;
+		//$users = $inscricao->users()->orWhere('evento_id',$id)->get();
+		//$inscricoes = $inscricao->user()->orWhere('evento_id', $id)->toSql();	
+		//dd($inscricoes);
+
+		//dd($inscricoes);
+
+
+		$inscricoes = Inscricao::join('users','users.id','=','inscricoes.user_id')->where('evento_id','=',$evento->id)->select('users.*','inscricoes.horas')->get();
 		
-		return view('admin.relatorio')->with('evento',$evento)->with('users',$users)->with('ins',$inscricoes);
+		return view('admin.relatorio')->with('evento',$evento)->with('inscricoes',$inscricoes);
 	}
 
 
@@ -213,14 +226,17 @@ class EventoController extends Controller
 		
 		$evento = Evento::find($request->id);
 		$evento->has_banner=false;
-		//deletar a imagem da pasta
+		//dd(getcwd());
+		unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
+
+		
 		$evento->save();
 
 	}
 
 	protected function updateCargaHoraria(Request $request){
 		$ins= Inscricao::where('evento_id','=',$request->evento_id)->where('user_id','=',$request->user_id)->first();
-		$ins->cargaHoraria = $request->cargaHoraria;
+		$ins->horas = $request->horas;
 		$ins->save();
 		return response(200);
                   

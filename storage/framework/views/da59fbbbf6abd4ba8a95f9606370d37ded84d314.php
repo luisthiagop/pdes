@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,16 +11,16 @@
     <title><?php echo e(config('app.name', 'Laravel')); ?></title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="<?php echo e(URL::asset('css/app.css')); ?>" rel="stylesheet">
 
-    <link href="/css/footer.css" rel="stylesheet">
+    <link href="<?php echo e(URL::asset('css/footer.css')); ?>" rel="stylesheet">
 
 
 
     <!-- Scripts -->
 
      <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="<?php echo e(URL::asset('/js/app.js')); ?>"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.3/jquery.mask.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -139,3 +139,4 @@
 
 </body>
 </html>
+

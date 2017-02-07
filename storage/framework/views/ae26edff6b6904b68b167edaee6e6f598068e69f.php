@@ -166,7 +166,7 @@
                                
                              
                                                         
-                            <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div  class="col-sm-6 col-md-4">
                                     <div style="height: 360px !important;" class="thumbnail">
                                         <?php if($evento->has_banner): ?>
@@ -183,7 +183,7 @@
                                     </div>
                                 </div> 
 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>  
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
                              
                             </div>
                     <?php else: ?> 

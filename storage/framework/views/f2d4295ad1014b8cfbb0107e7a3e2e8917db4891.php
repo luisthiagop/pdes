@@ -15,7 +15,7 @@
                     "_token": "<?php echo e(csrf_token()); ?>",
                     "user_id":user_id,
                     "evento_id":<?php echo e($evento->id); ?>,
-                    "cargaHoraria":cargaHoraria,
+                    "horas":cargaHoraria,
                 }
                 
                 
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <?php if(count($users)!=0): ?>
+    <?php if(count($inscricoes)!=0): ?>
     <div class="row">
         <div class="col-md-12 ">    
                 
@@ -88,7 +88,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $inscricoes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                     <td><b><?php echo e($user->name); ?></b></td>
                                     <td><?php echo e($user->cpf); ?></td>
@@ -97,14 +97,15 @@
                                     <td><?php echo e($user->tipo); ?></td>
                                     <td><?php echo e($user->curso); ?></td>
                                     <td><?php echo e($user->instituicao); ?></td>
-                                    <td>
-
-                                        <input class="id<?php echo e($user->id); ?>" min="0" max="<?php echo e($evento->cargaHoraria); ?>" type="number" onblur="atualiza(<?php echo e($user->id); ?>);"  name="horas">
+                                    <td>                                    
+                                        <input class="id<?php echo e($user->id); ?>" value="<?php echo e($user->horas); ?>" min="0" max="<?php echo e($evento->cargaHoraria); ?>" type="number" onblur="atualiza(<?php echo e($user->id); ?>);"  name="horas">
+                                    
+                                    
 
 
                                     </td>
                                 </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?> 
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                         </tbody>
                 </table>                
             
@@ -163,7 +164,7 @@
       
 
 </div>
-    <?php if(count($users)==0): ?>
+    <?php if(count($inscricoes)==0): ?>
     <div class="container container-fluid">
         <div class="alert alert-info">
           Ainda ninguém se cadastrou para esse evento!

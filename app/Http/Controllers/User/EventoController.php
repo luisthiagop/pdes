@@ -65,8 +65,8 @@ class EventoController extends Controller
         if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
-            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le3OhEUAAAAALB5MiokW80lM1oBiJtiyAhumQwJ&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
-            //dd($resposta);
+            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ley_REUAAAAAKyiMxV-tyQ9tWLUtbsFiUrmfZti&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
+            
             $responseData = json_decode($resposta);
             //dd($responseData);    
             if ($responseData->success==true) {    
@@ -80,7 +80,7 @@ class EventoController extends Controller
                         return Redirect()->action( 'User\EventoController@listar')->withErrors(['O numero de vagas para esse evento esgoutou :/']);
                     }else{
             	    	$insc = Inscricao::firstOrNew(['user_id'=>Auth::user()->id,'evento_id'=>$request->id]);
-                        $insc->cargaHoraria = $evento->cargaHoraria;
+                        $insc->horas = $evento->cargaHoraria;
                         $insc->save();
                         $evento->inscritos++;
                         $evento->save();
@@ -105,7 +105,7 @@ class EventoController extends Controller
             if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
-            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Le3OhEUAAAAALB5MiokW80lM1oBiJtiyAhumQwJ&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
+            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ley_REUAAAAAKyiMxV-tyQ9tWLUtbsFiUrmfZti&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
             //dd($resposta);
             $responseData = json_decode($resposta);
             //dd($responseData);    

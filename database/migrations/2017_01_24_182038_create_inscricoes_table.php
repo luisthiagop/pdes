@@ -12,7 +12,7 @@ class CreateInscricoesTable extends Migration
                 $table->increments('id', true);
                 $table->integer('evento_id')->unsigned();
                 $table->integer('user_id')->unsigned();
-                $table->integer('cargaHoraria')->unsigned()->default(0);
+                $table->integer('horas')->unsigned()->default(0);
                 $table->timestamps();
         });
         Schema::table('inscricoes', function ($table) {

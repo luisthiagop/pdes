@@ -12,8 +12,7 @@
 <div class="container" >
     <div class="row">
         <div class="col-md-12 ">
-            
-                
+        
                 @include('user.nav')
                 <div class="panel-body  col-md-10">
                     
@@ -135,7 +134,7 @@
                     </div>
                     @if (count($eventos)!==0)
                         <div class="panel panel-default" style="margin-top:20px;">
-                            <div class="panel-heading">Lista de Eventos que você participou</div>
+                            <div class="panel-heading">Lista de eventos cadastrados</div>
                     
                             <table class="table table-bordered">
                             <tr>
@@ -168,9 +167,6 @@
                         <div class="alert alert-info" style="margin-top: 15px;">
                             Você não está em nenhum evento!
                         </div>
-                        
-                        
-                    
                         
                     @endif
                     

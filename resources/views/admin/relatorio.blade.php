@@ -17,7 +17,7 @@
                     "_token": "{{ csrf_token() }}",
                     "user_id":user_id,
                     "evento_id":{{$evento->id}},
-                    "cargaHoraria":cargaHoraria,
+                    "horas":cargaHoraria,
                 }
                 
                 
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    @if(count($users)!=0)
+    @if(count($inscricoes)!=0)
     <div class="row">
         <div class="col-md-12 ">    
                 
@@ -88,7 +88,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $user)
+                            @foreach($inscricoes as $user)
                                 <tr>
                                     <td><b>{{$user->name}}</b></td>
                                     <td>{{$user->cpf}}</td>
@@ -97,9 +97,10 @@
                                     <td>{{$user->tipo}}</td>
                                     <td>{{$user->curso}}</td>
                                     <td>{{$user->instituicao}}</td>
-                                    <td>
-
-                                        <input class="id{{$user->id}}" min="0" max="{{$evento->cargaHoraria}}" type="number" onblur="atualiza({{$user->id}});"  name="horas">
+                                    <td>                                    
+                                        <input class="id{{$user->id}}" value="{{$user->horas}}" min="0" max="{{$evento->cargaHoraria}}" type="number" onblur="atualiza({{$user->id}});"  name="horas">
+                                    
+                                    
 
 
                                     </td>
@@ -162,7 +163,7 @@
       
 
 </div>
-    @if(count($users)==0)
+    @if(count($inscricoes)==0)
     <div class="container container-fluid">
         <div class="alert alert-info">
           Ainda ninguém se cadastrou para esse evento!

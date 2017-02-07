@@ -1,4 +1,7 @@
 <?php $__env->startSection('content'); ?>
+
+
+dd($evento)
 <?php if(count($evento)==0): ?>
     <div class="container">        
         <div class="alert alert-info">
@@ -46,11 +49,12 @@
                     <?php echo e(csrf_field()); ?>
 
                     <input type="hidden" name="id" value="<?php echo e($evento->id); ?>">
-                    <div class="g-recaptcha" data-sitekey="6Le3OhEUAAAAABKjkehG1MYZ2BJZ7kINA4rq_2Bq"></div>
-
+                    
+                    
                     <div >
-                        <div class="g-recaptcha" data-sitekey="6Le3OhEUAAAAABKjkehG1MYZ2BJZ7kINA4rq_2Bq"></div>
-                        <button type="submit" class="btn btn-primary">
+                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
+
+                        <button  class="btn btn-primary">
 
                             Confirmar participação
                         </button>
@@ -68,7 +72,8 @@
                     
 
                     <div>
-                        <div class="g-recaptcha" data-sitekey="6Le3OhEUAAAAABKjkehG1MYZ2BJZ7kINA4rq_2Bq"></div>
+                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
+
                         <button type="submit" class="btn btn-danger">
                             Cancelar participação
                         </button>
@@ -89,8 +94,9 @@
             <p><b>Descrição: </b><?php echo $evento->descricao; ?></p>
             <p><b>Ministrante: </b><?php echo e($evento->palestrante); ?></p>
             <p><b>Carga Horaria:</b> <?php echo e($evento->cargaHoraria); ?> <?php if($evento->cargaHoraria != 1): ?>horas <?php else: ?> hora <?php endif; ?></p>
-            <p><b>Data do Evento: </b><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?></p>
+            <p><b>Data do Evento: </b><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?> <b>Horario do Evento: </b><?php echo e($evento->horario_evento); ?></p>
             <p><b>Início  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?> - <b>Fim  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></p>
+            <p><b>Vagas disponíveis: </b><?php echo e($evento->vagas-$evento->inscritos); ?></p>
         </div>
 
         

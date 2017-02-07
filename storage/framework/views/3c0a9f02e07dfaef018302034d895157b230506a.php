@@ -9,8 +9,7 @@
 <div class="container" >
     <div class="row">
         <div class="col-md-12 ">
-            
-                
+        
                 <?php echo $__env->make('user.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                 <div class="panel-body  col-md-10">
                     
@@ -133,7 +132,7 @@
                     </div>
                     <?php if(count($eventos)!==0): ?>
                         <div class="panel panel-default" style="margin-top:20px;">
-                            <div class="panel-heading">Lista de Eventos que você participou</div>
+                            <div class="panel-heading">Lista de eventos cadastrados</div>
                     
                             <table class="table table-bordered">
                             <tr>
@@ -146,7 +145,7 @@
                                 
                             </tr>
                             
-                            <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
+                            <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 
                                 <tr>
                                     <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
@@ -158,7 +157,7 @@
                                     
                                 </tr>
                                 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>  
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
                             </table>
                         </div>
                     <?php else: ?> 
@@ -166,9 +165,6 @@
                         <div class="alert alert-info" style="margin-top: 15px;">
                             Você não está em nenhum evento!
                         </div>
-                        
-                        
-                    
                         
                     <?php endif; ?>
                     

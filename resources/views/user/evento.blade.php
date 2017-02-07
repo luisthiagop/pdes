@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
+
+dd($evento)
 @if(count($evento)==0)
     <div class="container">        
         <div class="alert alert-info">
@@ -45,11 +48,12 @@
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('user/evento/participar/') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$evento->id}}">
-                    <div class="g-recaptcha" data-sitekey="6Le3OhEUAAAAABKjkehG1MYZ2BJZ7kINA4rq_2Bq"></div>
-
+                    
+                    
                     <div >
-                        <div class="g-recaptcha" data-sitekey="6Le3OhEUAAAAABKjkehG1MYZ2BJZ7kINA4rq_2Bq"></div>
-                        <button type="submit" class="btn btn-primary">
+                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
+
+                        <button  class="btn btn-primary">
 
                             Confirmar participação
                         </button>
@@ -66,7 +70,8 @@
                     
 
                     <div>
-                        <div class="g-recaptcha" data-sitekey="6Le3OhEUAAAAABKjkehG1MYZ2BJZ7kINA4rq_2Bq"></div>
+                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
+
                         <button type="submit" class="btn btn-danger">
                             Cancelar participação
                         </button>
@@ -87,8 +92,9 @@
             <p><b>Descrição: </b>{!!$evento->descricao!!}</p>
             <p><b>Ministrante: </b>{{$evento->palestrante}}</p>
             <p><b>Carga Horaria:</b> {{$evento->cargaHoraria}} @if($evento->cargaHoraria != 1)horas @else hora @endif</p>
-            <p><b>Data do Evento: </b>{{date('d/m/Y', strtotime($evento->data_evento))}}</p>
+            <p><b>Data do Evento: </b>{{date('d/m/Y', strtotime($evento->data_evento))}} <b>Horario do Evento: </b>{{$evento->horario_evento}}</p>
             <p><b>Início  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_inicio))}} - <b>Fim  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_fim))}}</p>
+            <p><b>Vagas disponíveis: </b>{{$evento->vagas-$evento->inscritos}}</p>
         </div>
 
         

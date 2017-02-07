@@ -7,6 +7,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Mail\Welcome;
 class RegisterController extends Controller
 {
     /*
@@ -57,7 +58,7 @@ class RegisterController extends Controller
             'name' => 'required|max:50',
             'email' => 'required|email|max:255|unique:users,email',
             'password' => 'required|min:6|confirmed',
-            'cpf'=> 'cpf|unique:users,cpf',
+            'cpf'=> 'unique:users,cpf|cpf',
         ]);
 
 
@@ -84,6 +85,8 @@ class RegisterController extends Controller
             $usuario->curso = $request->curso;
 
             $usuario->save();
+
+            //\Mail::to($usuario->email)->send(new Welcome);
 
             if (Auth::attempt(['email' => $usuario->email, 'password' => $request->password])) {
                 if(Auth::user()->admin){
