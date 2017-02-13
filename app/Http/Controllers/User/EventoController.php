@@ -23,45 +23,54 @@ class EventoController extends Controller
 
     }
 
- 	protected function listar(){  
+ 	protected function listar()
+    {  
 
-        $eventos = Evento::where('data_fim','>=',$this->today)->where('data_inicio','<=',$this->today)->where('data_evento','>=',$this->today)->orderBy('data_evento', 'asc')->get();       
+        $eventos = Evento::where('data_fim','>=',$this->today)->where('data_inicio','<=',$this->today)->where('data_evento','>=',$this->today)->where(Auth::user()->tipo,'=',1)->orderBy('data_evento', 'asc')->get();
+        $eventos_passados = Evento::where('data_evento','<',$this->today)->orderBy('data_evento', 'asc')->get();       
+
+        $inscricao = new User;
+        $eventos_cadastrados = $inscricao->eventos()->orWhere('user_id', Auth::user()->id)->get();
         
-    	return view('user.eventos')->with('eventos',$eventos);
+    	return view('user.eventos')->with('eventos',$eventos)->with('eventos_passados',$eventos_passados)->with('eventos_cadastrados',$eventos_cadastrados);
  	} 
 
 
-    protected function eventos_anteriores(){
-        
-        $eventos_passados = DB::table('eventos')->where('data_evento','<',$this->today)->orderBy('data_evento', 'asc')->get();
-        return view('user.eventos_anteriores')->with('eventos',$eventos_passados);
+   
 
-    } 
-
-    protected function eventos_cadastrados(){
-        $inscricao = new User;
-        $eventos = $inscricao->eventos()->orWhere('user_id', Auth::user()->id)->get();
-
-        return view('user.eventos_cadastrados')->with('eventos',$eventos);
-    }  
 
  	protected function evento($id){
-        //verificar se esta disponivel para o usuario
+        
+
+        //dd($id);
     	$evento =  Evento::where('id',$id)->where('data_inicio', '<=', $this->today )->where('data_fim','>=',$this->today)->first();
 
-        //dd($evento);
 
-        $participa = Inscricao::where('user_id',Auth::user()->id)->where('evento_id',$evento->id)->get();
-        //dd($participa);
+        if($evento){
+            $op = array(
+                'aluno'=> $evento->aluno,
+                'agente'=> $evento->agente,
+                'comunidade'=> $evento->comunidade,
+                'professor'=> $evento->professor
+            );
+            
+            if($op[Auth::user()->tipo]){
 
-    	return view('user.evento')->with('evento',$evento)->with('participa',$participa);
+                $participa = Inscricao::where('user_id',Auth::user()->id)->where('evento_id',$evento->id)->get();
+                
+
+            	return view('user.evento')->with('evento',$evento)->with('participa',$participa);
+            }else{
+                return redirect()->back()->with('erro','Você não tem acesso a esse evento');
+            }
+        }else{
+             return redirect()->back()->with('erro','Você não tem acesso a esse evento');
+        }
 
     }
 
     protected function participar(Request $request){
-    	//echo $request->id . " -------- ". Auth::user()->id;
-    	//dd($request->all());
-
+    	
         if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
@@ -84,11 +93,11 @@ class EventoController extends Controller
                         $insc->save();
                         $evento->inscritos++;
                         $evento->save();
-            	    	return redirect()->action( 'User\EventoController@eventos_cadastrados');
+            	    	return redirect()->back()->with('success','Parabéns, você está cadastrado no evento!');
                     }
 
             	}else{
-            		return redirect()->action( 'User\EventoController@listar');
+            		return redirect()->back( 'User\EventoController@listar');
                 }
             }else{
 
@@ -101,14 +110,13 @@ class EventoController extends Controller
     }
 
     protected function sair(Request $request){
-            //dd($_POST);
             if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
             $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ley_REUAAAAAKyiMxV-tyQ9tWLUtbsFiUrmfZti&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
-            //dd($resposta);
+          
             $responseData = json_decode($resposta);
-            //dd($responseData);    
+              
             if($responseData->success==true) {        
 
 
@@ -125,9 +133,9 @@ class EventoController extends Controller
 
                     
                     $evento->inscritos--;
-                    $evento->save();
-
-                    return redirect()->back()->with('sucess','Você não participa mais desse evento');
+                    
+                    
+                    return redirect()->back()->with('success','Você saiu do evento!');
                 }else{
                     return redirect()->back()->with('erro','Você não pode sair de um evento que ja aconteceu');
                 }

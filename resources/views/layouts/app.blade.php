@@ -20,6 +20,7 @@
     <!-- Scripts -->
 
      <!-- Scripts -->
+     <script src="https://use.fontawesome.com/2584949f14.js"></script>
     <script src="{{URL::asset('/js/app.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.3/jquery.mask.min.js"></script>
     <script type="text/javascript">
@@ -126,7 +127,29 @@
             </div>
         </nav>
 
+        <div class="container">
+            <div class="row">
+                @if (session('erro'))
+                   <div class="alert alert-danger fade in alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                         {!! session('erro') !!}
+                    </div>
+                       
+                    
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success fade in alert-dismissable">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                         {!! session('success') !!}
+                    </div>
+                       
+                @endif
+                
+            </div>
+        </div>
+
         @yield('content')
+
     </div>
 
 <footer class="footer">

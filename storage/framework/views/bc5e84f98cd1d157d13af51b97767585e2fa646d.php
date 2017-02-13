@@ -1,7 +1,4 @@
 <?php $__env->startSection('content'); ?>
-
-
-dd($evento)
 <?php if(count($evento)==0): ?>
     <div class="container">        
         <div class="alert alert-info">
@@ -12,18 +9,7 @@ dd($evento)
 <?php else: ?>
 
 <div class="container">
-    <?php if(session('erro')): ?>
-        <div class="alert alert-danger">
-            <?php echo e(session('erro')); ?>
-
-        </div>
-    <?php endif; ?>
-    <?php if(session('success')): ?>
-        <div class="alert alert-success">
-            <?php echo e(session('success')); ?>
-
-        </div>
-    <?php endif; ?>
+    
     <div class="row">
         <div class="col-md-7"> 
          <?php if($evento->has_banner): ?>

@@ -36,6 +36,10 @@ class EventoController extends Controller
 			'data_inicio'=>'required|date|before:data_fim|before:data_evento',
 			'data_fim'=>'required|date|before:data_evento',
 			'banner' => 'image|mimes:jpg,jpeg|max:2048',
+			'rb_aluno'=>'required',
+			'rb_agente'=>'required',
+			'rb_comunidade'=>'required',
+			'rb_professor'=>'required',
 		]);
 
 
@@ -49,6 +53,10 @@ class EventoController extends Controller
 		$evento->horario_evento = $request->horario_evento;
 		$evento->data_inicio = $request->data_inicio;
 		$evento->data_fim = $request->data_fim;
+		$evento->aluno = $request->rb_aluno;
+		$evento->agente = $request->rb_agente;
+		$evento->comunidade = $request->rb_comunidade;
+		$evento->professor = $request->rb_professor;
 		if($request->banner){
 			$evento->has_banner = true;
 		}
@@ -69,30 +77,39 @@ class EventoController extends Controller
 
 	protected function update(Request $request)
 	{
+
+
 		$evento = Evento::find($request->id);
+
 		
 		$this->validate($request, [
 			'nome' => 'required|max:255',
 			'descricao' => '',
 			'cargaHoraria' => 'required',
+			'horario_evento: required',
 			'vagas'=>'required|min:1',
 			'palestrante'=>'max:100',
-			'data_evento'=>'required|date|',
-			'horario_evento'=>'required','after:data_fim',
-			'data_inicio'=>'required|date|before:data_fim|before:data_evento',
-			'data_fim'=>'required|date|before:data_evento',
 			'banner' => 'image|mimes:jpg,jpeg|max:2048',
+			'rb_aluno'=>'required',
+			'rb_agente'=>'required',
+			'rb_comunidade'=>'required',
+			'rb_professor'=>'required',
 		]);
+		
 		
 		$evento->nome = $request->nome;
 		$evento->descricao = $request->descricao;
 		$evento->vagas = $request->vagas;
 		$evento->cargaHoraria = $request->cargaHoraria;
 		$evento->palestrante = $request->palestrante;
-		$evento->data_evento = $request->data_evento;
-		$evento->horario_evento = $request->horario_evento;
-		$evento->data_inicio = $request->data_inicio;
-		$evento->data_fim = $request->data_fim;
+		$evento->fb_link = $request->fb_link;
+
+
+		$evento->aluno = $request->rb_aluno;
+		$evento->agente = $request->rb_agente;
+		$evento->comunidade = $request->rb_comunidade;
+		$evento->professor = $request->rb_professor;
+
 		if($request->banner){
 			$evento->has_banner = true;
 		}		
@@ -100,8 +117,9 @@ class EventoController extends Controller
 		$evento->save();
 		
 		if($request->banner){
-			if(is_dir(('assets/upload/imagens_eventos/'.$evento->name_banner)))
+			if(file_exists('assets/upload/imagens_eventos/'.$evento->name_banner)){
 				unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
+			}
 			$imageName = $evento->id.'.jpg';
 			$evento->name_banner = $imageName;
 			$evento->save();
@@ -147,8 +165,8 @@ class EventoController extends Controller
 
 	protected function delete(Request $request){
 		$evento = Evento::find($request->id);
-		//dd($evento->name_banner);
-		if(is_dir('assets/upload/imagens_eventos/'.$evento->name_banner)){
+		//verificar se um add($evento->name_banner);
+		if(file_exists('assets/upload/imagens_eventos/'.$evento->name_banner)){
 				unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
 		}
 

@@ -62,23 +62,7 @@
 
                 <div class="panel-body">
 
-                    <?php if(session('erro')): ?>
-                       <div class="alert alert-danger fade in alert-dismissable">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                             <?php echo session('erro'); ?>
-
-                        </div>
-                           
-                        
-                    <?php endif; ?>
-                    <?php if(session('success')): ?>
-                        <div class="alert alert-success fade in alert-dismissable">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                             <?php echo session('success'); ?>
-
-                        </div>
-                           
-                    <?php endif; ?>
+                   
 
                      <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="<?php echo e(url('admin/eventos/update')); ?>">
                         <?php echo e(csrf_field()); ?>
@@ -174,11 +158,11 @@
                         </div>
 
 
-                        <div class="form-group<?php echo e($errors->has('data_evento') ? ' has-error' : ''); ?>">
+                        <div data-toggle="tooltip"  title="datas não podem ser alteradas!" class="form-group<?php echo e($errors->has('data_evento') ? ' has-error' : ''); ?>">
                             <label for="data_evento" class="col-md-4 control-label">Data do evento</label>
 
                             <div class="col-md-3">
-                                <input id="data_evento" type="date" class="form-control" name="data_evento" value="<?php echo e($evento->data_evento); ?>" min="<?php echo e(date('Y-m-d',strtotime($evento->data_evento))); ?>"  >
+                                <input disabled="" id="data_evento" type="date" class="form-control" name="data_evento" value="<?php echo e($evento->data_evento); ?>" min="<?php echo e(date('Y-m-d',strtotime($evento->data_evento))); ?>"  >
 
                                 <?php if($errors->has('data_evento')): ?>
                                     <span class="help-block">
@@ -202,11 +186,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group<?php echo e($errors->has('data_inicio') ? ' has-error' : ''); ?>">
+                        <div data-toggle="tooltip"  title="datas não podem ser alteradas!" class="form-group<?php echo e($errors->has('data_inicio') ? ' has-error' : ''); ?>">
                             <label for="data_inicio" class="col-md-4 control-label">Data do início das inscrições</label>
 
                             <div class="col-md-3">
-                                <input id="data_inicio" type="date" class="form-control" name="data_inicio" value="<?php echo e($evento->data_inicio); ?>" >
+                                <input disabled id="data_inicio" type="date" class="form-control" name="data_inicio" value="<?php echo e($evento->data_inicio); ?>" >
 
                                 <?php if($errors->has('data_inicio')): ?>
                                     <span class="help-block">
@@ -219,11 +203,11 @@
 
 
 
-                        <div class="form-group<?php echo e($errors->has('data_fim') ? ' has-error' : ''); ?>">
+                        <div data-toggle="tooltip"  title="datas não podem ser alteradas!" class="form-group<?php echo e($errors->has('data_fim') ? ' has-error' : ''); ?>">
                             <label for="data_fim" class="col-md-4 control-label">Data final das inscrições</label>
 
                             <div class="col-md-3">
-                                <input id="data_fim" type="date" class="form-control" name="data_fim" value="<?php echo e($evento->data_fim); ?>" >
+                                <input disabled id="data_fim" type="date" class="form-control" name="data_fim" value="<?php echo e($evento->data_fim); ?>" >
 
                                 <?php if($errors->has('data_fim')): ?>
                                     <span class="help-block">
@@ -232,6 +216,80 @@
                                 <?php endif; ?>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                              Quem pode ver o evento?
+                            </label>
+
+                            <div class="col-md-6">
+                                <table class="table table-hover">
+                                <tr>
+                                    <td>Agentes</td>
+                                    <td>
+                                        
+                                            Sim <input <?php if($evento->agente): ?> checked <?php endif; ?> name="rb_agente" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input <?php if(!$evento->agente): ?> checked <?php endif; ?> name="rb_agente" type="radio" value="0">
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Alunos</td>
+                                    <td>
+                                       
+                                            Sim <input <?php if($evento->aluno): ?> checked <?php endif; ?> name="rb_aluno" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input <?php if(!$evento->aluno): ?> checked <?php endif; ?> name="rb_aluno" type="radio" value="0">
+
+                                    </td>
+
+                                    
+                                </tr>
+
+                                <tr>
+                                    
+                                    <td>Comunidade</td>
+                                    <td>
+                                       
+                                            Sim <input <?php if($evento->comunidade): ?> checked <?php endif; ?> name="rb_comunidade" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input <?php if(!$evento->comunidade): ?> checked <?php endif; ?> name="rb_comunidade" type="radio" value="0">
+
+                                    </td>
+                                   
+                                </tr>
+
+                                <tr>
+                                    
+                                    <td>Professores</td>
+                                    <td>
+                                       
+                                            Sim <input <?php if($evento->professor): ?> checked <?php endif; ?> name="rb_professor" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input <?php if(!$evento->professor): ?> checked <?php endif; ?> name="rb_professor" type="radio" value="0">
+
+                                    </td>
+                                </tr>
+
+
+
+
+
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr>
 
 
                         <div class="form-group<?php echo e($errors->has('banner') ? ' has-error' : ''); ?>">
@@ -264,8 +322,35 @@
                                 </div>
                                 <?php endif; ?>
                             </div>
-                        </div>                        
+                        </div> 
+
+
+
+
+                        
+
+                        <?php if($evento->data_evento < date("Y-m-d")): ?>
+                            <div class="form-group<?php echo e($errors->has('fb_link') ? ' has-error' : ''); ?>">
+                                <label for="fb_link" class="col-md-4 control-label">
+                                    <i class="fa fa-facebook-square" aria-hidden="true"></i> link
+                                </label>
+
+                                <div class="col-md-6">
+                                    <input id="fb_link" type="text" class="form-control" name="fb_link" value="<?php echo e($evento->fb_link); ?>"  autofocus>
+
+                                    <?php if($errors->has('fb_link')): ?>
+                                        <span class="help-block">
+                                            <strong><?php echo e($errors->first('fb_link')); ?></strong>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                        <?php endif; ?>
+                       
        
+                        
+
 
 
 
@@ -277,6 +362,10 @@
                                 </button>
                             </div>
                         </div>
+
+
+
+
                     </form>
                     
 
@@ -308,6 +397,11 @@
     });
 
 
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>

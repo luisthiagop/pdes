@@ -8,26 +8,8 @@
     } );
 </script>
 <div class="container" >
-    <div class="row">
-        <?php if(session('erro')): ?>
-           <div class="alert alert-danger fade in alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                 <?php echo session('erro'); ?>
 
-            </div>
-               
-            
-        <?php endif; ?>
-        <?php if(session('success')): ?>
-            <div class="alert alert-success fade in alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                 <?php echo session('success'); ?>
 
-            </div>
-               
-        <?php endif; ?>
-        
-    </div>
     <div class="row">
         <div class="col-md-12 ">
 
@@ -36,6 +18,7 @@
                     
                         
                           <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Novo evento</button>
+                          <hr>
                         
                 
 
@@ -199,6 +182,80 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">
+                              Quem pode ver o evento?
+                            </label>
+
+                            <div class="col-md-6">
+                                <table class="table table-hover">
+                                <tr>
+                                    <td>Agentes</td>
+                                    <td>
+                                       
+                                            Sim <input checked name="rb_agente" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input name="rb_agente" type="radio" value="0">
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Alunos</td>
+                                    <td>
+                                       
+                                            Sim <input checked name="rb_aluno" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input name="rb_aluno" type="radio" value="0">
+
+                                    </td>
+
+                                    
+                                </tr>
+
+                                <tr>
+                                    
+                                    <td>Comunidade</td>
+                                    <td>
+                                       
+                                            Sim <input checked name="rb_comunidade" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input name="rb_comunidade" type="radio" value="0">
+
+                                    </td>
+                                   
+                                </tr>
+
+                                <tr>
+                                    
+                                    <td>Professores</td>
+                                    <td>
+                                       
+                                            Sim <input checked name="rb_professor" type="radio" value="1">
+                                    </td>
+                                    <td>
+                                       
+                                            Não <input name="rb_professor" type="radio" value="0">
+
+                                    </td>
+                                </tr>
+
+
+
+
+
+                                </table>
+                            </div>
+                        </div>
+
+                        <hr>
+
 
                         <div class="form-group<?php echo e($errors->has('banner') ? ' has-error' : ''); ?>">
                             <label for="banner" class="col-md-4 control-label">Banner</label>
@@ -227,196 +284,253 @@
 
 
 
-
-
+<span style="color:silver;font-size: 12px;">* As datas não poderão ser alteradas, caso isso seja necessário, crie um novo evento ou entre em contato com o NTI para saber mais.</span>
+                          <br><br>
 
 
 
 
                           </div>
                           
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button><br>
+                            
                         </div>
                         
                       </div>
                     </div>
                 </div>
 
+                <h2> Eventos</h2>
+                    <ul class="nav nav-tabs">                        
+                        <li class="active"><a data-toggle="tab" href="#atuais">Inscrições abertas</a></li>
+                        <li><a data-toggle="tab" href="#hoje">Eventos de Hoje</a></li>
+                        <li><a data-toggle="tab" href="#futuros">Eventos futuros</a></li>
+                        <li><a data-toggle="tab" href="#passados">Eventos passados</a></li>
+                    </ul>
 
-
-                    <?php if(count($hoje)!==0): ?>
-
-                        <div class="panel panel-default" style="margin-top:20px;">
-                            <div class="panel-heading" ><b style="color:green">Eventos Hoje</b></div>
-
-                    
-                            <table class="table table-bordered">
-                            <tr>
-                                <th>Evento</th>
-                                <th>Ministrante</th>
-                                <th>Carga Horaria</th>
-                                <th>Editar</th>
-                                <th>Deletar</th>
-                                <th>Relatório</th>
-                            </tr>
-
-                            <?php $__currentLoopData = $hoje; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                
-                                <tr>
-                                    <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
-                                    <td><?php echo e($evento->palestrante); ?></td>
-                                    <td><?php echo e($evento->cargaHoraria); ?> horas</td>
-                                    <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
-                                   
-                                </tr>
-                                
-
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
-
-                            </table>
-                        </div>
-
-                             
-                    <?php endif; ?>
-
-                    <hr>
-
-                    <?php if(count($atuais)!==0): ?>
-
-                        <div class="panel panel-default" style="margin-top:20px;">
-                            <div class="panel-heading"><b style="color:#36f">Inscrições abertas</b></div>
-
-                    
-                            <table class="table table-bordered">
-                            <tr>
-                                <th>Evento</th>
-                                <th>Ministrante</th>
-                                <th>Carga Horaria</th>
-                                <th>Data</th>
-                                <th>Início das inscrições</th>
-                                <th>Fim das inscrições</th>
-                                <th>Editar</th>
-                                <th>Deletar</th>
-                                <th>Relatório</th>
-                            </tr>
-
-                            <?php $__currentLoopData = $atuais; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                
-                                <tr>
-                                    <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
-                                    <td><?php echo e($evento->palestrante); ?></td>
-                                    <td><?php echo e($evento->cargaHoraria); ?> horas</td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?></td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?></td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></td>
-                                    <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
-                                </tr>
-                                
-
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
-
-                            </table>
-                        </div>
-
-                             
-                    <?php endif; ?>
-
-                    <hr>
-                    <?php if(count($futuros)!==0): ?>
-                        <div class="panel panel-default" style="margin-top:20px;">
-                            <div class="panel-heading"><b style="color:orange">Inscrições futuras</b></div>
-
-                    
-                            <table class="table table-bordered">
-                            <tr>
-                                <th>Evento</th>
-                                <th>Ministrante</th>
-                                <th>Carga Horaria</th>
-                                <th>Data</th>
-                                <th>Início das inscrições</th>
-                                <th>Fim das inscrições</th>
-                                <th>Editar</th>
-                                <th>Deletar</th>
-                                <th>Relatório</th>
-                            </tr>
-
-                            <?php $__currentLoopData = $futuros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                
-                                <tr>
-                                    <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
-                                    <td><?php echo e($evento->palestrante); ?></td>
-                                    <td><?php echo e($evento->cargaHoraria); ?> horas</td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?></td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?></td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></td>
-                                    <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
-                                </tr>
-                                
-
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
-
-                            </table>
-                        </div>
-                        <hr>
-                        <?php endif; ?> 
-                        <?php if(count($passados)!==0): ?>
-                        <div class="panel panel-default" style="margin-top:20px;">
-                            <div class="panel-heading"><b style="color:grey">Eventos passados</b></div>
-
-                    
-                            <table class="table table-bordered">
-                            <tr>
-                                <th>Evento</th>
-                                <th>Ministrante</th>
-                                <th>Carga Horaria</th>
-                                <th>Data</th>
-                                <th>Início das inscrições</th>
-                                <th>Fim das inscrições</th>
-                                <th>Editar</th>
-                                <th>Deletar</th>
-                                <th>Relatório</th>
-                            </tr>
-
-                            <?php $__currentLoopData = $passados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                
-                                <tr>
-                                    <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
-                                    <td><?php echo e($evento->palestrante); ?></td>
-                                    <td><?php echo e($evento->cargaHoraria); ?> horas</td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?></td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?></td>
-                                    <td><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></td>
-                                    <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
-                                    <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
-                                </tr>
-                                
-
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
-
-                            </table>
-                        </div>
-
-                    
+                    <div class="tab-content">
                         
-                    <hr>
 
-                    <?php endif; ?>
-                    <?php if(count($passados)==0&&count($hoje)==0&&count($futuros)==0&&count($atuais)==0): ?>
 
-                        <div class="alert alert-info">
-                          Não existem eventos cadastrados atualmente!
+                        <div id="atuais" class="tab-pane fade in active">
+                            <h3>Inscrições abertas</h3>
+                            <?php if(count($atuais)!==0): ?>
+
+                                <div class="panel panel-default" style="margin-top:20px;">
+                                    <div class="panel-heading"><b style="color:#36f">Inscrições abertas</b></div>
+
+                            
+                                    <table class="table table-bordered">
+                                    <tr>
+                                        <th>Evento</th>
+                                        <th>Ministrante</th>
+                                        <th>Carga Horaria</th>
+                                        <th>Data</th>
+                                        <th>Início das inscrições</th>
+                                        <th>Fim das inscrições</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                        <th>Relatório</th>
+                                    </tr>
+
+                                    <?php $__currentLoopData = $atuais; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        
+                                        <tr>
+                                            <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
+                                            <td><?php echo e($evento->palestrante); ?></td>
+                                            <td><?php echo e($evento->cargaHoraria); ?> horas</td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?></td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?></td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></td>
+                                            <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
+                                        </tr>
+                                        
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+
+                                    </table>
+                                </div>
+
+                                     
+                            <?php else: ?>                            
+
+                                <div class="alert alert-info">
+                                  Não existem eventos cadastrados atualmente!
+                                </div>
+
+                                
+                            <?php endif; ?>
                         </div>
 
+
+                        <div id="hoje" class="tab-pane fade">
+                            <h3>Eventos Hoje</h3>
+                            <?php if(count($hoje)!==0): ?>
+
+                                <div class="panel panel-default" style="margin-top:20px;">
+                                    <div class="panel-heading" ><b style="color:green">Eventos Hoje</b></div>
+
+                            
+                                    <table class="table table-bordered">
+                                    <tr>
+                                        <th>Evento</th>
+                                        <th>Ministrante</th>
+                                        <th>Carga Horaria</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                        <th>Relatório</th>
+                                    </tr>
+
+                                    <?php $__currentLoopData = $hoje; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        
+                                        <tr>
+                                            <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
+                                            <td><?php echo e($evento->palestrante); ?></td>
+                                            <td><?php echo e($evento->cargaHoraria); ?> horas</td>
+                                            <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
+                                           
+                                        </tr>
+                                        
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+
+                                    </table>
+                                </div>
+
+                                     
+                             <?php else: ?>                            
+
+                                <div class="alert alert-info">
+                                  Não existem eventos cadastrados atualmente!
+                                </div>
+
+                                
+                            <?php endif; ?>
+                        </div>
+
+
+                        <div id="futuros" class="tab-pane fade">
+                            <h3>Eventos futuros</h3>
+                            <?php if(count($futuros)!==0): ?>
+                                <div class="panel panel-default" style="margin-top:20px;">
+                                    <div class="panel-heading"><b style="color:orange">Inscrições futuras</b></div>
+
+                            
+                                    <table class="table table-bordered">
+                                    <tr>
+                                        <th>Evento</th>
+                                        <th>Ministrante</th>
+                                        <th>Carga Horaria</th>
+                                        <th>Data</th>
+                                        <th>Início das inscrições</th>
+                                        <th>Fim das inscrições</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                        <th>Relatório</th>
+                                    </tr>
+
+                                    <?php $__currentLoopData = $futuros; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        
+                                        <tr>
+                                            <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
+                                            <td><?php echo e($evento->palestrante); ?></td>
+                                            <td><?php echo e($evento->cargaHoraria); ?> horas</td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?></td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?></td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></td>
+                                            <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
+                                        </tr>
+                                        
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+
+                                    </table>
+                                </div>
+                                <hr>
+                            <?php else: ?>                            
+
+                                <div class="alert alert-info">
+                                  Não existem eventos cadastrados atualmente!
+                                </div>
+
+                                
+                            <?php endif; ?>
+                        </div>
+
+
+                        <div id="passados" class="tab-pane fade">
+                            <h3>Eventos passados</h3>
+                                <?php if(count($passados)!==0): ?>
+                                <div class="panel panel-default" style="margin-top:20px;">
+                                    <div class="panel-heading"><b style="color:grey">Eventos passados</b></div>
+
+                            
+                                    <table class="table table-bordered">
+                                    <tr>
+                                        <th>Evento</th>
+                                        <th>Ministrante</th>
+                                        <th>Carga Horaria</th>
+                                        <th>Data</th>
+                                        <th>Início das inscrições</th>
+                                        <th>Fim das inscrições</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                        <th>Relatório</th>
+                                    </tr>
+
+                                    <?php $__currentLoopData = $passados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $evento): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        
+                                        <tr>
+                                            <td><a href="<?php echo e(url('user/evento/'.$evento->id)); ?>"><?php echo e($evento->nome); ?></a></td>
+                                            <td><?php echo e($evento->palestrante); ?></td>
+                                            <td><?php echo e($evento->cargaHoraria); ?> horas</td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?></td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?></td>
+                                            <td><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></td>
+                                            <td><a href="<?php echo e(url('/admin/evento/'.$evento->id)); ?>"><i class="material-icons">mode_edit</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/delete/'.$evento->id)); ?>"><i class="material-icons">delete</i></a></td>
+                                            <td><a href="<?php echo e(url('admin/eventos/relatorio/'.$evento->id)); ?>"><i class="material-icons">menu</i></a></td>
+                                        </tr>
+                                        
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+
+                                    </table>
+                                </div>
+
+                            
+                                
+                            <hr>
+
+                            <?php else: ?>                            
+
+                                <div class="alert alert-info">
+                                  Não existem eventos cadastrados atualmente!
+                                </div>
+
+                                
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
+
+
+                    
+
+                    
+
+                    
+
+                   
+                     
                         
-                    <?php endif; ?>
+                    
                     <?php if(count($errors) > 0): ?>
                         <div class="alert alert-danger">
                             <ul>

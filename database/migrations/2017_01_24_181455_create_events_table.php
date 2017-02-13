@@ -37,6 +37,13 @@ class CreateEventsTable extends Migration
             $table->boolean('status')->default(true);
             $table->boolean('disabled')->default(false);
 
+            $table->boolean('aluno')->default(false);
+            $table->boolean('agente')->default(false);
+            $table->boolean('professor')->default(false);
+            $table->boolean('comunidade')->default(false);
+
+            $table->string('fb_link', 500)->default("");
+
 
             $table->timestamps();
              

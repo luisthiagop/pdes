@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use Auth;
+use Mail;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -86,7 +87,19 @@ class RegisterController extends Controller
 
             $usuario->save();
 
-            //\Mail::to($usuario->email)->send(new Welcome);
+            $data= array(
+                'nome'=>'josé',
+            );
+
+            Mail::send('mails.welcome', $data, function ($message) {
+               $message->from('mailluisthiago@gmail.com', 'Laravel');
+
+               $message->to('mailluisthiago@gmail.com');
+            });
+
+            
+
+
 
             if (Auth::attempt(['email' => $usuario->email, 'password' => $request->password])) {
                 if(Auth::user()->admin){

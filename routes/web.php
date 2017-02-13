@@ -88,6 +88,6 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('user/eventos', 'User\EventoController@listar');
     Route::post('user/evento/participar/','User\EventoController@participar');
     Route::post('user/evento/sair/','User\EventoController@sair');
-    Route::get('user/eventos_cadastrados','User\EventoController@eventos_cadastrados');
+    
 });
 

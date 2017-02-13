@@ -85,6 +85,7 @@
                             <th>Curso</th>
                             <th>Instituição</th>
                             <th>Horas</th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
@@ -103,6 +104,9 @@
                                     
 
 
+                                    </td>
+                                    <td>
+                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
                                     </td>
                                 </tr>
                             @endforeach 

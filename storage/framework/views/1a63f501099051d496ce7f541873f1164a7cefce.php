@@ -5,5 +5,5 @@
     <li id="lieventosc" role="presentation"><a href="<?php echo e(url('user/eventos_cadastrados')); ?>">Eventos cadastrados</a></li>
 
 
-    <li id="lieventosa" role="presentation"><a href="<?php echo e(url('/eventos_anteriores')); ?>"> Eventos anteriores</a></li>
+    <li id="lieventosa" role="presentation"><a href="<?php echo e(url('/eventos_anteriores')); ?>"> Eventos passados</a></li>
 </ul>

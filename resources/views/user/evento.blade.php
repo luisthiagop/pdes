@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-dd($evento)
 @if(count($evento)==0)
     <div class="container">        
         <div class="alert alert-info">
@@ -14,16 +11,7 @@ dd($evento)
 @else
 
 <div class="container">
-    @if (session('erro'))
-        <div class="alert alert-danger">
-            {{ session('erro') }}
-        </div>
-    @endif
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+    
     <div class="row">
         <div class="col-md-7"> 
          @if($evento->has_banner)
