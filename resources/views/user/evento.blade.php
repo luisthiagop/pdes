@@ -90,8 +90,9 @@
 </div>
 
 <script>
-    function onSubmit(token) {
-        document.getElementById("form-actions").submit();
+    grecaptcha.execute();
+    function onSubmit = function(token) {
+        document.getElementById("demo-form").submit();
     }
 </script>
 
