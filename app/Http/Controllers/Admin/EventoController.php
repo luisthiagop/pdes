@@ -229,13 +229,38 @@ class EventoController extends Controller
 
 				foreach($users as $user){
 					$sheet->row($line++, array(
-					   $user->name , $user->cpf,''
+					   $user->cpf,$user->name
 					));
 				}
 				
 			});	
 
 		})->download('xlsx');
+
+		return redirect()->back();
+	}
+
+	protected function exportaCSV($id){
+		$evento =  DB::table('events')->where('id',$id)->first();
+		$this->id=$id;
+		Excel::create('participantes_'.$evento->nome,function($excel){
+			$excel = $excel->sheet('sheetname',function($sheet){
+				$data=[];
+				array_push($data, array('CPF','Nome'));
+				$sheet->fromArray($data,null,'A1',false,false);
+				$line  =1;
+				$inscricao = new Evento;
+				$users = $inscricao->users()->orWhere('evento_id',$this->id)->get();
+
+				foreach($users as $user){
+					$sheet->row($line++, array(
+					   $user->cpf,$user->name
+					));
+				}
+				
+			});	
+
+		})->download('csv');
 
 		return redirect()->back();
 	}

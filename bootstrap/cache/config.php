@@ -365,7 +365,7 @@
     'debug' => true,
     'url' => 'http://localhost',
     'timezone' => 'America/Sao_Paulo',
-    'locale' => 'pt_BR',
+    'locale' => 'pt',
     'fallback_locale' => 'en',
     'key' => 'base64:wmgIV8cluC9JPzwmSwXvy1djgGLLBhXYhaQrviMGUjo=',
     'cipher' => 'AES-256-CBC',

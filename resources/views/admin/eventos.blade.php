@@ -11,7 +11,11 @@
 </script>
 <div class="container" >
 
-
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <span>Alguns campos foram preenchidos errados, ou foram esquecidos</span>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12 ">
 
@@ -285,7 +289,7 @@
 
 
 
-<span style="color:silver;font-size: 12px;">* As datas não poderão ser alteradas, caso isso seja necessário, crie um novo evento ou entre em contato com o NTI para saber mais.</span>
+<span style="color:silver;font-size: 12px;">* As datas não poderão ser alteradas, caso isso seja necessário, crie um novo evento ou entre em contato com o NTI para saber mais.<br>* As imagens devem ser no formato JPEG</span>
                           <br><br>
 
 
@@ -532,15 +536,7 @@
                      
                         
                     
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    
 
 
                     </div>                    

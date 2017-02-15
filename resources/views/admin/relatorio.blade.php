@@ -27,6 +27,12 @@
     
 </script>
 <div class="container container-fluid">
+    
+        <!-- Button trigger modal -->
+    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Adicionar por CPF</button>
+    <a href="{{url('admin/eventos/relatorio/export/'.$evento->id)}}"><button type="button" class="btn btn-primary">Gerar lista de presença</button></a>
+    <a href="{{url('admin/eventos/relatorio/export/csv/'.$evento->id)}}"><button type="button" class="btn btn-success">Exportar csv</button></a>
+
     <div class="row">
         @if (session('erro'))
            <div class="alert alert-danger fade in alert-dismissable">
@@ -115,9 +121,7 @@
             
             </div>
         </div>
-        <a href="{{url('admin/eventos/relatorio/export/'.$evento->id)}}"<button type="button" class="btn btn-primary">Gerar lista de presença</button></a>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Adicionar por CPF</button>
+        
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

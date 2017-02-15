@@ -54,6 +54,8 @@ Route::group(['middleware'=>['admin','auth']], function () {
 
     Route::get('admin/eventos/relatorio/{id}','Admin\EventoController@relatorio');
     Route::get('admin/eventos/relatorio/export/{id}','Admin\EventoController@exportaRelatorio');
+    Route::get('admin/eventos/relatorio/export/csv/{id}','Admin\EventoController@exportaCSV');
+    
 
     Route::post('admin/eventos/register', 'Admin\EventoController@register');
     Route::post('admin/eventos/update', 'Admin\EventoController@update');

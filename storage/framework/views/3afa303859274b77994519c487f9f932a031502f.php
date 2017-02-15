@@ -9,7 +9,11 @@
 </script>
 <div class="container" >
 
-
+    <?php if(count($errors) > 0): ?>
+        <div class="alert alert-danger">
+            <span>Alguns campos foram preenchidos errados, ou foram esquecidos</span>
+        </div>
+    <?php endif; ?>
     <div class="row">
         <div class="col-md-12 ">
 
@@ -284,7 +288,7 @@
 
 
 
-<span style="color:silver;font-size: 12px;">* As datas não poderão ser alteradas, caso isso seja necessário, crie um novo evento ou entre em contato com o NTI para saber mais.</span>
+<span style="color:silver;font-size: 12px;">* As datas não poderão ser alteradas, caso isso seja necessário, crie um novo evento ou entre em contato com o NTI para saber mais.<br>* As imagens devem ser no formato JPEG</span>
                           <br><br>
 
 
@@ -531,15 +535,7 @@
                      
                         
                     
-                    <?php if(count($errors) > 0): ?>
-                        <div class="alert alert-danger">
-                            <ul>
-                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li><?php echo e($error); ?></li>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
+                    
 
 
                     </div>                    
