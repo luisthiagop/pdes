@@ -90,7 +90,7 @@
 </div>
 
 <script>
-    function onSubmit = function(token) {
+    function onSubmit(token) {
         document.getElementById("form-actions").submit();
     }
 </script>
