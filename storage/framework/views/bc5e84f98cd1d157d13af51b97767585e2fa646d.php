@@ -37,33 +37,29 @@
                     <input type="hidden" name="id" value="<?php echo e($evento->id); ?>">
                     
                     
-                    <div >
-                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
-
-                        <button  class="btn btn-primary">
-
-                            Confirmar participação
-                        </button>
-                    </div>
-
+                    <button
+                        class="g-recaptcha btn btn-success"
+                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
+                        onclick="onSubmit();">
+                        Participar
+                    </button>
                 
 
 
                 </form>
             <?php elseif(count($participa) && Auth::user()): ?>
-                <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('user/evento/sair/')); ?>">
+                <form class="form-horizontal" id="form-actions" role="form" method="POST" action="<?php echo e(url('user/evento/sair/')); ?>">
                     <?php echo e(csrf_field()); ?>
 
                     <input type="hidden" name="id" value="<?php echo e($evento->id); ?>">
                     
 
-                    <div>
-                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
-
-                        <button type="submit" class="btn btn-danger">
-                            Cancelar participação
-                        </button>
-                    </div>
+                    <button
+                        class="g-recaptcha btn btn-danger"
+                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
+                        onclick="onSubmit();">
+                        Sair
+                    </button>
                     
                 </form>
 
@@ -93,7 +89,11 @@
     </div>
 </div>
 
-
+<script>
+    function onSubmit(token) {
+        document.getElementById("form-actions").submit();
+    }
+</script>
 
 
 

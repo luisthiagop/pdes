@@ -41,7 +41,7 @@
                     <button
                         class="g-recaptcha btn btn-success"
                         data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        data-callback="onSubmit">
+                        onclick="onSubmit();">
                         Participar
                     </button>
                 
@@ -57,7 +57,7 @@
                     <button
                         class="g-recaptcha btn btn-danger"
                         data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        data-callback="onSubmit();">
+                        onclick="onSubmit();">
                         Sair
                     </button>
                     
