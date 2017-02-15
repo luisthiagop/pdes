@@ -77,7 +77,7 @@ class EventoController extends Controller
             $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
             
             $responseData = json_decode($resposta);
-            //dd($responseData);    
+            dd($responseData);    
             if ($responseData->success==true) {    
 
 
@@ -116,7 +116,7 @@ class EventoController extends Controller
             $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
           
             $responseData = json_decode($resposta);
-              
+            dd($responseData);
             if($responseData->success==true) {        
 
 
