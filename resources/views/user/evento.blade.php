@@ -38,32 +38,28 @@
                     <input type="hidden" name="id" value="{{$evento->id}}">
                     
                     
-                    <div >
-                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
-
-                        <button  class="btn btn-primary">
-
-                            Confirmar participação
-                        </button>
-                    </div>
-
+                    <button
+                        class="g-recaptcha"
+                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
+                        data-callback="onSubmit">
+                        Submit
+                    </button>
                 
 
 
                 </form>
             @elseif(count($participa) && Auth::user())
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('user/evento/sair/') }}">
+                <form class="form-horizontal" id="form-actions" role="form" method="POST" action="{{ url('user/evento/sair/') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$evento->id}}">
                     
 
-                    <div>
-                        <div class="g-recaptcha" data-sitekey="6Ley_REUAAAAAPBPaPr7km-qJ8jn7lDPHgrmQLVg"></div>
-
-                        <button type="submit" class="btn btn-danger">
-                            Cancelar participação
-                        </button>
-                    </div>
+                    <button
+                        class="g-recaptcha"
+                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
+                        data-callback="onSubmit">
+                        Submit
+                    </button>
                     
                 </form>
 
@@ -93,7 +89,11 @@
     </div>
 </div>
 
-
+<script>
+    function onSubmit = function(token) {
+        document.getElementById("form-actions").submit();
+    }
+</script>
 
 
 

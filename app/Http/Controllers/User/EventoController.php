@@ -74,7 +74,7 @@ class EventoController extends Controller
         if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
-            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ley_REUAAAAAKyiMxV-tyQ9tWLUtbsFiUrmfZti&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
+            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
             
             $responseData = json_decode($resposta);
             //dd($responseData);    
@@ -113,7 +113,7 @@ class EventoController extends Controller
             if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
-            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Ley_REUAAAAAKyiMxV-tyQ9tWLUtbsFiUrmfZti&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
+            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
           
             $responseData = json_decode($resposta);
               
