@@ -70,7 +70,7 @@ class EventoController extends Controller
     }
 
     protected function participar(Request $request){
-    	
+    	dd($response);
         if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
@@ -110,6 +110,7 @@ class EventoController extends Controller
     }
 
     protected function sair(Request $request){
+            dd($response);
             if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
