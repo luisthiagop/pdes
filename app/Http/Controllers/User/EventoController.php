@@ -70,14 +70,13 @@ class EventoController extends Controller
     }
 
     protected function participar(Request $request){
-    	dd($request);
+    	
         if (isset($_POST['g-recaptcha-response'])) {
-                $captcha_data = $_POST['g-recaptcha-response'];
-            }
+            $captcha_data = $_POST['g-recaptcha-response'];
+        }
             $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
             
             $responseData = json_decode($resposta);
-            dd($responseData);    
             if ($responseData->success==true) {    
 
 
@@ -110,14 +109,12 @@ class EventoController extends Controller
     }
 
     protected function sair(Request $request){
-            dd($request);
             if (isset($_POST['g-recaptcha-response'])) {
                 $captcha_data = $_POST['g-recaptcha-response'];
             }
             $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
           
             $responseData = json_decode($resposta);
-            dd($responseData);
             if($responseData->success==true) {        
 
 

@@ -33,7 +33,7 @@
         <div class="col-md-5">
             
             @if(!count($participa) && Auth::user())
-                <form class="form-horizontal" id="form-actions" role="form" method="POST" action="{{ url('user/evento/participar/') }}">
+                <form id="form-actions"  method="POST" action="{{ url('user/evento/participar/') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$evento->id}}">
                     
@@ -41,7 +41,7 @@
                     <button
                         class="g-recaptcha btn btn-success"
                         data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        onclick="onSubmit();"cd >
+                        data-callback="onSubmit();" >
                         Participar
                     </button>
                 
@@ -49,7 +49,7 @@
 
                 </form>
             @elseif(count($participa) && Auth::user())
-                <form class="form-horizontal" id="form-actions" role="form" method="POST" action="{{ url('user/evento/sair/') }}">
+                <form id="form-actions" method="POST" action="{{ url('user/evento/sair/') }}">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$evento->id}}">
                     
@@ -57,7 +57,7 @@
                     <button
                         class="g-recaptcha btn btn-danger"
                         data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        onclick="onSubmit();">
+                        data-callback="onSubmit();">
                         Sair
                     </button>
                     
