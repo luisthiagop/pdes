@@ -39,10 +39,10 @@
                     
                     
                     <button
-                        class="g-recaptcha"
+                        class="g-recaptcha btn btn-ssuccess"
                         data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
                         data-callback="onSubmit">
-                        Submit
+                        Participar
                     </button>
                 
 
@@ -55,10 +55,10 @@
                     
 
                     <button
-                        class="g-recaptcha"
+                        class="g-recaptcha btn btn-danger"
                         data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        data-callback="onSubmit">
-                        Submit
+                        data-callback="onSubmit();">
+                        Sair
                     </button>
                     
                 </form>
