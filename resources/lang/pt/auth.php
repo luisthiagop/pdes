@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => 'Dados inválidos.',
-    'throttle' => 'Muitas tentativas de login. Tente novamente em:seconds segundos.',
+    'throttle' => 'Muitas tentativas de login. Tente novamente em :seconds segundos.',
 
 ];
