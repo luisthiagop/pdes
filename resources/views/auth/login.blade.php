@@ -68,5 +68,6 @@
             </div>
         </div>
     </div>
+    <span>Solicitar ao NTI o acesso como administrador </span>
 </div>
 @endsection
