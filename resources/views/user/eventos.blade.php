@@ -22,7 +22,7 @@
                 <h3>Próximos eventos</h3>
 
                 @if(count($eventos)!=0)
-                    <div class="row">
+                    <div class="row " style="height: 300px;">
                         @foreach($eventos as $e)                            
                             <div  class="col-md-3" style="
                             hover:box-shadow: 3px 3px #0Bf;

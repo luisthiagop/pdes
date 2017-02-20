@@ -20,7 +20,7 @@
                 <h3>Próximos eventos</h3>
 
                 <?php if(count($eventos)!=0): ?>
-                    <div class="row">
+                    <div class="row " style="height: 300px;">
                         <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                            
                             <div  class="col-md-3" style="
                             hover:box-shadow: 3px 3px #0Bf;

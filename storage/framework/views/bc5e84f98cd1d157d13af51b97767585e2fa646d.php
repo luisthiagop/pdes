@@ -8,6 +8,27 @@
 
 <?php else: ?>
 
+
+<script>
+  function onSubmit(token) {
+    alert('thanks ' + document.getElementById('field').value);
+  }
+
+  function validate(event) {
+    event.preventDefault();
+    if (!document.getElementById('field').value) {
+      alert("You must add text to the required field");
+    } else {
+      grecaptcha.execute();
+    }
+  }
+
+  function onload() {
+    var element = document.getElementById('submit');
+    element.onclick = validate;
+  }
+</script>
+
 <div class="container">
     
     <div class="row">
@@ -31,35 +52,26 @@
         <div class="col-md-5">
             
             <?php if(!count($participa) && Auth::user()): ?>
-                <form class="form-horizontal" id="form-actions" role="form" method="POST" action="<?php echo e(url('user/evento/participar/')); ?>">
+                <form id="form-actions"  method="POST" action="<?php echo e(url('user/evento/participar/')); ?>">
                     <?php echo e(csrf_field()); ?>
 
                     <input type="hidden" name="id" value="<?php echo e($evento->id); ?>">
                     
+                    <input type="submit" class="btn btn-success" value="Participar">
                     
-                    <button
-                        class="g-recaptcha btn btn-success"
-                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        onclick="onSubmit();"cd >
-                        Participar
-                    </button>
+                   
                 
 
 
                 </form>
             <?php elseif(count($participa) && Auth::user()): ?>
-                <form class="form-horizontal" id="form-actions" role="form" method="POST" action="<?php echo e(url('user/evento/sair/')); ?>">
+                <form id="form-actions" method="POST" action="<?php echo e(url('user/evento/sair/')); ?>">
                     <?php echo e(csrf_field()); ?>
 
                     <input type="hidden" name="id" value="<?php echo e($evento->id); ?>">
                     
-
-                    <button
-                        class="g-recaptcha btn btn-danger"
-                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        onclick="onSubmit();">
-                        Sair
-                    </button>
+                    <input type="submit" class="btn btn-danger" value="Cancelar participação" >
+                    
                     
                 </form>
 
@@ -90,9 +102,7 @@
 </div>
 
 <script>
-    function onSubmit(token) {
-        document.getElementById("form-actions").submit();
-    }
+    onload();
 </script>
 
 

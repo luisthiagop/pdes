@@ -102,7 +102,7 @@ class EventoController extends Controller
 		$evento->vagas = $request->vagas;
 		$evento->cargaHoraria = $request->cargaHoraria;
 		$evento->palestrante = $request->palestrante;
-		$evento->fb_link = $request->fb_link;
+		$evento->fb_link = 'http://'.$request->fb_link;
 
 
 		$evento->aluno = $request->rb_aluno;
@@ -117,9 +117,7 @@ class EventoController extends Controller
 		$evento->save();
 		
 		if($request->banner){
-			if(file_exists('assets/upload/imagens_eventos/'.$evento->name_banner)){
-				unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
-			}
+			
 			$imageName = $evento->id.'.jpg';
 			$evento->name_banner = $imageName;
 			$evento->save();
@@ -269,8 +267,12 @@ class EventoController extends Controller
 		
 		$evento = Evento::find($request->id);
 		$evento->has_banner=false;
-		//dd(getcwd());
-		unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
+		
+		
+		if(file_exists('assets/upload/imagens_eventos/'.$evento->name_banner)){
+			unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
+
+		}
 
 		
 		$evento->save();

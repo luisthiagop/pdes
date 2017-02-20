@@ -38,7 +38,6 @@
    
    <style type="text/css" src="/css/app.css"></style>
 
-
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">

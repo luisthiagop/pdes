@@ -10,6 +10,27 @@
 
 @else
 
+
+<script>
+  function onSubmit(token) {
+    alert('thanks ' + document.getElementById('field').value);
+  }
+
+  function validate(event) {
+    event.preventDefault();
+    if (!document.getElementById('field').value) {
+      alert("You must add text to the required field");
+    } else {
+      grecaptcha.execute();
+    }
+  }
+
+  function onload() {
+    var element = document.getElementById('submit');
+    element.onclick = validate;
+  }
+</script>
+
 <div class="container">
     
     <div class="row">
@@ -37,13 +58,9 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$evento->id}}">
                     
+                    <input type="submit" class="btn btn-success" value="Participar">
                     
-                    <button
-                        class="g-recaptcha btn btn-success"
-                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        data-callback="onSubmit();" >
-                        Participar
-                    </button>
+                   
                 
 
 
@@ -53,13 +70,8 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$evento->id}}">
                     
-
-                    <button
-                        class="g-recaptcha btn btn-danger"
-                        data-sitekey="6LcCohUUAAAAACtjEc8U8f-uDz0kbXXV754Endd2"
-                        data-callback="onSubmit();">
-                        Sair
-                    </button>
+                    <input type="submit" class="btn btn-danger" value="Cancelar participação" >
+                    
                     
                 </form>
 
@@ -90,10 +102,7 @@
 </div>
 
 <script>
-    grecaptcha.execute();
-    function onSubmit = function(token) {
-        document.getElementById("demo-form").submit();
-    }
+    onload();
 </script>
 
 

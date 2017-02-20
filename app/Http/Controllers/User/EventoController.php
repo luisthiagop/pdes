@@ -69,83 +69,51 @@ class EventoController extends Controller
 
     }
 
-    protected function participar(Request $request){
-    	
-        if (isset($_POST['g-recaptcha-response'])) {
-            $captcha_data = $_POST['g-recaptcha-response'];
-        }
-            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
-            
-            $responseData = json_decode($resposta);
-            if ($responseData->success==true) {    
+    protected function participar(Request $request){   	
 
 
-            	$evento =  Evento::where('id',$request->id)->first();
-                $insc = Inscricao::where('evento_id',$request->id)->where('user_id',Auth::user()->id)->first();
-                //dd($insc);
-            	if(!$insc && $evento->data_inicio <=  $this->today && $evento->data_fim >=  $this->today){
-                    if($evento->vagas <= $evento->inscritos){
-                        return Redirect()->action( 'User\EventoController@listar')->withErrors(['O numero de vagas para esse evento esgoutou :/']);
-                    }else{
-            	    	$insc = Inscricao::firstOrNew(['user_id'=>Auth::user()->id,'evento_id'=>$request->id]);
-                        $insc->horas = $evento->cargaHoraria;
-                        $insc->save();
-                        $evento->inscritos++;
-                        $evento->save();
-            	    	return redirect()->back()->with('success','Parabéns, você está cadastrado no evento!');
-                    }
-
-            	}else{
-            		return redirect()->back( 'User\EventoController@listar');
-                }
+    	$evento =  Evento::where('id',$request->id)->first();
+        $insc = Inscricao::where('evento_id',$request->id)->where('user_id',Auth::user()->id)->first();
+        
+    	if(!$insc && $evento->data_inicio <=  $this->today && $evento->data_fim >=  $this->today){
+            if($evento->vagas <= $evento->inscritos){
+                return Redirect()->action( 'User\EventoController@listar')->with('erro','O numero de vagas para esse evento esgoutou.');
             }else{
-
-                abort(401,'Precisamos saber se você é um humano');
-
-
-
+    	    	$insc = Inscricao::firstOrNew(['user_id'=>Auth::user()->id,'evento_id'=>$request->id]);
+                $insc->horas = $evento->cargaHoraria;
+                $insc->save();
+                $evento->inscritos++;
+                $evento->save();
+    	    	return redirect()->back()->with('success','Parabéns, você está cadastrado no evento!');
             }
+
+    	}else{
+            return redirect()->back()->with('erro','Você ja participa desse evento!');
+
+        }
 
     }
 
     protected function sair(Request $request){
-            if (isset($_POST['g-recaptcha-response'])) {
-                $captcha_data = $_POST['g-recaptcha-response'];
-            }
-            $resposta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LcCohUUAAAAANGU0UAcGYM8azDsdeqqUmuix05C&response=".$captcha_data."&remoteip=".$_SERVER['REMOTE_ADDR']);
-          
-            $responseData = json_decode($resposta);
-            if($responseData->success==true) {        
+   
+        $insc = Inscricao::where('evento_id',$request->id)->where('user_id',Auth::user()->id)->first();
+        $evento =  Evento::where('id',$request->id)->first();
 
+        if($evento->data_evento > $this->today||($evento->data_evento == $this->today && $evento->horario_evento >  $this->now  )){            
+            
+            $insc->delete();
 
-                $insc = Inscricao::where('evento_id',$request->id)->where('user_id',Auth::user()->id)->first();
-
-                $evento =  Evento::where('id',$request->id)->first();
-
-
-                if($evento->data_evento > $this->today||($evento->data_evento == $this->today && $evento->horario_evento >  $this->now  )){
-
-                    
-                    
-                    $insc->delete();
-
-                    
-                    $evento->inscritos--;
-                    
-                    
-                    return redirect()->back()->with('success','Você saiu do evento!');
-                }else{
-                    return redirect()->back()->with('erro','Você não pode sair de um evento que ja aconteceu');
-                }
-
-            }else{
-                abort(401);
-
-
-            }
-
-
+            
+            $evento->inscritos=$evento->inscritos-1;
+            
+            $evento->save();
+            
+            return redirect()->back()->with('success','Você saiu do evento!');
+        }else{
+            return redirect()->back()->with('erro','Você não pode sair de um evento que ja aconteceu');
+        }
 
     }
+             
 
 }
