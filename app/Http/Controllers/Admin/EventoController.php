@@ -187,7 +187,7 @@ class EventoController extends Controller
 			$insc= new Inscricao();
 			$insc->evento_id= $request->id;
 			$insc->user_id = $user->id;
-			$insc->horas = $evento-:cargaHoraria;
+			$insc->horas = $evento->cargaHoraria;
 			$insc->save();
 
 			$evento->inscritos++;
