@@ -187,11 +187,14 @@ class EventoController extends Controller
 			$insc= new Inscricao();
 			$insc->evento_id= $request->id;
 			$insc->user_id = $user->id;
+			$insc->horas = $evento-:cargaHoraria;
+			$insc->save();
+
 			$evento->inscritos++;
 			$evento->save();
 
 
-			$insc->save();
+			
 			return back()->with('success','O usuario foi adicionado ao evento!');
 		}else{
 			return back()->with('erro','Não existe usuario cadastrado com esse CPF');
