@@ -65,7 +65,7 @@ class LoginController extends Controller
             }
         }else{
             
-            return Redirect()->back()->withErrors(['CPF ou senha invalidos']);
+            return Redirect()->back()->with('erro','CPF ou senha invalidos');
 
             
         }

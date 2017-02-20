@@ -49,7 +49,7 @@ class RegisterController extends Controller
      */
     protected function validator(Request $request)
     {
-        //dd($request);
+        dd($request);
         $cpf1 = explode(".",$request->cpf);
         $request->cpf = implode("",$cpf1);
         $cpf1= explode("-",$request->cpf);
@@ -98,19 +98,18 @@ class RegisterController extends Controller
             // });
 
             
-            dd(4);
 
 
             if (Auth::attempt(['email' => $usuario->email, 'password' => $request->password])) {
                 if(Auth::user()->admin){
-                    dd('1');
+                    
                     return redirect()->route->('admin/eventos');
                 }else{
-                    dd(2);
+                    
                     return redirect('user/eventos');
                 }
             }else{
-                dd(3)
+                
                 return redirect('login');               
             }
             
