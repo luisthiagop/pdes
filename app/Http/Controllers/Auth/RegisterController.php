@@ -91,11 +91,11 @@ class RegisterController extends Controller
                 'nome'=>'josé',
             );
 
-            Mail::send('mails.welcome', $data, function ($message) {
-               $message->from('mailluisthiago@gmail.com', 'Laravel');
+            // Mail::send('mails.welcome', $data, function ($message) {
+            //    $message->from('mailluisthiago@gmail.com', 'Laravel');
 
-               $message->to('mailluisthiago@gmail.com');
-            });
+            //    $message->to('mailluisthiago@gmail.com');
+            // });
 
             
 
@@ -103,9 +103,9 @@ class RegisterController extends Controller
 
             if (Auth::attempt(['email' => $usuario->email, 'password' => $request->password])) {
                 if(Auth::user()->admin){
-                    return redirect('admin/');
+                    return redirect()->route->('admin/eventos');
                 }else{
-                    return redirect('user/');
+                    return redirect('user/eventos');
                 }
             }else{
                 return redirect('login');               
