@@ -182,11 +182,14 @@ class EventoController extends Controller
 		$cpf1= explode("-",$request->cpf);
 		$request->cpf = implode("",$cpf1);
 		$user= DB::table('users')->where('cpf','=',$request->cpf)->first();		
-
+		$evento = Evento::find($request->id);
 		if($user){
 			$insc= new Inscricao();
 			$insc->evento_id= $request->id;
 			$insc->user_id = $user->id;
+			$evento->inscritos++;
+			$evento->save();
+
 
 			$insc->save();
 			return back()->with('success','O usuario foi adicionado ao evento!');
