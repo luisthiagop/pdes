@@ -103,7 +103,7 @@ class RegisterController extends Controller
             if (Auth::attempt(['email' => $usuario->email, 'password' => $request->password])) {
                 if(Auth::user()->admin){
                     
-                    return redirect()->route()->('admin/eventos');
+                    return redirect()->route('admin/eventos');
                 }else{
                     
                     return redirect('user/eventos');
