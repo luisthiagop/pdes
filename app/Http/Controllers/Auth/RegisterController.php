@@ -49,7 +49,7 @@ class RegisterController extends Controller
      */
     protected function validator(Request $request)
     {
-        dd($request);
+
         $cpf1 = explode(".",$request->cpf);
         $request->cpf = implode("",$cpf1);
         $cpf1= explode("-",$request->cpf);
