@@ -107,8 +107,8 @@ class RegisterController extends Controller
                 }else{
                     
                     return redirect('user/eventos');
-                }
-            }else{
+                
+}            }else{
                 
                 return redirect('login');               
             }

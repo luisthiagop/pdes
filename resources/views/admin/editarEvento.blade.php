@@ -93,11 +93,13 @@
                             </div>
                         </div>
 
+
+
                         <div class="form-group{{ $errors->has('descricao') ? ' has-error' : '' }}">
                             <label for="descricao" class="col-md-4 control-label">Descrição</label>
 
                             <div class="col-md-8">
-                                <textarea class="textarea form-control" name="descricao" rows="5" id="descricao">{{$evento->descricao}}</textarea>
+                                <textarea class=" form-control" name="descricao" rows="5" id="descricao">{{$evento->descricao}}</textarea>
 
                                 @if ($errors->has('descricao'))
                                     <span class="help-block">
@@ -106,6 +108,24 @@
                                 @endif
                             </div>
                         </div>
+
+                        
+
+                        <div class="form-group{{ $errors->has('mais_sobre') ? ' has-error' : '' }}">
+                            <label for="mais_sobre" class="col-md-4 control-label">Mais sobre</label>
+
+                            <div class="col-md-8">
+                                <textarea class="textarea form-control" name="mais_sobre" rows="5" id="descricao">{{$evento->mais_sobre}}</textarea>
+
+                                @if ($errors->has('mais_sobre'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mais_sobre') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
 
 
 

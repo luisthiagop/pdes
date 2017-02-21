@@ -27,7 +27,8 @@ class EventoController extends Controller
 	{
 		$this->validate($request, [
 			'nome' => 'required|max:255',
-			'descricao' => '',
+			'descricao' => 'max:500',
+			'mais_sobre' => '',
 			'cargaHoraria' => 'required',
 			'vagas'=>'required|min:1',
 			'palestrante'=>'max:100',
@@ -45,6 +46,7 @@ class EventoController extends Controller
 
 		$evento = new Evento();
 		$evento->nome = $request->nome;
+		$evento->mais_sobre = $request->mais_sobre;
 		$evento->descricao = $request->descricao;
 		$evento->vagas = $request->vagas;
 		$evento->cargaHoraria = $request->cargaHoraria;
@@ -84,7 +86,8 @@ class EventoController extends Controller
 		
 		$this->validate($request, [
 			'nome' => 'required|max:255',
-			'descricao' => '',
+			'descricao' => 'max:500',
+			'mais_sobre' => '',
 			'cargaHoraria' => 'required',
 			'horario_evento: required',
 			'vagas'=>'required|min:1',
@@ -98,6 +101,7 @@ class EventoController extends Controller
 		
 		
 		$evento->nome = $request->nome;
+		$evento->mais_sobre = $request->mais_sobre;
 		$evento->descricao = $request->descricao;
 		$evento->vagas = $request->vagas;
 		$evento->cargaHoraria = $request->cargaHoraria;

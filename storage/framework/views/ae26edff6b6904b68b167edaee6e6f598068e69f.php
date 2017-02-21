@@ -6,9 +6,106 @@
         $('#lirelatorio').removeClass('active');
     } );
 </script>
-<div class="container" >
-      
+<style type="text/css">
+    .profile-card {
+    background-color: #666;
+  margin-bottom: 20px;
+            
+        }
+        
+.profile-pic {
+  border-radius: 50%;
+  position: absolute;
+  top: -65px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+  max-width: 100px;
+  -webkit-transition: all 0.4s;
+          transition: all 0.4s;
+                }
 
+                
+.profile-info {
+        color: #BDBDBD;
+        padding: 25px;
+        position: relative;
+        margin-top: 15px;
+                }
+        
+.profile-info h2 {
+    color: #E8E8E8;
+    letter-spacing: 4px;
+      padding-bottom: 12px;
+                }
+                
+.profile-info span {
+    display: block;
+    font-size: 12px;
+    color: #4CB493;
+    letter-spacing: 2px;
+            }
+
+.profile-info a {
+     color: #4CB493;
+        }
+.profile-info i {
+        padding: 15px 35px 0px 35px;
+        }
+        
+
+.profile-card:hover .profile-pic {
+    
+    transform: scale(1.1);
+        }
+
+.profile-card:hover .profile-info hr  {
+    opacity: 1;
+        }
+        
+        
+        
+        
+/* Underline From Center */
+.hvr-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-from-center:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 52%;
+  right: 52%;
+  bottom: 0;
+  background: #FFFFFF;
+  border-radius: 50%;
+  height: 3px;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.profile-card:hover .hvr-underline-from-center:before, .profile-card:focus .hvr-underline-from-center:before, .profile-card:active .hvr-underline-from-center:before {
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #CECECE;
+}
+
+</style>
+<div class="container" >
         <ul class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#home">Próximos eventos</a></li>
             <li><a data-toggle="tab" href="#menu1">Eventos passados</a></li>
@@ -18,57 +115,36 @@
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
                 <h3>Próximos eventos</h3>
-
                 <?php if(count($eventos)!=0): ?>
-                    <div class="row " style="height: 300px;">
                         <?php $__currentLoopData = $eventos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $e): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                            
-                            <div  class="col-md-3" style="
-                            hover:box-shadow: 3px 3px #0Bf;
-                            <?php if($e->has_banner): ?>
-                                border: 1px solid silver;
-                                padding:0px;
-                                border-radius:15px;
-                                margin: 10px;
-                                height: 300px;
-                                background: url('<?php echo e(asset('assets/upload/imagens_eventos/'.$e->id.'.jpg')); ?>') no-repeat  left top;
-                                background-size: 100% 50%;
-                             <?php else: ?>
-                                border: 1px solid silver;
-                                padding:0px;
-                                border-radius:15px;
-                                margin: 10px;
-                                height: 150px;
-                             <?php endif; ?> ">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="profile-card text-center">
+                                    <img class="img-responsive" src="<?php if($e->has_banner): ?><?php echo e(asset('assets/upload/imagens_eventos/'.$e->id.'.jpg')); ?> <?php else: ?> <?php echo e(asset('assets/upload/imagens_eventos/no-banner.jpg')); ?> <?php endif; ?> ">
+                                    
+                                    <div class="profile-info">
+                                        <img class="profile-pic" src="">
+                                        <h2 class="hvr-underline-from-center"><?php echo e($e->nome); ?><span>Data: <?php echo e(date("d/m",strtotime($e->data_evento))); ?></span>
+                                        <span>Horário: <?php echo e(date("h:i",strtotime($e->horario_evento))); ?></span>
+                                        </h2>
+                                        <p style="white-space: break-word; width: 300px; overflow: hidden;text-overflow: ellipsis; ">
+                                          <?php echo e($e->descricao); ?>
 
-                                <div style="
-                                <?php if($e->has_banner): ?>
-                                    bottom: 5px;
-                                    padding: 0px;
-                                    padding-left:5px;
-                                    position: absolute;
-                                    width: 100%;
-                                    height: 50%;
-                                    margin: 0px;
-                                <?php else: ?> padding-left:5px ;
-                                    padding-top: 0px;
-                                <?php endif; ?>">
+                                        </p>
+                                        <p>
+                                          <b>Ministrante: </b> <?php echo e($e->palestrante); ?>
 
-
-                                <h3 style="margin-top: 5px;" ><?php echo e($e->nome); ?></h3>
-                                <span>Data: <?php echo e($e->data_evento); ?></span><br>
-                                <span>horario: <?php echo e($e->horario_evento); ?></span><br>
-                                <span>Ministrante: <?php echo e($e->palestrante); ?></span>
-                                
+                                        </p>
+                                        
+                                        <a href="<?php echo e(url('user/evento/'.$e->id)); ?>"><button class="btn btn-default btn-xs">ler mais</button></a>
+                                    </div>
                                 </div>
-                                <a href="<?php echo e(url('user/evento/'.$e->id)); ?>">
-                                    <button style=" position: absolute;bottom:3%;right: 10px" class="btn btn-primary btn-xs"> Ler mais</button>
-                                </a>
                             </div>
-                            
-                            
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
+                        <div class="row">
+                          <?php echo e($eventos->links()); ?>
+
+                        </div>
                 <?php else: ?>
                     <div class="alert alert-info" style="margin-top: 15px;">
                         Não existe nenhum evento que você possa se cadastrar!
@@ -77,6 +153,7 @@
                 <?php endif; ?>
 
             </div>
+
 
 
 
@@ -117,7 +194,8 @@
                                 </tr>
                                 
 
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
+                            <div class="row"><?php echo e($eventos->passados->links()); ?></div> 
 
                             </table>
                         </div>
@@ -134,7 +212,6 @@
 
 
             </div>
-
 
 
 
@@ -174,6 +251,7 @@
                                 
 
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+                             <div class="row"><?php echo e($eventos_cadastrados->links()); ?></div> 
 
                             </table>
                         </div>

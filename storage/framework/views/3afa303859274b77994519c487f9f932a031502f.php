@@ -65,11 +65,25 @@
                             <label for="descricao" class="col-md-4 control-label">Descrição</label>
 
                             <div class="col-md-8">
-                                <textarea class="textarea form-control" name="descricao" rows="5" id="descricao"><?php echo old('descricao'); ?></textarea>
+                                <textarea class=" form-control" name="descricao" rows="5" ><?php echo old('descricao'); ?></textarea>
 
                                 <?php if($errors->has('descricao')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('descricao')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('mais_sobre') ? ' has-error' : ''); ?>">
+                            <label for="mais_sobre" class="col-md-4 control-label">Mais sobre</label>
+
+                            <div class="col-md-8">
+                                <textarea class="textarea form-control" name="mais_sobre" rows="5" id="mais_sobre"><?php echo old('mais_sobre'); ?></textarea>
+
+                                <?php if($errors->has('mais_sobre')): ?>
+                                    <span class="help-block">
+                                        <strong><?php echo e($errors->first('mais_sobre')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>

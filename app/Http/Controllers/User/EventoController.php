@@ -26,11 +26,11 @@ class EventoController extends Controller
  	protected function listar()
     {  
 
-        $eventos = Evento::where('data_fim','>=',$this->today)->where('data_inicio','<=',$this->today)->where('data_evento','>=',$this->today)->where(Auth::user()->tipo,'=',1)->orderBy('data_evento', 'asc')->get();
-        $eventos_passados = Evento::where('data_evento','<',$this->today)->orderBy('data_evento', 'asc')->get();       
+        $eventos = Evento::where('data_fim','>=',$this->today)->where('data_inicio','<=',$this->today)->where('data_evento','>=',$this->today)->where(Auth::user()->tipo,'=',1)->orderBy('data_evento', 'asc')->paginate(3);
+        $eventos_passados = Evento::where('data_evento','<',$this->today)->orderBy('data_evento', 'asc')->paginate(20);       
 
         $inscricao = new User;
-        $eventos_cadastrados = $inscricao->eventos()->orWhere('user_id', Auth::user()->id)->get();
+        $eventos_cadastrados = $inscricao->eventos()->orWhere('user_id', Auth::user()->id)->paginate(20);
         
     	return view('user.eventos')->with('eventos',$eventos)->with('eventos_passados',$eventos_passados)->with('eventos_cadastrados',$eventos_cadastrados);
  	} 

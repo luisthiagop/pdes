@@ -86,6 +86,7 @@
         <div class="col-md-12">
             <h1>{{$evento->nome}}</h1>
             <p><b>Descrição: </b>{!!$evento->descricao!!}</p>
+            <p><b>Mais: </b>{!!$evento->mais_sobre!!}</p>
             <p><b>Ministrante: </b>{{$evento->palestrante}}</p>
             <p><b>Carga Horaria:</b> {{$evento->cargaHoraria}} @if($evento->cargaHoraria != 1)horas @else hora @endif</p>
             <p><b>Data do Evento: </b>{{date('d/m/Y', strtotime($evento->data_evento))}} <b>Horario do Evento: </b>{{$evento->horario_evento}}</p>
