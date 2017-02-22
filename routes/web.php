@@ -17,8 +17,9 @@ Route::get('/','HomeController@index');
 
 
 Route::group(['middleware'=>'guest'], function () {
+    Auth::routes();
 
-
+    //register
 
     Route::get('/register', function(){
     	return view('auth.register');
@@ -26,10 +27,13 @@ Route::group(['middleware'=>'guest'], function () {
 
     Route::post('/register', 'Auth\RegisterController@validator');
 
+    // //login
     Route::get('/login', function(){
     	return view('auth.login');
     });
     Route::post('/login', 'Auth\LoginController@authenticate');
+
+
     
 });
 
