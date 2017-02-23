@@ -310,10 +310,14 @@ class EventoController extends Controller
 
 	protected function send_mail(){
 		$data=['name'=>'Harison matondang'];
-        Mail::send(['text'=>'mails.welcome'], $data, function($message){
+        try{
+        	Mail::send(['text'=>'mails.welcome'], $data, function($message){
             $message->to('mailluisthiago@gmail.com','Harison Matondang')->subject('Send Mail from Laravel with Basics Email');
             $message->from('15063026@uepg.br','programa DES');
         });
+        }catch(Exception $e){
+        	echo $e->getMessage();
+        }
         echo 'Basics Email was sent!';
 
 		return response(200);

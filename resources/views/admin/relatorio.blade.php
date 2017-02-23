@@ -101,7 +101,7 @@
                             <th>Curso</th>
                             <th>Instituição</th>
                             <th>Horas</th>
-                            <th></th>
+                            <th>Remover</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -115,14 +115,17 @@
                                     <td>{{$user->curso}}</td>
                                     <td>{{$user->instituicao}}</td>
                                     <td>                                    
-                                        <input class="id{{$user->id}}" value="{{$user->horas}}" min="0" max="{{$evento->cargaHoraria}}" type="number" onblur="atualiza({{$user->id}});"  name="horas">
+                                        <input  class="id{{$user->id}}" value="{{$user->horas}}" min="0" max="{{$evento->cargaHoraria}}" type="number" onblur="atualiza({{$user->id}});"  name="horas">
                                     
                                     
 
 
                                     </td>
                                     <td>
-                                        <span onclick="remover_usuario({{$user->id}});" aria-hidden="true">X</span>
+                                    <i style="cursor: pointer;" class="material-icons" onclick="remover_usuario({{$user->id}});">delete_forever</i>
+                                       
+                                            
+                                        
                                     </td>
                                 </tr>
                             @endforeach 

@@ -99,7 +99,7 @@
                             <th>Curso</th>
                             <th>Instituição</th>
                             <th>Horas</th>
-                            <th></th>
+                            <th>Remover</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -113,14 +113,17 @@
                                     <td><?php echo e($user->curso); ?></td>
                                     <td><?php echo e($user->instituicao); ?></td>
                                     <td>                                    
-                                        <input class="id<?php echo e($user->id); ?>" value="<?php echo e($user->horas); ?>" min="0" max="<?php echo e($evento->cargaHoraria); ?>" type="number" onblur="atualiza(<?php echo e($user->id); ?>);"  name="horas">
+                                        <input  class="id<?php echo e($user->id); ?>" value="<?php echo e($user->horas); ?>" min="0" max="<?php echo e($evento->cargaHoraria); ?>" type="number" onblur="atualiza(<?php echo e($user->id); ?>);"  name="horas">
                                     
                                     
 
 
                                     </td>
                                     <td>
-                                        <span onclick="remover_usuario(<?php echo e($user->id); ?>);" aria-hidden="true">X</span>
+                                    <i style="cursor: pointer;" class="material-icons" onclick="remover_usuario(<?php echo e($user->id); ?>);">delete_forever</i>
+                                       
+                                            
+                                        
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
