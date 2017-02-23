@@ -637,12 +637,12 @@
     'port' => '25',
     'from' => 
     array (
-      'address' => '15063026@uepg.br',
-      'name' => 'pdes',
+      'address' => 'semanadafisicauepg2016@gmail.com',
+      'name' => 'Do not Reply',
     ),
     'encryption' => '',
-    'username' => NULL,
-    'password' => NULL,
+    'username' => '15063026@uepg.br',
+    'password' => 'luis1111',
     'sendmail' => '/usr/sbin/sendmail -bs',
   ),
   'services' => 

@@ -76,12 +76,15 @@ Route::group(['middleware'=>['admin','auth']], function () {
     Route::post('/admin/eventos/register_by_cpf','Admin\EventoController@register_by_cpf');
 
     Route::post('/admin/eventos/cargaHoraria','Admin\EventoController@updateCargaHoraria');
-   
+
+    Route::post('/admin/eventos/removerParticipante','Admin\EventoController@removerParticipante');
+
 
 });
 
 Route::post('/admin/eventos/cargaHoraria','Admin\EventoController@updateCargaHoraria');
-   
+Route::post('/admin/eventos/send_mail','Admin\EventoController@send_mail');
+ 
 
 //route user
 

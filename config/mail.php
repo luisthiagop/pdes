@@ -24,7 +24,7 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'smtp2.uepg.br'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Port
@@ -35,7 +35,7 @@ return [
     | stay compatible with the Mailgun e-mail application by default.
     |
     */
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 25),
     /*
     |--------------------------------------------------------------------------
     | Global "From" Address
@@ -57,7 +57,7 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', ''),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
@@ -68,7 +68,7 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME','15063026@uepg.br'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Password
@@ -79,7 +79,7 @@ return [
     | connection so that the application will be able to send messages.
     |
     */
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','luis1111'),
     /*
     |--------------------------------------------------------------------------
     | Sendmail System Path

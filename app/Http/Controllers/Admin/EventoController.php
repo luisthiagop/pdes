@@ -9,6 +9,7 @@ use App\Evento;
 use App\Inscricao;
 use App\User;
 use Excel;
+use Mail;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Input;
 
@@ -295,6 +296,30 @@ class EventoController extends Controller
 		$ins->save();
 		return response(200);
                   
+	}
+
+	protected function removerParticipante(Request $request){
+		$ins= Inscricao::where('evento_id','=',$request->evento_id)->where('user_id','=',$request->user_id)->first();
+		$ins->delete();
+		$evento= Evento::find($request->evento_id)->first();
+		$evento->inscritos--;
+		$evento->save();
+		return response(200);
+                  
+	}
+
+	protected function send_mail(){
+		
+		 $data=['name'=>'Harison matondang'];
+        Mail::send(['text'=>'mails.welcome'], $data, function($message){
+            $message->to('mailluisthiago@gmail.com','Harison Matondang')->subject('Send Mail from Laravel with Basics Email');
+            $message->from('15063026@uepg.br','programa DES');
+        });
+        echo 'Basics Email was sent!';
+
+		return response(200);
+
+		
 	}
 
 

@@ -7,13 +7,17 @@
         $('#lieventos').addClass( 'active' );
         $('#lirelatorio').removeClass('active');
     } );
+
+    
+    
+      
+
 </script>
 <style type="text/css">
-    .profile-card {
+.profile-card {
     background-color: #666;
-  margin-bottom: 20px;
-            
-        }
+    margin-bottom: 20px;            
+}
         
 .profile-pic {
   border-radius: 50%;
@@ -127,8 +131,10 @@
                                         <img class="profile-pic" src="">
                                         <h2 class="hvr-underline-from-center">{{$e->nome}}<span>Data: {{date("d/m",strtotime($e->data_evento))}}</span>
                                         <span>Horário: {{date("h:i",strtotime($e->horario_evento))}}</span>
+
                                         </h2>
-                                        <p style="white-space: break-word; width: 300px; overflow: hidden;text-overflow: ellipsis; ">
+                                        
+                                        <p id="teste" style="text-align:center;white-space: break-word; width: 300px; overflow: hidden;text-overflow: ellipsis; ">
                                           {{$e->descricao}}
                                         </p>
                                         <p>

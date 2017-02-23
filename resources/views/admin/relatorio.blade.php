@@ -24,6 +24,31 @@
             });
 
         }
+
+        function remover_usuario(id){
+            if(confirm("Quer mesmo remover esse participante?")){
+                $.ajax({
+                  url: "{{url('/admin/eventos/removerParticipante')}}",
+                  dataType: 'text',
+                  type: 'post',
+                  contentType: 'application/x-www-form-urlencoded',
+                  data: {
+                        "_token": "{{ csrf_token() }}",
+                        "user_id":id,
+                        "evento_id":{{$evento->id}},
+                  },
+                  success: function(response){
+                      window.location.reload();
+                  },
+                  errors: function(response){
+                      alert('erro');
+                  },
+                  
+                });
+            }
+        }
+
+
     
 </script>
 <div class="container container-fluid">
@@ -97,7 +122,7 @@
 
                                     </td>
                                     <td>
-                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                        <span onclick="remover_usuario({{$user->id}});" aria-hidden="true">X</span>
                                     </td>
                                 </tr>
                             @endforeach 

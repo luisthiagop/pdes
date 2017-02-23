@@ -22,6 +22,31 @@
             });
 
         }
+
+        function remover_usuario(id){
+            if(confirm("Quer mesmo remover esse participante?")){
+                $.ajax({
+                  url: "<?php echo e(url('/admin/eventos/removerParticipante')); ?>",
+                  dataType: 'text',
+                  type: 'post',
+                  contentType: 'application/x-www-form-urlencoded',
+                  data: {
+                        "_token": "<?php echo e(csrf_token()); ?>",
+                        "user_id":id,
+                        "evento_id":<?php echo e($evento->id); ?>,
+                  },
+                  success: function(response){
+                      window.location.reload();
+                  },
+                  errors: function(response){
+                      alert('erro');
+                  },
+                  
+                });
+            }
+        }
+
+
     
 </script>
 <div class="container container-fluid">
@@ -32,23 +57,6 @@
     <a href="<?php echo e(url('admin/eventos/relatorio/export/csv/'.$evento->id)); ?>"><button type="button" class="btn btn-success">Exportar csv</button></a>
 
     <div class="row">
-        <?php if(session('erro')): ?>
-           <div class="alert alert-danger fade in alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                 <?php echo session('erro'); ?>
-
-            </div>
-               
-            
-        <?php endif; ?>
-        <?php if(session('success')): ?>
-            <div class="alert alert-success fade in alert-dismissable">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
-                 <?php echo session('success'); ?>
-
-            </div>
-               
-        <?php endif; ?>
         
     </div>
     <h2>Relatório</h2>
@@ -112,7 +120,7 @@
 
                                     </td>
                                     <td>
-                                        <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                                        <span onclick="remover_usuario(<?php echo e($user->id); ?>);" aria-hidden="true">X</span>
                                     </td>
                                 </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
