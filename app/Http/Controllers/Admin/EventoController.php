@@ -309,7 +309,7 @@ class EventoController extends Controller
 	}
 
 	protected function send_mail(){
-		
+		dd('chega');
 		 $data=['name'=>'Harison matondang'];
         Mail::send(['text'=>'mails.welcome'], $data, function($message){
             $message->to('mailluisthiago@gmail.com','Harison Matondang')->subject('Send Mail from Laravel with Basics Email');
