@@ -83,6 +83,8 @@ Route::group(['middleware'=>['admin','auth']], function () {
 });
 
 Route::post('/admin/eventos/cargaHoraria','Admin\EventoController@updateCargaHoraria');
+
+Route::get('/admin/eventos/send_mail','Admin\EventoController@send_mail_get');
 Route::post('/admin/eventos/send_mail','Admin\EventoController@send_mail');
  
 

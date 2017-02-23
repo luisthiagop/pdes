@@ -322,6 +322,13 @@ class EventoController extends Controller
 		
 	}
 
+	protected function send_mail_get(){
+		
+		return view('mails.send');
+
+		
+	}
+
 
 
 
