@@ -57,7 +57,7 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-    'encryption' => env('MAIL_ENCRYPTION', ''),
+    'encryption' => env('MAIL_ENCRYPTION', 'null'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
@@ -68,7 +68,7 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-    'username' => env('MAIL_USERNAME','15063026@uepg.br'),
+    'username' => env('MAIL_USERNAME','15063026'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Password
