@@ -68,7 +68,7 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-    'username' => env('MAIL_USERNAME','15063026'),
+    'username' => env('MAIL_USERNAME','15063026@uepg.br'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Password
