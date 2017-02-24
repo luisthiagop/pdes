@@ -1,9 +1,9 @@
 @component('mail::message')
 # Olá {{$user->name}},
-bem vindo ao nosso sistema de eventos.
+Bem vindo ao nosso sistema de eventos.
 
-@component('mail::button', ['url' => 'http://google.com','color'=>'blue'])
-
+@component('mail::button', ['url' => $url,'color'=>'blue'])
+Acessar sistema
 @endcomponent
 
 Obrigado,<br>

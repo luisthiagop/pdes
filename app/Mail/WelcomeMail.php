@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-class WelcomeMail extends Mailable
+class WelcomeMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -20,10 +20,10 @@ class WelcomeMail extends Mailable
      *
      * @return void
      */
-
-    
-    public function __construct(User $u)
+    private $usuario;
+    public function __construct($usr)
     {
+        $this->usuario =$usr; 
     }
 
     /**
@@ -33,6 +33,7 @@ class WelcomeMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.welcome')->with('user',Auth::user());
+        $url = url('/');
+        return $this->markdown('emails.welcome')->with('user',$this->usuario)->with('url',$url);
     }
 }

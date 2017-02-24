@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Auth;
 use Excel;
 use Mail;
 use App\Mail\WelcomeMail;
+use App\Mail\CadastradoEvento;
+use App\Mail\CancelarParticipacaoEvento;
+use App\Mail\ExcluidoEvento;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Input;
 
@@ -73,6 +76,8 @@ class EventoController extends Controller
 			$evento->save();
 			$request->banner->move('assets/upload/imagens_eventos/', $imageName); 
 		}
+
+		Mail::to(Auth::user())->send(new WelcomeMail());
 
 		return back()->with('success','Evento <strong>'.$evento->nome.'</strong> cadastrado com sucesso');
 		
@@ -177,6 +182,8 @@ class EventoController extends Controller
 
 		if($evento->data_evento > $this->today||($evento->data_evento == $this->today && $evento->horario_evento >  $this->now  )){	
 			$evento->delete();
+			Mail::to(Auth::user())->send(new ExcluidoEvento($evento->id));
+
 			return back()->with('success','Evento deletado')->with('evento',$evento);
 		}else{
 			return back()->with('erro','esse evento não pode mais ser deletado')->with('evento',$evento);
@@ -306,13 +313,15 @@ class EventoController extends Controller
 		$evento= Evento::find($request->evento_id)->first();
 		$evento->inscritos--;
 		$evento->save();
+
+		Mail::to(Auth::user())->send(new ExcluidoEvento($evento->id));
 		return response(200);
                   
 	}
 
 	protected function send_mail(){
 
-		Mail::to(Auth::user())->send(new WelcomeMail(Auth::user()));
+		Mail::to(Auth::user())->send(new ExcluidoEvento(1));
 
 		return response(200);
 

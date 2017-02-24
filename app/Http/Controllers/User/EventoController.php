@@ -10,6 +10,8 @@ use App\Evento;
 use App\Inscricao;
 use App\User;
 use App\Mail\WelcomeMail;
+use App\Mail\CadastradoEvento;
+use App\Mail\CancelarParticipacaoEvento;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -87,6 +89,7 @@ class EventoController extends Controller
                 $insc->save();
                 $evento->inscritos++;
                 $evento->save();
+                Mail::to(Auth::user())->send(new CadastradoEvento($evento->id));
     	    	return redirect()->back()->with('success','Parabéns, você está cadastrado no evento!');
             }
 
@@ -110,6 +113,8 @@ class EventoController extends Controller
             $evento->inscritos=$evento->inscritos-1;
             
             $evento->save();
+
+            Mail::to(Auth::user())->send(new CancelarParticipacaoEvento($evento->id));
             
             return redirect()->back()->with('success','Você saiu do evento!');
         }else{

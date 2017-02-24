@@ -1,87 +1,4 @@
 <?php return array (
-  'app' => 
-  array (
-    'name' => 'Programa DES',
-    'env' => 'local',
-    'debug' => true,
-    'url' => 'http://localhost',
-    'timezone' => 'America/Sao_Paulo',
-    'locale' => 'pt',
-    'fallback_locale' => 'en',
-    'key' => 'base64:uZ7nSpmYAb0IP4I8y2mmHOkIQeRoZU7F+PpDwFvfMlk=',
-    'cipher' => 'AES-256-CBC',
-    'log' => 'single',
-    'log_level' => 'debug',
-    'providers' => 
-    array (
-      0 => 'Illuminate\\Auth\\AuthServiceProvider',
-      1 => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
-      2 => 'Illuminate\\Bus\\BusServiceProvider',
-      3 => 'Illuminate\\Cache\\CacheServiceProvider',
-      4 => 'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider',
-      5 => 'Illuminate\\Cookie\\CookieServiceProvider',
-      6 => 'Illuminate\\Database\\DatabaseServiceProvider',
-      7 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
-      8 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
-      9 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
-      10 => 'Illuminate\\Hashing\\HashServiceProvider',
-      11 => 'Illuminate\\Mail\\MailServiceProvider',
-      12 => 'Illuminate\\Notifications\\NotificationServiceProvider',
-      13 => 'Illuminate\\Pagination\\PaginationServiceProvider',
-      14 => 'Illuminate\\Pipeline\\PipelineServiceProvider',
-      15 => 'Illuminate\\Queue\\QueueServiceProvider',
-      16 => 'Illuminate\\Redis\\RedisServiceProvider',
-      17 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
-      18 => 'Illuminate\\Session\\SessionServiceProvider',
-      19 => 'Illuminate\\Translation\\TranslationServiceProvider',
-      20 => 'Illuminate\\Validation\\ValidationServiceProvider',
-      21 => 'Illuminate\\View\\ViewServiceProvider',
-      22 => 'ValidadorCpf\\CpfServiceProvider',
-      23 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
-      24 => 'Unisharp\\Ckeditor\\ServiceProvider',
-      25 => 'App\\Providers\\AppServiceProvider',
-      26 => 'App\\Providers\\AuthServiceProvider',
-      27 => 'App\\Providers\\EventServiceProvider',
-      28 => 'App\\Providers\\RouteServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'App' => 'Illuminate\\Support\\Facades\\App',
-      'Artisan' => 'Illuminate\\Support\\Facades\\Artisan',
-      'Auth' => 'Illuminate\\Support\\Facades\\Auth',
-      'Blade' => 'Illuminate\\Support\\Facades\\Blade',
-      'Bus' => 'Illuminate\\Support\\Facades\\Bus',
-      'Cache' => 'Illuminate\\Support\\Facades\\Cache',
-      'Config' => 'Illuminate\\Support\\Facades\\Config',
-      'Cookie' => 'Illuminate\\Support\\Facades\\Cookie',
-      'Crypt' => 'Illuminate\\Support\\Facades\\Crypt',
-      'DB' => 'Illuminate\\Support\\Facades\\DB',
-      'Eloquent' => 'Illuminate\\Database\\Eloquent\\Model',
-      'Event' => 'Illuminate\\Support\\Facades\\Event',
-      'File' => 'Illuminate\\Support\\Facades\\File',
-      'Gate' => 'Illuminate\\Support\\Facades\\Gate',
-      'Hash' => 'Illuminate\\Support\\Facades\\Hash',
-      'Input' => 'Illuminate\\Support\\Facades\\Input',
-      'Lang' => 'Illuminate\\Support\\Facades\\Lang',
-      'Log' => 'Illuminate\\Support\\Facades\\Log',
-      'Mail' => 'Illuminate\\Support\\Facades\\Mail',
-      'Notification' => 'Illuminate\\Support\\Facades\\Notification',
-      'Password' => 'Illuminate\\Support\\Facades\\Password',
-      'Queue' => 'Illuminate\\Support\\Facades\\Queue',
-      'Redirect' => 'Illuminate\\Support\\Facades\\Redirect',
-      'Redis' => 'Illuminate\\Support\\Facades\\Redis',
-      'Request' => 'Illuminate\\Support\\Facades\\Request',
-      'Response' => 'Illuminate\\Support\\Facades\\Response',
-      'Route' => 'Illuminate\\Support\\Facades\\Route',
-      'Schema' => 'Illuminate\\Support\\Facades\\Schema',
-      'Session' => 'Illuminate\\Support\\Facades\\Session',
-      'Storage' => 'Illuminate\\Support\\Facades\\Storage',
-      'URL' => 'Illuminate\\Support\\Facades\\URL',
-      'Validator' => 'Illuminate\\Support\\Facades\\Validator',
-      'View' => 'Illuminate\\Support\\Facades\\View',
-      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
-    ),
-  ),
   'auth' => 
   array (
     'defaults' => 
@@ -120,156 +37,6 @@
       ),
     ),
   ),
-  'broadcasting' => 
-  array (
-    'default' => 'log',
-    'connections' => 
-    array (
-      'pusher' => 
-      array (
-        'driver' => 'pusher',
-        'key' => '',
-        'secret' => '',
-        'app_id' => '',
-        'options' => 
-        array (
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-      ),
-      'log' => 
-      array (
-        'driver' => 'log',
-      ),
-      'null' => 
-      array (
-        'driver' => 'null',
-      ),
-    ),
-  ),
-  'cache' => 
-  array (
-    'default' => 'file',
-    'stores' => 
-    array (
-      'apc' => 
-      array (
-        'driver' => 'apc',
-      ),
-      'array' => 
-      array (
-        'driver' => 'array',
-      ),
-      'database' => 
-      array (
-        'driver' => 'database',
-        'table' => 'cache',
-        'connection' => NULL,
-      ),
-      'file' => 
-      array (
-        'driver' => 'file',
-        'path' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\storage\\framework/cache',
-      ),
-      'memcached' => 
-      array (
-        'driver' => 'memcached',
-        'persistent_id' => NULL,
-        'sasl' => 
-        array (
-          0 => NULL,
-          1 => NULL,
-        ),
-        'options' => 
-        array (
-        ),
-        'servers' => 
-        array (
-          0 => 
-          array (
-            'host' => '127.0.0.1',
-            'port' => 11211,
-            'weight' => 100,
-          ),
-        ),
-      ),
-      'redis' => 
-      array (
-        'driver' => 'redis',
-        'connection' => 'default',
-      ),
-    ),
-    'prefix' => 'laravel',
-  ),
-  'compile' => 
-  array (
-    'files' => 
-    array (
-    ),
-    'providers' => 
-    array (
-    ),
-  ),
-  'cpf' => 
-  array (
-    'message' => 'Cpf inválido',
-  ),
-  'database' => 
-  array (
-    'fetch' => 5,
-    'default' => 'mysql',
-    'connections' => 
-    array (
-      'sqlite' => 
-      array (
-        'driver' => 'sqlite',
-        'database' => 'pdes',
-        'prefix' => '',
-      ),
-      'mysql' => 
-      array (
-        'driver' => 'mysql',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'pdes',
-        'username' => 'root',
-        'password' => '',
-        'charset' => 'utf8',
-        'collation' => 'utf8_unicode_ci',
-        'prefix' => '',
-        'strict' => true,
-        'engine' => NULL,
-      ),
-      'pgsql' => 
-      array (
-        'driver' => 'pgsql',
-        'host' => '127.0.0.1',
-        'port' => '3306',
-        'database' => 'pdes',
-        'username' => 'root',
-        'password' => '',
-        'charset' => 'utf8',
-        'prefix' => '',
-        'schema' => 'public',
-        'sslmode' => 'prefer',
-      ),
-    ),
-    'migrations' => 'migrations',
-    'redis' => 
-    array (
-      'cluster' => false,
-      'default' => 
-      array (
-        'host' => '127.0.0.1',
-        'password' => NULL,
-        'port' => '6379',
-        'database' => 0,
-      ),
-    ),
-  ),
   'excel' => 
   array (
     'cache' => 
@@ -286,7 +53,7 @@
         'host' => 'localhost',
         'port' => 11211,
       ),
-      'dir' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\storage\\cache',
+      'dir' => '/home/luis/projetos/pdes/storage/cache',
     ),
     'properties' => 
     array (
@@ -352,7 +119,7 @@
       ),
       'store' => 
       array (
-        'path' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\storage\\exports',
+        'path' => '/home/luis/projetos/pdes/storage/exports',
         'returnInfo' => false,
       ),
       'pdf' => 
@@ -362,15 +129,15 @@
         array (
           'DomPDF' => 
           array (
-            'path' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\vendor/dompdf/dompdf/',
+            'path' => '/home/luis/projetos/pdes/vendor/dompdf/dompdf/',
           ),
           'tcPDF' => 
           array (
-            'path' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\vendor/tecnick.com/tcpdf/',
+            'path' => '/home/luis/projetos/pdes/vendor/tecnick.com/tcpdf/',
           ),
           'mPDF' => 
           array (
-            'path' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\vendor/mpdf/mpdf/',
+            'path' => '/home/luis/projetos/pdes/vendor/mpdf/mpdf/',
           ),
         ),
       ),
@@ -528,47 +295,22 @@
       ),
     ),
   ),
-  'filesystems' => 
+  'compile' => 
   array (
-    'default' => 'local',
-    'cloud' => 's3',
-    'disks' => 
+    'files' => 
     array (
-      'local' => 
-      array (
-        'driver' => 'local',
-        'root' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\storage\\app',
-      ),
-      'public' => 
-      array (
-        'driver' => 'local',
-        'root' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\storage\\app/public',
-        'visibility' => 'public',
-      ),
-      's3' => 
-      array (
-        'driver' => 's3',
-        'key' => 'your-key',
-        'secret' => 'your-secret',
-        'region' => 'your-region',
-        'bucket' => 'your-bucket',
-      ),
+    ),
+    'providers' => 
+    array (
     ),
   ),
-  'mail' => 
+  'view' => 
   array (
-    'driver' => 'smtp',
-    'host' => 'smtp.gmail.com',
-    'port' => '587',
-    'from' => 
+    'paths' => 
     array (
-      'address' => 'mailluisthiago@gmail.com',
-      'name' => 'Do not Reply',
+      0 => '/home/luis/projetos/pdes/resources/views',
     ),
-    'encryption' => 'tls',
-    'username' => 'mailluisthiago@gmail.com',
-    'password' => 'lu157#14go',
-    'sendmail' => '/usr/sbin/sendmail -bs',
+    'compiled' => '/home/luis/projetos/pdes/storage/framework/views',
   ),
   'queue' => 
   array (
@@ -616,6 +358,293 @@
       'table' => 'failed_jobs',
     ),
   ),
+  'app' => 
+  array (
+    'name' => 'Programa DES',
+    'env' => 'local',
+    'debug' => true,
+    'url' => 'http://localhost',
+    'timezone' => 'America/Sao_Paulo',
+    'locale' => 'pt',
+    'fallback_locale' => 'en',
+    'key' => 'base64:wmgIV8cluC9JPzwmSwXvy1djgGLLBhXYhaQrviMGUjo=',
+    'cipher' => 'AES-256-CBC',
+    'log' => 'single',
+    'log_level' => 'debug',
+    'providers' => 
+    array (
+      0 => 'Illuminate\\Auth\\AuthServiceProvider',
+      1 => 'Illuminate\\Broadcasting\\BroadcastServiceProvider',
+      2 => 'Illuminate\\Bus\\BusServiceProvider',
+      3 => 'Illuminate\\Cache\\CacheServiceProvider',
+      4 => 'Illuminate\\Foundation\\Providers\\ConsoleSupportServiceProvider',
+      5 => 'Illuminate\\Cookie\\CookieServiceProvider',
+      6 => 'Illuminate\\Database\\DatabaseServiceProvider',
+      7 => 'Illuminate\\Encryption\\EncryptionServiceProvider',
+      8 => 'Illuminate\\Filesystem\\FilesystemServiceProvider',
+      9 => 'Illuminate\\Foundation\\Providers\\FoundationServiceProvider',
+      10 => 'Illuminate\\Hashing\\HashServiceProvider',
+      11 => 'Illuminate\\Mail\\MailServiceProvider',
+      12 => 'Illuminate\\Notifications\\NotificationServiceProvider',
+      13 => 'Illuminate\\Pagination\\PaginationServiceProvider',
+      14 => 'Illuminate\\Pipeline\\PipelineServiceProvider',
+      15 => 'Illuminate\\Queue\\QueueServiceProvider',
+      16 => 'Illuminate\\Redis\\RedisServiceProvider',
+      17 => 'Illuminate\\Auth\\Passwords\\PasswordResetServiceProvider',
+      18 => 'Illuminate\\Session\\SessionServiceProvider',
+      19 => 'Illuminate\\Translation\\TranslationServiceProvider',
+      20 => 'Illuminate\\Validation\\ValidationServiceProvider',
+      21 => 'Illuminate\\View\\ViewServiceProvider',
+      22 => 'ValidadorCpf\\CpfServiceProvider',
+      23 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+      24 => 'Unisharp\\Ckeditor\\ServiceProvider',
+      25 => 'App\\Providers\\AppServiceProvider',
+      26 => 'App\\Providers\\AuthServiceProvider',
+      27 => 'App\\Providers\\EventServiceProvider',
+      28 => 'App\\Providers\\RouteServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'App' => 'Illuminate\\Support\\Facades\\App',
+      'Artisan' => 'Illuminate\\Support\\Facades\\Artisan',
+      'Auth' => 'Illuminate\\Support\\Facades\\Auth',
+      'Blade' => 'Illuminate\\Support\\Facades\\Blade',
+      'Bus' => 'Illuminate\\Support\\Facades\\Bus',
+      'Cache' => 'Illuminate\\Support\\Facades\\Cache',
+      'Config' => 'Illuminate\\Support\\Facades\\Config',
+      'Cookie' => 'Illuminate\\Support\\Facades\\Cookie',
+      'Crypt' => 'Illuminate\\Support\\Facades\\Crypt',
+      'DB' => 'Illuminate\\Support\\Facades\\DB',
+      'Eloquent' => 'Illuminate\\Database\\Eloquent\\Model',
+      'Event' => 'Illuminate\\Support\\Facades\\Event',
+      'File' => 'Illuminate\\Support\\Facades\\File',
+      'Gate' => 'Illuminate\\Support\\Facades\\Gate',
+      'Hash' => 'Illuminate\\Support\\Facades\\Hash',
+      'Input' => 'Illuminate\\Support\\Facades\\Input',
+      'Lang' => 'Illuminate\\Support\\Facades\\Lang',
+      'Log' => 'Illuminate\\Support\\Facades\\Log',
+      'Mail' => 'Illuminate\\Support\\Facades\\Mail',
+      'Notification' => 'Illuminate\\Support\\Facades\\Notification',
+      'Password' => 'Illuminate\\Support\\Facades\\Password',
+      'Queue' => 'Illuminate\\Support\\Facades\\Queue',
+      'Redirect' => 'Illuminate\\Support\\Facades\\Redirect',
+      'Redis' => 'Illuminate\\Support\\Facades\\Redis',
+      'Request' => 'Illuminate\\Support\\Facades\\Request',
+      'Response' => 'Illuminate\\Support\\Facades\\Response',
+      'Route' => 'Illuminate\\Support\\Facades\\Route',
+      'Schema' => 'Illuminate\\Support\\Facades\\Schema',
+      'Session' => 'Illuminate\\Support\\Facades\\Session',
+      'Storage' => 'Illuminate\\Support\\Facades\\Storage',
+      'URL' => 'Illuminate\\Support\\Facades\\URL',
+      'Validator' => 'Illuminate\\Support\\Facades\\Validator',
+      'View' => 'Illuminate\\Support\\Facades\\View',
+      'Excel' => 'Maatwebsite\\Excel\\Facades\\Excel',
+    ),
+  ),
+  'filesystems' => 
+  array (
+    'default' => 'local',
+    'cloud' => 's3',
+    'disks' => 
+    array (
+      'local' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/luis/projetos/pdes/storage/app',
+      ),
+      'public' => 
+      array (
+        'driver' => 'local',
+        'root' => '/home/luis/projetos/pdes/storage/app/public',
+        'visibility' => 'public',
+      ),
+      's3' => 
+      array (
+        'driver' => 's3',
+        'key' => 'your-key',
+        'secret' => 'your-secret',
+        'region' => 'your-region',
+        'bucket' => 'your-bucket',
+      ),
+    ),
+  ),
+  'cpf' => 
+  array (
+    'message' => 'Cpf inválido',
+  ),
+  'broadcasting' => 
+  array (
+    'default' => 'log',
+    'connections' => 
+    array (
+      'pusher' => 
+      array (
+        'driver' => 'pusher',
+        'key' => '',
+        'secret' => '',
+        'app_id' => '',
+        'options' => 
+        array (
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+      'log' => 
+      array (
+        'driver' => 'log',
+      ),
+      'null' => 
+      array (
+        'driver' => 'null',
+      ),
+    ),
+  ),
+  'cache' => 
+  array (
+    'default' => 'file',
+    'stores' => 
+    array (
+      'apc' => 
+      array (
+        'driver' => 'apc',
+      ),
+      'array' => 
+      array (
+        'driver' => 'array',
+      ),
+      'database' => 
+      array (
+        'driver' => 'database',
+        'table' => 'cache',
+        'connection' => NULL,
+      ),
+      'file' => 
+      array (
+        'driver' => 'file',
+        'path' => '/home/luis/projetos/pdes/storage/framework/cache',
+      ),
+      'memcached' => 
+      array (
+        'driver' => 'memcached',
+        'persistent_id' => NULL,
+        'sasl' => 
+        array (
+          0 => NULL,
+          1 => NULL,
+        ),
+        'options' => 
+        array (
+        ),
+        'servers' => 
+        array (
+          0 => 
+          array (
+            'host' => '127.0.0.1',
+            'port' => 11211,
+            'weight' => 100,
+          ),
+        ),
+      ),
+      'redis' => 
+      array (
+        'driver' => 'redis',
+        'connection' => 'default',
+      ),
+    ),
+    'prefix' => 'laravel',
+  ),
+  'database' => 
+  array (
+    'fetch' => 5,
+    'default' => 'mysql',
+    'connections' => 
+    array (
+      'sqlite' => 
+      array (
+        'driver' => 'sqlite',
+        'database' => 'pdes',
+        'prefix' => '',
+      ),
+      'mysql' => 
+      array (
+        'driver' => 'mysql',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'pdes',
+        'username' => 'root',
+        'password' => 'root',
+        'charset' => 'utf8',
+        'collation' => 'utf8_unicode_ci',
+        'prefix' => '',
+        'strict' => true,
+        'engine' => NULL,
+      ),
+      'pgsql' => 
+      array (
+        'driver' => 'pgsql',
+        'host' => '127.0.0.1',
+        'port' => '3306',
+        'database' => 'pdes',
+        'username' => 'root',
+        'password' => 'root',
+        'charset' => 'utf8',
+        'prefix' => '',
+        'schema' => 'public',
+        'sslmode' => 'prefer',
+      ),
+    ),
+    'migrations' => 'migrations',
+    'redis' => 
+    array (
+      'cluster' => false,
+      'default' => 
+      array (
+        'host' => '127.0.0.1',
+        'password' => NULL,
+        'port' => '6379',
+        'database' => 0,
+      ),
+    ),
+  ),
+  'session' => 
+  array (
+    'driver' => 'file',
+    'lifetime' => 120,
+    'expire_on_close' => false,
+    'encrypt' => false,
+    'files' => '/home/luis/projetos/pdes/storage/framework/sessions',
+    'connection' => NULL,
+    'table' => 'sessions',
+    'store' => NULL,
+    'lottery' => 
+    array (
+      0 => 2,
+      1 => 100,
+    ),
+    'cookie' => 'laravel_session',
+    'path' => '/',
+    'domain' => NULL,
+    'secure' => false,
+    'http_only' => true,
+  ),
+  'mail' => 
+  array (
+    'driver' => 'smtp',
+    'host' => 'smtp.gmail.com',
+    'port' => '587',
+    'from' => 
+    array (
+      'address' => 'mailluisthiago@gmail.com',
+      'name' => 'Programa DES | UEPG ',
+    ),
+    'encryption' => 'tls',
+    'username' => 'mailluisthiago@gmail.com',
+    'password' => 'lu157#14go',
+    'sendmail' => '/usr/sbin/sendmail -bs',
+  ),
   'services' => 
   array (
     'mailgun' => 
@@ -639,34 +668,5 @@
       'key' => NULL,
       'secret' => NULL,
     ),
-  ),
-  'session' => 
-  array (
-    'driver' => 'file',
-    'lifetime' => 120,
-    'expire_on_close' => false,
-    'encrypt' => false,
-    'files' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\storage\\framework/sessions',
-    'connection' => NULL,
-    'table' => 'sessions',
-    'store' => NULL,
-    'lottery' => 
-    array (
-      0 => 2,
-      1 => 100,
-    ),
-    'cookie' => 'laravel_session',
-    'path' => '/',
-    'domain' => NULL,
-    'secure' => false,
-    'http_only' => true,
-  ),
-  'view' => 
-  array (
-    'paths' => 
-    array (
-      0 => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\resources\\views',
-    ),
-    'compiled' => 'C:\\Users\\lthia\\Desktop\\projetos\\pdes\\storage\\framework\\views',
   ),
 );
