@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Evento;
 use App\Inscricao;
 use App\User;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+
 
 
 

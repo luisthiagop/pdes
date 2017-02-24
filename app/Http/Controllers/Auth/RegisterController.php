@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 use Auth;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use App\Mail\Welcome;
+use App\Mail\WelcomeMail;
 class RegisterController extends Controller
 {
     /*
@@ -91,11 +91,9 @@ class RegisterController extends Controller
                 'nome'=>'josé',
             );
 
-            // Mail::send('mails.welcome', $data, function ($message) {
-            //    $message->from('mailluisthiago@gmail.com', 'Laravel');
+            
 
-            //    $message->to('mailluisthiago@gmail.com');
-            // });
+            Mail::to($usuario)->send(new WelcomeMail($usuario));
 
             
 

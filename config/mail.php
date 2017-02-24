@@ -24,7 +24,7 @@ return [
     | the Mailgun mail service which will provide reliable deliveries.
     |
     */
-    'host' => env('MAIL_HOST', 'smtp2.uepg.br'),
+    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Port
@@ -35,7 +35,7 @@ return [
     | stay compatible with the Mailgun e-mail application by default.
     |
     */
-    'port' => env('MAIL_PORT', 25),
+    'port' => env('MAIL_PORT', 587),
     /*
     |--------------------------------------------------------------------------
     | Global "From" Address
@@ -46,7 +46,7 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-    'from' => ['address' => 'semanadafisicauepg2016@gmail.com', 'name' => 'Do not Reply'],
+    'from' => ['address' => 'mailluisthiago@gmail.com', 'name' => 'Programa DES | UEPG '],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -57,7 +57,7 @@ return [
     | transport layer security protocol should provide great security.
     |
     */
-    'encryption' => env('MAIL_ENCRYPTION', 'null'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Username
@@ -68,7 +68,7 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-    'username' => env('MAIL_USERNAME','15063026@uepg.br'),
+    'username' => env('MAIL_USERNAME','mailluisthiago@gmail.com'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Password
@@ -79,7 +79,7 @@ return [
     | connection so that the application will be able to send messages.
     |
     */
-    'password' => env('MAIL_PASSWORD','luis1111'),
+    'password' => env('MAIL_PASSWORD','lu157#14go'),
     /*
     |--------------------------------------------------------------------------
     | Sendmail System Path
