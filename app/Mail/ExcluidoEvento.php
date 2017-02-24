@@ -33,7 +33,7 @@ class ExcluidoEvento extends Mailable implements ShouldQueue
     public function build()
     {
         $evento =  Evento::where('id',$this->evento_id)->first();
-        $url = url('user/); 
+        $url = url('user'); 
         return $this->markdown('emails.excluirEvento')->with('user', Auth::user())->with('evento',$evento)->with('url',$url);;
     }
 }

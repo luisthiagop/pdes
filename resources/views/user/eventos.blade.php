@@ -123,9 +123,9 @@
                 <h3>Próximos eventos</h3>
                 @if(count($eventos)!=0)
                         @foreach($eventos as $e)                            
-                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div style="" class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="profile-card text-center">
-                                    <img class="img-responsive" src="@if($e->has_banner){{asset('assets/upload/imagens_eventos/'.$e->id.'.jpg')}} @else {{asset('assets/upload/imagens_eventos/no-banner.jpg')}} @endif ">
+                                    <div style="border:1px solid #ccc;height:170px;background: url('@if($e->has_banner){{asset('assets/upload/imagens_eventos/'.$e->id.'.jpg')}} @else {{asset('assets/upload/imagens_eventos/no-banner.jpg')}} @endif') no-repeat;background-size: 100% 170px;"></div>
                                     
                                     <div class="profile-info">
                                         <img class="profile-pic" src="">

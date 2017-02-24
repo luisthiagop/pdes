@@ -77,7 +77,6 @@ class EventoController extends Controller
 			$request->banner->move('assets/upload/imagens_eventos/', $imageName); 
 		}
 
-		Mail::to(Auth::user())->send(new WelcomeMail());
 
 		return back()->with('success','Evento <strong>'.$evento->nome.'</strong> cadastrado com sucesso');
 		
@@ -181,9 +180,13 @@ class EventoController extends Controller
 		}
 
 		if($evento->data_evento > $this->today||($evento->data_evento == $this->today && $evento->horario_evento >  $this->now  )){	
-			$evento->delete();
-			Mail::to(Auth::user())->send(new ExcluidoEvento($evento->id));
 
+			$inscricoes = Inscricao::join('users','users.id','=','inscricoes.user_id')->where('evento_id','=',$evento->id)->select('users.*','inscricoes.horas')->get();
+
+			Mail::to($inscricoes)->send(new ExcluidoEvento($evento->id));
+
+			$evento->delete();
+			
 			return back()->with('success','Evento deletado')->with('evento',$evento);
 		}else{
 			return back()->with('erro','esse evento não pode mais ser deletado')->with('evento',$evento);
