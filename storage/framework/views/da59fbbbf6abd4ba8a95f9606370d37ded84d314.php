@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title><?php echo e(config('app.name', 'Laravel')); ?></title>
+    <title><?php echo e(config('app.name', 'ProgramaDES')); ?></title>
 
     <!-- Styles -->
     <link href="<?php echo e(URL::asset('css/app.css')); ?>" rel="stylesheet">
