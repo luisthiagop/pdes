@@ -72,7 +72,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
-                        <li><a href="<?php echo e(url('/admin')); ?>">Ínicio</a></li>
+                        <li><a href="<?php echo e(url('/admin')); ?>">Início</a></li>
                     </ul>
 
 

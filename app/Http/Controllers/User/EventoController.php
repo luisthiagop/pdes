@@ -89,7 +89,9 @@ class EventoController extends Controller
                 $insc->save();
                 $evento->inscritos++;
                 $evento->save();
+
                 Mail::to(Auth::user())->send(new CadastradoEvento($evento->id));
+
     	    	return redirect()->back()->with('success','Parabéns, você está cadastrado no evento!');
             }
 
@@ -106,7 +108,8 @@ class EventoController extends Controller
         $evento =  Evento::where('id',$request->id)->first();
 
         if($evento->data_evento > $this->today||($evento->data_evento == $this->today && $evento->horario_evento >  $this->now  )){            
-            
+            Mail::to(Auth::user())->send(new CancelarParticipacaoEvento($evento->id));
+
             $insc->delete();
 
             
@@ -114,7 +117,7 @@ class EventoController extends Controller
             
             $evento->save();
 
-            Mail::to(Auth::user())->send(new CancelarParticipacaoEvento($evento->id));
+
             
             return redirect()->back()->with('success','Você saiu do evento!');
         }else{
