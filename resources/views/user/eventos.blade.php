@@ -200,7 +200,7 @@
                                 
 
                             @endforeach 
-                            <div class="row">{{$eventos->passados->links()}}</div> 
+                            <div class="row">{{$eventos_passados->links()}}</div> 
 
                             </table>
                         </div>

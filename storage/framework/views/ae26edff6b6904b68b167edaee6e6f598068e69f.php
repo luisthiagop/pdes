@@ -203,7 +203,7 @@
                                 
 
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
-                            <div class="row"><?php echo e($eventos->passados->links()); ?></div> 
+                            <div class="row"><?php echo e($eventos_passados->links()); ?></div> 
 
                             </table>
                         </div>
