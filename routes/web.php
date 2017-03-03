@@ -80,16 +80,17 @@ Route::group(['middleware'=>['admin','auth']], function () {
     Route::post('/admin/eventos/removerParticipante','Admin\EventoController@removerParticipante');
 
 
+    Route::post('admin/eventos/relatorio/sendmail','Admin\EventoController@sendMail');
+
 });
 
 Route::post('/admin/eventos/cargaHoraria','Admin\EventoController@updateCargaHoraria');
 
 Route::get('/admin/eventos/send_mail','Admin\EventoController@send_mail_get');
 Route::post('/admin/eventos/send_mail','Admin\EventoController@send_mail');
- 
+
 
 //route user
-
 Route::group(['middleware'=>'auth'], function () {
     Route::get('user/', function ()    {
         return redirect('user/eventos');

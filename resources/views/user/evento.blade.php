@@ -51,7 +51,24 @@
             @endif
         </div>
         @if($evento->data_evento>date('Y-m-d') || ($evento->data_evento==date('Y-m-d')&& $evento->horario_evento>date('H:i:s')))
-        <div class="col-md-5">
+        
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{$evento->nome}}</h1>
+            <p><b>Descrição: </b>{!!$evento->descricao!!}</p>
+            <p><b>Mais: </b>{!!$evento->mais_sobre!!}</p>
+            <p><b>Ministrante: </b>{{$evento->palestrante}}</p>
+            <p><b>Carga Horária:</b> {{$evento->cargaHoraria}} @if($evento->cargaHoraria != 1)horas @else hora @endif</p>
+            <p><b>Data do Evento: </b>{{date('d/m/Y', strtotime($evento->data_evento))}} <b>Horario do Evento: </b>{{$evento->horario_evento}}</p>
+            <p><b>Início  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_inicio))}} - <b>Fim  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_fim))}}</p>
+            <p><b>Vagas disponíveis: </b>{{$evento->vagas-$evento->inscritos}}</p>
+        </div>
+
+        
+    </div>
+    <div class="col-md-5">
             
             @if(!count($participa) && Auth::user())
                 <form id="form-actions"  method="POST" action="{{ url('user/evento/participar/') }}">
@@ -80,22 +97,6 @@
         
         </div>
     @endif
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{$evento->nome}}</h1>
-            <p><b>Descrição: </b>{!!$evento->descricao!!}</p>
-            <p><b>Mais: </b>{!!$evento->mais_sobre!!}</p>
-            <p><b>Ministrante: </b>{{$evento->palestrante}}</p>
-            <p><b>Carga Horaria:</b> {{$evento->cargaHoraria}} @if($evento->cargaHoraria != 1)horas @else hora @endif</p>
-            <p><b>Data do Evento: </b>{{date('d/m/Y', strtotime($evento->data_evento))}} <b>Horario do Evento: </b>{{$evento->horario_evento}}</p>
-            <p><b>Início  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_inicio))}} - <b>Fim  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_fim))}}</p>
-            <p><b>Vagas disponíveis: </b>{{$evento->vagas-$evento->inscritos}}</p>
-        </div>
-
-        
-        </div>
 
 
        

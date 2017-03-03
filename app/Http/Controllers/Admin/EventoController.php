@@ -15,6 +15,8 @@ use App\Mail\WelcomeMail;
 use App\Mail\CadastradoEvento;
 use App\Mail\CancelarParticipacaoEvento;
 use App\Mail\ExcluidoEvento;
+use App\Mail\Mensagem;
+
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Input;
 
@@ -322,11 +324,19 @@ class EventoController extends Controller
                   
 	}
 
-	protected function send_mail(){
+	protected function sendMail(Request $request){
 
-		Mail::to(Auth::user())->send(new ExcluidoEvento(1));
+		$this->validate($request, [
+            'mensagem' => 'required|max:1000',
+        ]);
+
+        $inscricoes = Inscricao::join('users','users.id','=','inscricoes.user_id')->where('evento_id','=',$request->evento_id)->select('users.*','inscricoes.horas')->get();
+
+
+		Mail::to($inscricoes)->send(new Mensagem($request->mensagem));
 
 		return response(200);
+
 
 		
 	}

@@ -9,7 +9,7 @@
             <h1>Deletar {{$evento->nome}}?</h1>
             <p><b>Descrição: </b>{!!$evento->descricao!!}</p>
             <p><b>Palestrante: </b>{{$evento->palestrante}}</p>
-            <p><b>Carga Horaria:</b> {{$evento->cargaHoraria}} @if($evento->cargaHoraria != 1)horas @else hora @endif</p>
+            <p><b>Carga Horária:</b> {{$evento->cargaHoraria}} @if($evento->cargaHoraria != 1)horas @else hora @endif</p>
             <p><b>Data do Evento: </b>{{date('d/m/Y', strtotime($evento->data_evento))}}</p>
             <p><b>Início  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_inicio))}} - <b>Fim  das inscrições: </b>{{date('d/m/Y', strtotime($evento->data_fim))}}</p>
         </div>

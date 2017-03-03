@@ -9,13 +9,7 @@ function fcurso() {
     document.getElementById('instituicao').removeAttribute('disabled');
     document.getElementById('curso').removeAttribute('disabled');
 
-    if(document.getElementById("tipo").value == "comunidade"){
-        
-        document.getElementById('curso').setAttribute('disabled', 'disabled');
-        document.getElementById('instituicao').setAttribute('disabled', 'disabled');
-
-    }else if(document.getElementById("tipo").value == "agente"){
-        
+    if(document.getElementById("tipo").value == "agente"){        
 
         document.getElementById('curso').setAttribute('disabled', 'disabled');
 
@@ -148,7 +142,7 @@ function fcurso() {
                         <hr>
 
                         <div class="form-group<?php echo e($errors->has('tipo') ? ' has-error' : ''); ?>">
-                            <label for="tipo" class="col-md-4 control-label">Tipo de Pessoa</label>
+                            <label for="tipo" class="col-md-4 control-label">Categoria</label>
 
                             <div class="col-md-3">
                                 <select onchange="fcurso();" class="form-control" name="tipo" id="tipo" value="<?php echo e(old('tipo')); ?>">
@@ -172,7 +166,7 @@ function fcurso() {
 
 
                         <div class="form-group<?php echo e($errors->has('instituicao') ? ' has-error' : ''); ?>">
-                            <label for="instituicao" class="col-md-4 control-label">Instituicao</label>
+                            <label for="instituicao" class="col-md-4 control-label">Instituição</label>
 
                             <div class="col-md-6">
                                 <input id="instituicao"  class="form-control" name="instituicao" value="<?php echo e(old('instituicao')); ?>" >

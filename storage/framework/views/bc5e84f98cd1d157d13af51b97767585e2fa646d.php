@@ -49,7 +49,24 @@
             <?php endif; ?>
         </div>
         <?php if($evento->data_evento>date('Y-m-d') || ($evento->data_evento==date('Y-m-d')&& $evento->horario_evento>date('H:i:s'))): ?>
-        <div class="col-md-5">
+        
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1><?php echo e($evento->nome); ?></h1>
+            <p><b>Descrição: </b><?php echo $evento->descricao; ?></p>
+            <p><b>Mais: </b><?php echo $evento->mais_sobre; ?></p>
+            <p><b>Ministrante: </b><?php echo e($evento->palestrante); ?></p>
+            <p><b>Carga Horária:</b> <?php echo e($evento->cargaHoraria); ?> <?php if($evento->cargaHoraria != 1): ?>horas <?php else: ?> hora <?php endif; ?></p>
+            <p><b>Data do Evento: </b><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?> <b>Horario do Evento: </b><?php echo e($evento->horario_evento); ?></p>
+            <p><b>Início  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?> - <b>Fim  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></p>
+            <p><b>Vagas disponíveis: </b><?php echo e($evento->vagas-$evento->inscritos); ?></p>
+        </div>
+
+        
+    </div>
+    <div class="col-md-5">
             
             <?php if(!count($participa) && Auth::user()): ?>
                 <form id="form-actions"  method="POST" action="<?php echo e(url('user/evento/participar/')); ?>">
@@ -80,22 +97,6 @@
         
         </div>
     <?php endif; ?>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <h1><?php echo e($evento->nome); ?></h1>
-            <p><b>Descrição: </b><?php echo $evento->descricao; ?></p>
-            <p><b>Mais: </b><?php echo $evento->mais_sobre; ?></p>
-            <p><b>Ministrante: </b><?php echo e($evento->palestrante); ?></p>
-            <p><b>Carga Horaria:</b> <?php echo e($evento->cargaHoraria); ?> <?php if($evento->cargaHoraria != 1): ?>horas <?php else: ?> hora <?php endif; ?></p>
-            <p><b>Data do Evento: </b><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?> <b>Horario do Evento: </b><?php echo e($evento->horario_evento); ?></p>
-            <p><b>Início  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?> - <b>Fim  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></p>
-            <p><b>Vagas disponíveis: </b><?php echo e($evento->vagas-$evento->inscritos); ?></p>
-        </div>
-
-        
-        </div>
 
 
        

@@ -110,7 +110,7 @@
 
 
                         <div class="form-group{{ $errors->has('cargaHoraria') ? ' has-error' : '' }}">
-                            <label for="cargaHoraria" class="col-md-4 control-label">Carga Horaria</label>
+                            <label for="cargaHoraria" class="col-md-4 control-label">Carga Horária</label>
 
                             <div class="col-md-2">
                                 <input id="cargaHoraria" type="number" value="{{old('cargaHoraria')}}" class="form-control" name="cargaHoraria" > 
@@ -343,7 +343,7 @@
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
-                                        <th>Carga Horaria</th>
+                                        <th>Carga Horária</th>
                                         <th>Data</th>
                                         <th>Início das inscrições</th>
                                         <th>Fim das inscrições</th>
@@ -396,7 +396,7 @@
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
-                                        <th>Carga Horaria</th>
+                                        <th>Carga Horária</th>
                                         <th>Editar</th>
                                         <th>Deletar</th>
                                         <th>Relatório</th>
@@ -443,7 +443,7 @@
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
-                                        <th>Carga Horaria</th>
+                                        <th>Carga Horária</th>
                                         <th>Data</th>
                                         <th>Início das inscrições</th>
                                         <th>Fim das inscrições</th>
@@ -494,7 +494,7 @@
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
-                                        <th>Carga Horaria</th>
+                                        <th>Carga Horária</th>
                                         <th>Data</th>
                                         <th>Início das inscrições</th>
                                         <th>Fim das inscrições</th>

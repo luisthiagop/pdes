@@ -147,7 +147,7 @@
 
 
                         <div class="form-group{{ $errors->has('cargaHoraria') ? ' has-error' : '' }}">
-                            <label for="cargaHoraria" class="col-md-4 control-label">Carga Horaria</label>
+                            <label for="cargaHoraria" class="col-md-4 control-label">Carga Horária</label>
 
                             <div class="col-md-2">
                                 <input id="cargaHoraria" type="number" class="form-control" name="cargaHoraria" value="{{$evento->cargaHoraria}}" > 
