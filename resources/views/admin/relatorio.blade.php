@@ -185,7 +185,7 @@
       
 
  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info " data-toggle="modal" data-target="#emailModal">Enviar e-mail </button>
+ 
 
   <!-- Modal -->
   <div class="modal fade" id="emailModal" role="dialog">
