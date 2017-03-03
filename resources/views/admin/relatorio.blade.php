@@ -207,9 +207,7 @@
                 <label for="mensagem" class="col-md-4 control-label">Mensagem</label>
 
                 <div class="col-md-8">
-                    <textarea class=" form-control" name="mensagem" rows="5" id="mensagem">
-                        
-                    </textarea>
+                    <textarea class=" form-control" name="mensagem" rows="5" id="mensagem"></textarea>
 
                     @if ($errors->has('mensagem'))
                         <span class="help-block">
