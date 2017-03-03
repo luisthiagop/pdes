@@ -335,7 +335,7 @@ class EventoController extends Controller
 
 		Mail::to($inscricoes)->send(new Mensagem($request->mensagem));
 
-		return response(200);
+		return back()->with('success','E-mail enviado com sucesso!');
 
 
 		

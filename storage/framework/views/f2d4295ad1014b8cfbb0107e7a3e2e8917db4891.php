@@ -55,6 +55,7 @@
     <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Adicionar por CPF</button>
     <a href="<?php echo e(url('admin/eventos/relatorio/export/'.$evento->id)); ?>"><button type="button" class="btn btn-primary">Gerar lista de presença</button></a>
     <a href="<?php echo e(url('admin/eventos/relatorio/export/csv/'.$evento->id)); ?>"><button type="button" class="btn btn-success">Exportar csv</button></a>
+    <button type="button" class="btn btn-info " data-toggle="modal" data-target="#emailModal">Enviar e-mail </button>
 
     <div class="row">
         
