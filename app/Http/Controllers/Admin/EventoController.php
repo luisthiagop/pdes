@@ -184,7 +184,7 @@ class EventoController extends Controller
 	protected function delete(Request $request){
 		$evento = Evento::find($request->id);
 		//verificar se um add($evento->name_banner);
-		if(file_exists('assets/upload/imagens_eventos/'.$evento->name_banner)){
+		if(file_exists('assets/upload/imagens_eventos/'.$evento->name_banner) && $evento->has_banner){
 				unlink('assets/upload/imagens_eventos/'.$evento->name_banner);
 		}
 
