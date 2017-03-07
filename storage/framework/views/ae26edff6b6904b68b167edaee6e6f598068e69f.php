@@ -180,7 +180,7 @@
                             <tr>
                                 <th>Evento</th>
                                 <th>Ministrante</th>
-                                <th>Carga Horaria</th>
+                                <th>Carga Horária</th>
                                 <th>Data</th>
                                 <th>Início das inscrições</th>
                                 <th>Fim das inscrições</th>
@@ -238,7 +238,7 @@
                             <tr>
                                 <th>Evento</th>
                                 <th>Ministrante</th>
-                                <th>Carga Horaria</th>
+                                <th>Carga Horária</th>
                                 <th>Data</th>
                                 <th>Início das inscrições</th>
                                 <th>Fim das inscrições</th>                             

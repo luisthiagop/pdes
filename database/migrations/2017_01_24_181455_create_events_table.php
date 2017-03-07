@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('nome');
             $table->mediumText('descricao')->nullable();
             $table->mediumText('mais_sobre')->nullable();
+            $table->string('local')->nullable();
             $table->integer('cargaHoraria');
             $table->string('palestrante')->nullable();            
 

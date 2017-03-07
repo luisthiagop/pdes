@@ -36,6 +36,7 @@ class EventoController extends Controller
 		$this->validate($request, [
 			'nome' => 'required|max:255',
 			'descricao' => 'max:500',
+			'local'=>'max:200',
 			'mais_sobre' => '',
 			'cargaHoraria' => 'required',
 			'vagas'=>'required|min:1',
@@ -56,6 +57,8 @@ class EventoController extends Controller
 		$evento->nome = $request->nome;
 		$evento->mais_sobre = $request->mais_sobre;
 		$evento->descricao = $request->descricao;
+		$evento->local = $request->local;
+
 		$evento->vagas = $request->vagas;
 		$evento->cargaHoraria = $request->cargaHoraria;
 		$evento->palestrante = $request->palestrante;
@@ -67,6 +70,7 @@ class EventoController extends Controller
 		$evento->agente = $request->rb_agente;
 		$evento->comunidade = $request->rb_comunidade;
 		$evento->professor = $request->rb_professor;
+
 		if($request->banner){
 			$evento->has_banner = true;
 		}
@@ -96,6 +100,7 @@ class EventoController extends Controller
 		$this->validate($request, [
 			'nome' => 'required|max:255',
 			'descricao' => 'max:500',
+			'local'=>'max:200',
 			'mais_sobre' => '',
 			'cargaHoraria' => 'required',
 			'horario_evento: required',
@@ -112,6 +117,8 @@ class EventoController extends Controller
 		$evento->nome = $request->nome;
 		$evento->mais_sobre = $request->mais_sobre;
 		$evento->descricao = $request->descricao;
+		$evento->local = $request->local;
+
 		$evento->vagas = $request->vagas;
 		$evento->cargaHoraria = $request->cargaHoraria;
 		$evento->palestrante = $request->palestrante;

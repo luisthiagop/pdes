@@ -90,6 +90,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('local') ? ' has-error' : '' }}">
+                            <label for="local" class="col-md-4 control-label">Local</label>
+
+                            <div class="col-md-6">
+                                <input id="local" type="text" class="form-control" name="local" value="{{ old('local') }}"  autofocus>
+
+                                @if ($errors->has('local'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('local') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
 
 
