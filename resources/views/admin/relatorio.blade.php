@@ -188,51 +188,47 @@
  
 
   <!-- Modal -->
-  <div class="modal fade" id="emailModal" role="dialog">
+<div class="modal fade" id="emailModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Enviar e-mail aos participantes do evento</h4>
-        </div>
-        <div class="modal-body">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enviar e-mail aos participantes do evento</h4>
+            </div>
+            <div class="modal-body">
             
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="{{ url('admin/eventos/relatorio/sendmail') }}">
-            {{ csrf_field() }}
-            <input type="hidden" name="evento_id" value="{{$evento->id}}">
+                <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="{{ url('admin/eventos/relatorio/sendmail') }}">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="evento_id" value="{{$evento->id}}">
 
-            <div class="form-group{{ $errors->has('descricao') ? ' has-error' : '' }}">
-                <label for="mensagem" class="col-md-4 control-label">Mensagem</label>
+                    <div class="form-group{{ $errors->has('descricao') ? ' has-error' : '' }}">
+                        <label for="mensagem" class="col-md-4 control-label">Mensagem</label>
 
-                <div class="col-md-8">
-                    <textarea class=" form-control" name="mensagem" rows="5" id="mensagem"></textarea>
+                        <div class="col-md-8">
+                            <textarea class=" form-control" name="mensagem" rows="5" id="mensagem"></textarea>
 
-                    @if ($errors->has('mensagem'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('mensagem') }}</strong>
-                        </span>
-                    @endif
+                            @if ($errors->has('mensagem'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('mensagem') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <span class="caracteres"></span>
+           
                 </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Enviar</button>
+                    </div>
+                </form>
             </div>
-            <span class="caracteres"></span>
-       
-
-
-
-
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-info">Enviar</button>
-            </div>
-            </form>
-      </div>
       
+        </div>
     </div>
-  </div>
   
 </div>
 

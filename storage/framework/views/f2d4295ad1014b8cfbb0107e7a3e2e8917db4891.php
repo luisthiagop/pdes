@@ -184,57 +184,51 @@
       
 
  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info " data-toggle="modal" data-target="#emailModal">Enviar e-mail </button>
+ 
 
   <!-- Modal -->
-  <div class="modal fade" id="emailModal" role="dialog">
+<div class="modal fade" id="emailModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Enviar e-mail aos participantes do evento</h4>
-        </div>
-        <div class="modal-body">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enviar e-mail aos participantes do evento</h4>
+            </div>
+            <div class="modal-body">
             
-            <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="<?php echo e(url('admin/eventos/relatorio/sendmail')); ?>">
-            <?php echo e(csrf_field()); ?>
+                <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="<?php echo e(url('admin/eventos/relatorio/sendmail')); ?>">
+                    <?php echo e(csrf_field()); ?>
 
-            <input type="hidden" name="evento_id" value="<?php echo e($evento->id); ?>">
+                    <input type="hidden" name="evento_id" value="<?php echo e($evento->id); ?>">
 
-            <div class="form-group<?php echo e($errors->has('descricao') ? ' has-error' : ''); ?>">
-                <label for="mensagem" class="col-md-4 control-label">Mensagem</label>
+                    <div class="form-group<?php echo e($errors->has('descricao') ? ' has-error' : ''); ?>">
+                        <label for="mensagem" class="col-md-4 control-label">Mensagem</label>
 
-                <div class="col-md-8">
-                    <textarea class=" form-control" name="mensagem" rows="5" id="mensagem">
-                        
-                    </textarea>
+                        <div class="col-md-8">
+                            <textarea class=" form-control" name="mensagem" rows="5" id="mensagem"></textarea>
 
-                    <?php if($errors->has('mensagem')): ?>
-                        <span class="help-block">
-                            <strong><?php echo e($errors->first('mensagem')); ?></strong>
-                        </span>
-                    <?php endif; ?>
+                            <?php if($errors->has('mensagem')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('mensagem')); ?></strong>
+                                </span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    <span class="caracteres"></span>
+           
                 </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Enviar</button>
+                    </div>
+                </form>
             </div>
-            <span class="caracteres"></span>
-       
-
-
-
-
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-info">Enviar</button>
-            </div>
-            </form>
-      </div>
       
+        </div>
     </div>
-  </div>
   
 </div>
 

@@ -56,6 +56,7 @@
         <div class="col-md-12">
             <h1><?php echo e($evento->nome); ?></h1>
             <p><b>Descrição: </b><?php echo $evento->descricao; ?></p>
+            <p><b>Local: </b><?php echo $evento->local; ?></p>
             <p><b>Mais: </b><?php echo $evento->mais_sobre; ?></p>
             <p><b>Ministrante: </b><?php echo e($evento->palestrante); ?></p>
             <p><b>Carga Horária:</b> <?php echo e($evento->cargaHoraria); ?> <?php if($evento->cargaHoraria != 1): ?>horas <?php else: ?> hora <?php endif; ?></p>

@@ -14,6 +14,10 @@
 
 
 Route::get('/','HomeController@index');
+Route::get('/public','Publico\publicController@index');
+Route::get('/public/{id}','Publico\publicController@show');
+
+
 
 
 Route::group(['middleware'=>'guest'], function () {
