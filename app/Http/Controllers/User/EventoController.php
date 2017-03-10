@@ -66,10 +66,10 @@ class EventoController extends Controller
 
             	return view('user.evento')->with('e',$evento)->with('participa',$participa);
             }else{
-                return redirect()->back()->with('erro','Você não tem acesso a esse evento');
+                return redirect('/public/'.$evento->id)->with('erro','Você não pode participar desse evento');
             }
         }else{
-             return redirect()->back()->with('erro','Você não tem acesso a esse evento');
+             return redirect('/public/'.$evento->id)->with('erro','Você não pode participar desse evento');
         }
 
     }
