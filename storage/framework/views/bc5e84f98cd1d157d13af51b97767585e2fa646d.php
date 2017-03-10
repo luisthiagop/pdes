@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<?php if(count($evento)==0): ?>
+<?php if(count($e)==0): ?>
     <div class="container">        
         <div class="alert alert-info">
           <strong></strong> Evento não disponível.
@@ -30,50 +30,95 @@
 </script>
 
 <div class="container">
-    
-    <div class="row">
-        <div class="col-md-7"> 
-         <?php if($evento->has_banner): ?>
-            <div>
-                <div class="col-md-12"  style="
+    <h2><?php echo e($e->nome); ?></h2>
+    <span style="font-size: 12px;color grey"><?php echo e(date("d",strtotime($e->data_evento))); ?> de  <?php echo e(date("M",strtotime($e->data_evento))); ?> de <?php echo e(date("Y",strtotime($e->data_evento))); ?></span>
+
+    <hr>
+    <?php if($e->has_banner): ?>
+        <div class="row">
+            <div class="col-md-5" >
+                <p style="text-align: justify;"> <?php echo e($e->descricao); ?></p>
+            </div>
+            <div class="col-md-7" >
+                 <div class="col-md-12"  style="
                     
                     height:300px; width:600px;
-                    background: url('<?php echo e(asset('assets/upload/imagens_eventos/'.$evento->id.'.jpg')); ?> ');
+                    background: url('<?php echo e(asset('assets/upload/imagens_eventos/'.$e->id.'.jpg')); ?> ');
                     background-size: 600px 300px;
                     background-repeat: no-repeat;
                   " class="col-md-12">
                     
                 </div>
-                <br>
             </div>
-            <?php endif; ?>
-        </div>
-        <?php if($evento->data_evento>date('Y-m-d') || ($evento->data_evento==date('Y-m-d')&& $evento->horario_evento>date('H:i:s'))): ?>
-        
-    </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <h1><?php echo e($evento->nome); ?></h1>
-            <p><b>Descrição: </b><?php echo $evento->descricao; ?></p>
-            <p><b>Local: </b><?php echo $evento->local; ?></p>
-            <p><b>Mais: </b><?php echo $evento->mais_sobre; ?></p>
-            <p><b>Ministrante: </b><?php echo e($evento->palestrante); ?></p>
-            <p><b>Carga Horária:</b> <?php echo e($evento->cargaHoraria); ?> <?php if($evento->cargaHoraria != 1): ?>horas <?php else: ?> hora <?php endif; ?></p>
-            <p><b>Data do Evento: </b><?php echo e(date('d/m/Y', strtotime($evento->data_evento))); ?> <b>Horario do Evento: </b><?php echo e($evento->horario_evento); ?></p>
-            <p><b>Início  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_inicio))); ?> - <b>Fim  das inscrições: </b><?php echo e(date('d/m/Y', strtotime($evento->data_fim))); ?></p>
-            <p><b>Vagas disponíveis: </b><?php echo e($evento->vagas-$evento->inscritos); ?></p>
         </div>
 
+    <?php else: ?>
+        <div >
+                <p style="text-align: justify;"> <?php echo e($e->descricao); ?></p>
+            </div>
+    <?php endif; ?>
+    <hr>
+
+    <h3>Detalhes do evento</h3>
+    <ul>
+        <li>
+            <b>Data: </b><?php echo e(date("d",strtotime($e->data_evento))); ?> de  <?php echo e(date("M",strtotime($e->data_evento))); ?> de <?php echo e(date("Y",strtotime($e->data_evento))); ?>
+
+        </li>
+        <li>
+            <b>Data final das inscrições: </b><?php echo e(date("d",strtotime($e->data_fim))); ?> de  <?php echo e(date("M",strtotime($e->data_fim))); ?> de <?php echo e(date("Y",strtotime($e->data_fim))); ?>
+
+        </li>
+        <li>
+            <b>Local: </b><?php echo e($e->local); ?>
+
+        </li>
+        <li>
+            <b>Ministrante: </b><?php echo e($e->palestrante); ?>
+
+        </li>
+        <li>
+            <b>Carga Horária: </b><?php echo e($e->cargaHoraria); ?>
+
+        </li>
+        <li>
+            <b>Horário de início: </b><?php echo e(date("H:i",strtotime($e->horario_evento))); ?>
+
+        </li>
+        <li>
+            <b>Público alvo: </b><?php if($e->aluno): ?> alunos | <?php endif; ?> <?php if($e->agente): ?>agentes | <?php endif; ?> <?php if($e->comunidade): ?>comunidade | <?php endif; ?> <?php if($e->professor): ?>professores   <?php endif; ?>
+        </li>
+        <li>
+            <b>Número de vagas: </b><?php echo e($e->vagas); ?>
+
+        </li>
+    </ul>
+
+    <hr>
+    <h3>Mais sobre</h3>
+    <p style="text-align: justify;"><?php echo $e->mais_sobre; ?></p>
+
+
+    <hr>
+
+    
+
         
-    </div>
+        
+
+
+    <span style="color:silver"><?php echo e($e->vagas-$e->inscritos); ?> vagas disponíveis</span>
+    <?php if($e->data_evento>date('Y-m-d') || ($e->data_evento==date('Y-m-d')&& $e->horario_evento>date('H:i:s'))): ?>
+   
+
     <div class="col-md-5">
             
-            <?php if(!count($participa) && Auth::user()): ?>
+            <?php if(!count($participa) && Auth::user() && $e->vagas-$e->inscritos > 0): ?>
                 <form id="form-actions"  method="POST" action="<?php echo e(url('user/evento/participar/')); ?>">
                     <?php echo e(csrf_field()); ?>
 
-                    <input type="hidden" name="id" value="<?php echo e($evento->id); ?>">
+                    <input type="hidden" name="id" value="<?php echo e($e->id); ?>">
                     
                     <input type="submit" class="btn btn-success" value="Participar">
                     
@@ -86,7 +131,7 @@
                 <form id="form-actions" method="POST" action="<?php echo e(url('user/evento/sair/')); ?>">
                     <?php echo e(csrf_field()); ?>
 
-                    <input type="hidden" name="id" value="<?php echo e($evento->id); ?>">
+                    <input type="hidden" name="id" value="<?php echo e($e->id); ?>">
                     
                     <input type="submit" class="btn btn-danger" value="Cancelar participação" >
                     
@@ -96,12 +141,14 @@
             <?php endif; ?>
 
         
-        </div>
+    </div>
+    <?php endif; ?>
     <?php endif; ?>
 
+    
 
-       
-    </div>
+
+
 </div>
 
 <script>
@@ -110,7 +157,6 @@
 
 
 
-        <?php endif; ?>
 
 
 

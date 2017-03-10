@@ -16,7 +16,7 @@
 Route::get('/','HomeController@index');
 Route::get('/public','Publico\publicController@index');
 Route::get('/public/{id}','Publico\publicController@show');
-
+Route::get('/verify/{id}','Publico\publicController@verify');
 
 
 
@@ -33,9 +33,13 @@ Route::group(['middleware'=>'guest'], function () {
 
     // //login
     Route::get('/login', function(){
-    	return view('auth.login');
+        return view('auth.login');
     });
-    Route::post('/login', 'Auth\LoginController@authenticate');
+    Route::get('/login/{id}', function($id){
+        return view('auth.login')->with('id',$id);
+    });
+    Route::post('/login/{id}', 'Auth\LoginController@authenticate');
+
 
 
     

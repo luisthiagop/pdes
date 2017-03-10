@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Publico;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class publicController extends Controller
 {
@@ -31,6 +33,14 @@ class publicController extends Controller
     	$evento = DB::table('events')->find($id);	
     	return view('public.show')->with('e',$evento);
 
+    }
+
+    protected function verify($id){
+    	if(Auth::check()){
+    		return redirect('/user/evento/'.$id);
+    	}else{
+    		return redirect('/public/'.$id);
+    	}
     }
 
 

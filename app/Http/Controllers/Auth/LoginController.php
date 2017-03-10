@@ -42,7 +42,9 @@ class LoginController extends Controller
     }
 
 
-    public function authenticate(Request $request)
+    
+
+    public function authenticate(Request $request,$id)
     {
         $cpf1 = explode(".", $request->cpf);
         $request->cpf = implode("", $cpf1);
@@ -61,7 +63,10 @@ class LoginController extends Controller
             if(Auth::user()->admin){
                 return redirect('admin/');
             }else{
-                return redirect('user/');
+                if($id>0)
+                    return redirect('user/evento/'.$id);
+                else
+                    return redirect('/user');
             }
         }else{
             

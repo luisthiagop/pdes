@@ -5,7 +5,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/login')); ?>">
+                    <form class="form-horizontal" role="form" method="POST" action=" <?php if(!isset($id)): ?><?php echo e(url('/login/0')); ?> <?php else: ?> <?php echo e(url('/login/'.$id)); ?> <?php endif; ?> ">
                         <?php echo e(csrf_field()); ?>
 
 

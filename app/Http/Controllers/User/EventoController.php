@@ -64,7 +64,7 @@ class EventoController extends Controller
                 $participa = Inscricao::where('user_id',Auth::user()->id)->where('evento_id',$evento->id)->get();
                 
 
-            	return view('user.evento')->with('evento',$evento)->with('participa',$participa);
+            	return view('user.evento')->with('e',$evento)->with('participa',$participa);
             }else{
                 return redirect()->back()->with('erro','Você não tem acesso a esse evento');
             }
