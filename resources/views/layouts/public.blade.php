@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'ProgramaDES') }}</title>
 
     <!-- Styles -->
-    <link href="{{URL::asset('css/app.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/public.css')}}" rel="stylesheet">
 
     <link href="{{URL::asset('css/footer.css')}}" rel="stylesheet">
 

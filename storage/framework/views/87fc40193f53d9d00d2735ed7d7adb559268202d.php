@@ -11,7 +11,7 @@
     <title><?php echo e(config('app.name', 'ProgramaDES')); ?></title>
 
     <!-- Styles -->
-    <link href="<?php echo e(URL::asset('css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(URL::asset('css/public.css')); ?>" rel="stylesheet">
 
     <link href="<?php echo e(URL::asset('css/footer.css')); ?>" rel="stylesheet">
 
