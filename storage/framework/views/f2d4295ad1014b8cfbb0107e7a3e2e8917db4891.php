@@ -89,7 +89,7 @@
                 
             <div class="panel panel-default ">
                 <div class="panel-heading"><h4>Lista de participantes</h4></div>
-                <table class="table table-striped ">
+                <table class="table table-responsive table-striped ">
                         <thead>
                           <tr>
                             <th>Nome</th>

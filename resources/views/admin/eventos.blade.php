@@ -221,7 +221,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <table class="table table-hover">
+                                <table class="table table-responsive  table-responsive">
                                 <tr>
                                     <td>Agentes</td>
                                     <td>
@@ -353,7 +353,7 @@
                                     <div class="panel-heading"><b style="color:#36f">Inscrições abertas</b></div>
 
                             
-                                    <table class="table table-bordered">
+                                    <table class="table table-responsive table-bordered">
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
@@ -406,7 +406,7 @@
                                     <div class="panel-heading" ><b style="color:green">Eventos Hoje</b></div>
 
                             
-                                    <table class="table table-bordered">
+                                    <table class="table table-responsive table-bordered">
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
@@ -453,7 +453,7 @@
                                     <div class="panel-heading"><b style="color:orange">Inscrições futuras</b></div>
 
                             
-                                    <table class="table table-bordered">
+                                    <table class="table table-responsive table-bordered">
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
@@ -504,7 +504,7 @@
                                     <div class="panel-heading"><b style="color:grey">Eventos passados</b></div>
 
                             
-                                    <table class="table table-bordered">
+                                    <table class="table table-responsive table-bordered">
                                     <tr>
                                         <th>Evento</th>
                                         <th>Ministrante</th>
