@@ -251,7 +251,7 @@ class EventoController extends Controller
 		Excel::create('Lista_presenca_'.$evento->nome,function($excel){
 			$excel = $excel->sheet('sheetname',function($sheet){
 				$data=[];
-				array_push($data, array('Nome','CPF','Assinatura               '));
+				array_push($data, array('CPF','Nome','Assinatura               '));
 				$sheet->fromArray($data,null,'A1',false,false);
 				$line  =3;
 				$inscricao = new Evento;
@@ -322,12 +322,16 @@ class EventoController extends Controller
 	protected function removerParticipante(Request $request){
 		$ins= Inscricao::where('evento_id','=',$request->evento_id)->where('user_id','=',$request->user_id)->first();
 		$ins->delete();
-		$evento= Evento::find($request->evento_id)->first();
-		$evento->inscritos--;
-		$evento->save();
+
+		$evento =  Evento::where('id',$request->evento_id)->first();
+		
+		$evento->inscritos=$evento->inscritos-1;            
+        $evento->save();
+
 
 		Mail::to(Auth::user())->send(new ExcluidoEvento($evento->id));
-		return response(200);
+
+		return redirect()->back();
                   
 	}
 
