@@ -103,7 +103,7 @@
         
 
 
-    <span style="color:silver">{{$e->vagas-$e->inscritos}} vagas disponíveis</span>
+    
     @if($e->data_evento>date('Y-m-d') || ($e->data_evento==date('Y-m-d')&& $e->horario_evento>date('H:i:s')))
    
 
@@ -114,7 +114,9 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$e->id}}">
                     
-                    <input type="submit" class="btn btn-success" value="Participar">
+                    <button type="submit" class="btn btn-success" value="Participar">
+                        Participar <span class="badge"> {{$e->vagas-$e->inscritos}} vagas disponíveis</span>
+                    </button>
                     
                    
                 
@@ -126,7 +128,9 @@
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{$e->id}}">
                     
-                    <input type="submit" class="btn btn-danger" value="Cancelar participação" >
+                    <button type="submit" class="btn btn-danger" value="Cancelar participação" >
+                    Cancelar participação <span class="badge"> {{$e->vagas-$e->inscritos}} vagas restantes</span>
+                    </button>
                     
                     
                 </form>

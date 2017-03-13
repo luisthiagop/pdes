@@ -103,9 +103,14 @@
 
     <hr>
 
-    <span style="color:silver"><?php echo e($e->vagas-$e->inscritos); ?> vagas disponíveis</span>
+
+
     <?php if($e->vagas-$e->inscritos > 0 ): ?>
-    <a href="<?php echo e(url('/login/'.$e->id)); ?>"><button type="button" class="btn btn-warning">Entre na área de usuario para confirmar a participação</button></a>
+    <a href="<?php echo e(url('/login/'.$e->id)); ?>">
+        <button class="btn btn-warning" type="button">
+      Ir para o sistema para cadastrar <span class="badge"><?php echo e($e->vagas-$e->inscritos); ?> vagas restantes</span>
+    </button>
+    </a>
     <?php endif; ?>
 
     

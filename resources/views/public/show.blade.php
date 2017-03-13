@@ -98,9 +98,14 @@
 
     <hr>
 
-    <span style="color:silver">{{$e->vagas-$e->inscritos}} vagas disponíveis</span>
+
+
     @if($e->vagas-$e->inscritos > 0 )
-    <a href="{{url('/login/'.$e->id)}}"><button type="button" class="btn btn-warning">Entre na área de usuario para confirmar a participação</button></a>
+    <a href="{{url('/login/'.$e->id)}}">
+        <button class="btn btn-warning" type="button">
+      Ir para o sistema para cadastrar <span class="badge">{{$e->vagas-$e->inscritos}} vagas restantes</span>
+    </button>
+    </a>
     @endif
 
     

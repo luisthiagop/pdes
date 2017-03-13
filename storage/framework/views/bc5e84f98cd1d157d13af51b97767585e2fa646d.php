@@ -108,7 +108,7 @@
         
 
 
-    <span style="color:silver"><?php echo e($e->vagas-$e->inscritos); ?> vagas disponíveis</span>
+    
     <?php if($e->data_evento>date('Y-m-d') || ($e->data_evento==date('Y-m-d')&& $e->horario_evento>date('H:i:s'))): ?>
    
 
@@ -120,7 +120,9 @@
 
                     <input type="hidden" name="id" value="<?php echo e($e->id); ?>">
                     
-                    <input type="submit" class="btn btn-success" value="Participar">
+                    <button type="submit" class="btn btn-success" value="Participar">
+                        Participar <span class="badge"> <?php echo e($e->vagas-$e->inscritos); ?> vagas disponíveis</span>
+                    </button>
                     
                    
                 
@@ -133,7 +135,9 @@
 
                     <input type="hidden" name="id" value="<?php echo e($e->id); ?>">
                     
-                    <input type="submit" class="btn btn-danger" value="Cancelar participação" >
+                    <button type="submit" class="btn btn-danger" value="Cancelar participação" >
+                    Cancelar participação <span class="badge"> <?php echo e($e->vagas-$e->inscritos); ?> vagas restantes</span>
+                    </button>
                     
                     
                 </form>
