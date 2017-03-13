@@ -48,7 +48,7 @@ class EventoController extends Controller
         
 
         //dd($id);
-    	$evento =  Evento::where('id',$id)->where('data_inicio', '<=', $this->today )->where('data_fim','>=',$this->today)->first();
+    	$evento =  Evento::where('id',$id)->first();
 
 
         if($evento){
@@ -69,6 +69,7 @@ class EventoController extends Controller
                 return redirect('/public/'.$evento->id)->with('erro','Você não pode participar desse evento');
             }
         }else{
+
              return redirect('/public/'.$evento->id)->with('erro','Você não pode participar desse evento');
         }
 
