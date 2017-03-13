@@ -21,7 +21,7 @@
 
                     
                         
-                          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Novo evento</button>
+                          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Novo evento</button>
                           <hr>
                         
                 

@@ -68,6 +68,9 @@
             <b>Data: </b>{{date("d",strtotime($e->data_evento))}} de  {{date("M",strtotime($e->data_evento))}} de {{date("Y",strtotime($e->data_evento))}}
         </li>
         <li>
+            <b>Data de início das inscrições: </b>{{date("d",strtotime($e->data_inicio))}} de  {{date("M",strtotime($e->data_inicio))}} de {{date("Y",strtotime($e->data_inicio))}}
+        </li>
+        <li>
             <b>Data final das inscrições: </b>{{date("d",strtotime($e->data_fim))}} de  {{date("M",strtotime($e->data_fim))}} de {{date("Y",strtotime($e->data_fim))}}
         </li>
         <li>
@@ -123,6 +126,8 @@
 
 
                 </form>
+
+
             @elseif(count($participa) && Auth::user())
                 <form id="form-actions" method="POST" action="{{ url('user/evento/sair/') }}">
                     {{ csrf_field() }}
@@ -135,8 +140,11 @@
                     
                 </form>
 
-            @endif
+            @elseif($e->vagas-$e->inscritos <= 0)
+                  <span style="color:red">Não existem vagas disponíveis!</span>
 
+            @endif
+<hr>
         
     </div>
     @endif

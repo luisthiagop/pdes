@@ -67,6 +67,10 @@
 
         </li>
         <li>
+            <b>Data de início das inscrições: </b><?php echo e(date("d",strtotime($e->data_inicio))); ?> de  <?php echo e(date("M",strtotime($e->data_inicio))); ?> de <?php echo e(date("Y",strtotime($e->data_inicio))); ?>
+
+        </li>
+        <li>
             <b>Data final das inscrições: </b><?php echo e(date("d",strtotime($e->data_fim))); ?> de  <?php echo e(date("M",strtotime($e->data_fim))); ?> de <?php echo e(date("Y",strtotime($e->data_fim))); ?>
 
         </li>
@@ -129,6 +133,8 @@
 
 
                 </form>
+
+
             <?php elseif(count($participa) && Auth::user()): ?>
                 <form id="form-actions" method="POST" action="<?php echo e(url('user/evento/sair/')); ?>">
                     <?php echo e(csrf_field()); ?>
@@ -142,8 +148,11 @@
                     
                 </form>
 
-            <?php endif; ?>
+            <?php elseif($e->vagas-$e->inscritos <= 0): ?>
+                  <span style="color:red">Não existem vagas disponíveis!</span>
 
+            <?php endif; ?>
+<hr>
         
     </div>
     <?php endif; ?>

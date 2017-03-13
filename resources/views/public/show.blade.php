@@ -69,6 +69,9 @@
             <b>Data: </b>{{date("d",strtotime($e->data_evento))}} de  {{date("M",strtotime($e->data_evento))}} de {{date("Y",strtotime($e->data_evento))}}
         </li>
         <li>
+            <b>Data de início das inscrições: </b>{{date("d",strtotime($e->data_inicio))}} de  {{date("M",strtotime($e->data_inicio))}} de {{date("Y",strtotime($e->data_inicio))}}
+        </li>
+        <li>
             <b>Data final das inscrições: </b>{{date("d",strtotime($e->data_fim))}} de  {{date("M",strtotime($e->data_fim))}} de {{date("Y",strtotime($e->data_fim))}}
         </li>
         <li>
@@ -106,9 +109,13 @@
       Ir para o sistema para cadastrar <span class="badge">{{$e->vagas-$e->inscritos}} vagas restantes</span>
     </button>
     </a>
+    @else
+        <div class="alert alert-danger">
+          Não existem vagas disponíveis!
+        </div>
     @endif
 
-    
+<hr>    
 
 
 
