@@ -72,7 +72,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;
-                        <li><a href="{{ url('/admin') }}">Início</a></li>
+                        <li><a href="{{ url('/admin') }}"><span class="badge">Início</span></a></li>
                     </ul>
 
 
