@@ -46,7 +46,7 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-    'from' => ['address' => 'mailluisthiago@gmail.com', 'name' => 'Programa DES | UEPG '],
+    'from' => ['address' => 'programadesuepg@gmail.com', 'name' => 'Programa DES | UEPG '],
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -68,7 +68,7 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
-    'username' => env('MAIL_USERNAME','mailluisthiago@gmail.com'),
+    'username' => env('MAIL_USERNAME','programadesuepg@gmail.com'),
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Password
@@ -79,7 +79,7 @@ return [
     | connection so that the application will be able to send messages.
     |
     */
-    'password' => env('MAIL_PASSWORD','lu157#14go'),
+    'password' => env('MAIL_PASSWORD','docenciades'),
     /*
     |--------------------------------------------------------------------------
     | Sendmail System Path
