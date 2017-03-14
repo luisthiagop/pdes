@@ -69,6 +69,7 @@ return [
     |
     */
     'username' => env('MAIL_USERNAME','programadesuepg@gmail.com'),
+
     /*
     |--------------------------------------------------------------------------
     | SMTP Server Password
