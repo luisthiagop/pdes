@@ -335,8 +335,8 @@
 
                 <h2> Eventos</h2>
                     <ul class="nav nav-tabs">                        
-                        <li class="active"><a data-toggle="tab" href="#atuais">Inscrições abertas</a></li>
-                        <li><a data-toggle="tab" href="#hoje">Eventos de Hoje</a></li>
+                        <li class="active"><a data-toggle="tab" href="#atuais">Inscrições abertas </a></li>
+                        <li><a data-toggle="tab" href="#hoje">Eventos de Hoje <span style="background-color: orange !important" class="badge">{{count($hoje)}}</span></a></li>
                         <li><a data-toggle="tab" href="#futuros">Eventos futuros</a></li>
                         <li><a data-toggle="tab" href="#passados">Eventos passados</a></li>
                     </ul>

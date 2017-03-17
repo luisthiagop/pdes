@@ -97,7 +97,7 @@ class EventoController extends Controller
             }
 
     	}else{
-            if($evento->data_inicio > $this->today){
+            if($evento->data_inicio > $this->today || $evento->data_evento >=  $this->today ){
                 return redirect()->back()->with('erro','As inscrições não estão abertas (Verifique as datas)!');
             }else{
                 return redirect()->back()->with('erro','Você ja participa desse evento!');

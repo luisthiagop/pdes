@@ -68,6 +68,10 @@
 
         </li>
         <li>
+            <b>Data de início das inscrições: </b><?php echo e(date("d",strtotime($e->data_inicio))); ?> de  <?php echo e(date("M",strtotime($e->data_inicio))); ?> de <?php echo e(date("Y",strtotime($e->data_inicio))); ?>
+
+        </li>
+        <li>
             <b>Data final das inscrições: </b><?php echo e(date("d",strtotime($e->data_fim))); ?> de  <?php echo e(date("M",strtotime($e->data_fim))); ?> de <?php echo e(date("Y",strtotime($e->data_fim))); ?>
 
         </li>
@@ -111,9 +115,13 @@
       Ir para o sistema para cadastrar <span class="badge"><?php echo e($e->vagas-$e->inscritos); ?> vagas restantes</span>
     </button>
     </a>
+    <?php else: ?>
+        <div class="alert alert-danger">
+          Não existem vagas disponíveis!
+        </div>
     <?php endif; ?>
 
-    
+<hr>    
 
 
 

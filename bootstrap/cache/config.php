@@ -362,7 +362,7 @@
   array (
     'name' => 'Programa DES',
     'env' => 'local',
-    'debug' => true,
+    'debug' => false,
     'url' => 'http://localhost',
     'timezone' => 'America/Sao_Paulo',
     'locale' => 'pt',
@@ -637,12 +637,12 @@
     'port' => '587',
     'from' => 
     array (
-      'address' => 'mailluisthiago@gmail.com',
+      'address' => 'programadesuepg@gmail.com',
       'name' => 'Programa DES | UEPG ',
     ),
     'encryption' => 'tls',
-    'username' => 'mailluisthiago@gmail.com',
-    'password' => 'lu157#14go',
+    'username' => 'programadesuepg@gmail.com',
+    'password' => 'docenciades',
     'sendmail' => '/usr/sbin/sendmail -bs',
   ),
   'services' => 
