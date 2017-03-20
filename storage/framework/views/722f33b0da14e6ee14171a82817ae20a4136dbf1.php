@@ -258,7 +258,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <table class="table table-hover">
+                                <table class="table table-responsive table-hover">
                                 <tr>
                                     <td>Agentes</td>
                                     <td>
@@ -438,8 +438,8 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
-<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+<script src="<?php echo e(asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js')); ?>"></script>
+<script src="<?php echo e(asset('/vendor/unisharp/laravel-ckeditor/adapters/jquery.js')); ?>"></script>
 <script>
     //$('textarea').ckeditor();
     $('.textarea').ckeditor(); // if class is prefered.

@@ -35,7 +35,7 @@ class EventoController extends Controller
 	{
 		$this->validate($request, [
 			'nome' => 'required|max:255',
-			'descricao' => 'max:500',
+			'descricao' => 'max:4000',
 			'local'=>'max:200',
 			'mais_sobre' => '',
 			'cargaHoraria' => 'required',
@@ -99,7 +99,7 @@ class EventoController extends Controller
 		
 		$this->validate($request, [
 			'nome' => 'required|max:255',
-			'descricao' => 'max:500',
+			'descricao' => 'max:4000',
 			'local'=>'max:200',
 			'mais_sobre' => '',
 			'cargaHoraria' => 'required',
