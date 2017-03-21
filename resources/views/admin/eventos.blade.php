@@ -338,10 +338,64 @@
                         <li class="active"><a data-toggle="tab" href="#atuais">Inscrições abertas </a></li>
                         <li><a data-toggle="tab" href="#hoje">Eventos de Hoje @if(count($hoje)>0)<span style="background-color: orange !important" class="badge">{{count($hoje)}}</span>@endif</a></li>
                         <li><a data-toggle="tab" href="#futuros">Eventos futuros</a></li>
+                        <li><a data-toggle="tab" href="#encerradas">Inscrições encerradas</a></li>
                         <li><a data-toggle="tab" href="#passados">Eventos passados</a></li>
                     </ul>
 
                     <div class="tab-content">
+
+                        <div id="encerradas" class="tab-pane fade">
+                            <h3>Inscrições abertas</h3>
+                            @if (count($insc_encerradas)!==0)
+
+                                <div class="panel panel-default" style="margin-top:20px;">
+                                    <div class="panel-heading"><b style="color:#36f">Inscrições encerradas</b></div>
+
+                            
+                                    <table class="table table-responsive table-bordered">
+                                    <tr>
+                                        <th>Evento</th>
+                                        <th>Ministrante</th>
+                                        <th>Carga Horária</th>
+                                        <th>Data</th>
+                                        <th>Início das inscrições</th>
+                                        <th>Fim das inscrições</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                        <th>Relatório</th>
+                                    </tr>
+
+                                    @foreach($insc_encerradas as $evento)
+                                        
+                                        <tr>
+                                            <td><a href="{{url('user/evento/'.$evento->id)}}">{{$evento->nome}}</a></td>
+                                            <td>{{$evento->palestrante}}</td>
+                                            <td>{{$evento->cargaHoraria}} horas</td>
+                                            <td>{{date('d/m/Y', strtotime($evento->data_evento))}}</td>
+                                            <td>{{date('d/m/Y', strtotime($evento->data_inicio))}}</td>
+                                            <td>{{date('d/m/Y', strtotime($evento->data_fim))}}</td>
+                                            <td><a href="{{url('/admin/evento/'.$evento->id)}}"><i class="material-icons">mode_edit</i></a></td>
+                                            <td><a href="{{url('admin/eventos/delete/'.$evento->id)}}"><i class="material-icons">delete</i></a></td>
+                                            <td><a href="{{url('admin/eventos/relatorio/'.$evento->id)}}"><i class="material-icons">menu</i></a></td>
+                                        </tr>
+                                        
+
+                                    @endforeach  
+
+                                    </table>
+                                </div>
+
+                                     
+                            @else                            
+
+                                <div class="alert alert-info">
+                                  Não existem eventos cadastrados atualmente!
+                                </div>
+
+                                
+                            @endif
+                        </div>
+
                         
 
 
@@ -396,6 +450,9 @@
                                 
                             @endif
                         </div>
+
+
+
 
 
                         <div id="hoje" class="tab-pane fade">
@@ -550,6 +607,9 @@
                                 
                             @endif
                         </div>
+
+
+
                     </div>
 
 

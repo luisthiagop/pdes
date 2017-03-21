@@ -370,7 +370,7 @@
     'key' => 'base64:wmgIV8cluC9JPzwmSwXvy1djgGLLBhXYhaQrviMGUjo=',
     'cipher' => 'AES-256-CBC',
     'log' => 'single',
-    'log_level' => 'debug',
+    'log_level' => true,
     'providers' => 
     array (
       0 => 'Illuminate\\Auth\\AuthServiceProvider',
