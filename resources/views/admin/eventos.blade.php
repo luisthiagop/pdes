@@ -345,7 +345,7 @@
                     <div class="tab-content">
 
                         <div id="encerradas" class="tab-pane fade">
-                            <h3>Inscrições abertas</h3>
+                            
                             @if (count($insc_encerradas)!==0)
 
                                 <div class="panel panel-default" style="margin-top:20px;">

@@ -153,9 +153,9 @@ class EventoController extends Controller
 	{
 		$eventos_hoje = DB::table('events')->where('data_evento','=',$this->today)->get();
 		$eventos_futuros = DB::table('events')->where('data_inicio','>',$this->today)->orderBy('data_evento', 'asc')->get();
-		$eventos_atuais = DB::table('events')->where('data_inicio','<=',$this->today)->where('data_fim','>',$this->today)->orderBy('data_evento', 'asc')->get();
+		$eventos_atuais = DB::table('events')->where('data_inicio','<=',$this->today)->where('data_fim','>=',$this->today)->orderBy('data_evento', 'asc')->get();
 
-		$insc_encerradas = DB::table('events')->where('data_inicio','<=',$this->today)->where('data_fim','<=',$this->today)->where('data_evento','>',$this->today)->orderBy('data_evento', 'asc')->get();
+		$insc_encerradas = DB::table('events')->where('data_inicio','<=',$this->today)->where('data_fim','<',$this->today)->where('data_evento','>',$this->today)->orderBy('data_evento', 'asc')->get();
 
 		$eventos_passados = DB::table('events')->where('data_evento','<',$this->today)->orderBy('data_evento', 'asc')->get();
 		return view('admin.eventos')->with('futuros',$eventos_futuros)->with('insc_encerradas',$insc_encerradas)->with('atuais',$eventos_atuais)->with('passados',$eventos_passados)->with('hoje',$eventos_hoje);
