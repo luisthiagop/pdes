@@ -254,7 +254,7 @@ class EventoController extends Controller
 		Excel::create('Lista_presenca_'.$evento->nome,function($excel){
 			$excel = $excel->sheet('sheetname',function($sheet){
 				$data=[];
-				array_push($data, array('CPF','Nome','Assinatura               '));
+				array_push($data, array('Nome','Nome','Assinatura               '));
 				$sheet->fromArray($data,null,'A1',false,false);
 				$line  =3;
 				$inscricao = new Evento;
@@ -279,7 +279,7 @@ class EventoController extends Controller
 		Excel::create('participantes_'.$evento->nome,function($excel){
 			$excel = $excel->sheet('sheetname',function($sheet){
 				$data=[];
-				array_push($data, array('CPF','Nome'));
+				array_push($data, array('Nome','CPF'));
 				$sheet->fromArray($data,null,'A1',false,false);
 				$line  =1;
 				$inscricao = new Evento;
@@ -287,7 +287,7 @@ class EventoController extends Controller
 
 				foreach($users as $user){
 					$sheet->row($line++, array(
-					   $user->cpf,$user->name
+					   $user->name,$user->cpf
 					));
 				}
 				

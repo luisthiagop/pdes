@@ -331,7 +331,7 @@
                             <label for="banner" class="col-md-4 control-label">Banner</label>
 
                             <div class="col-md-6">
-                                <input type="file" name="banner">
+                                <input type="file" name="banner"><span>Tamanho ideal 600px de largura por 300px de altura</span>
                                 @if(!$evento->has_banner)
                                 <span>Ainda não possui banner</span>
                                 

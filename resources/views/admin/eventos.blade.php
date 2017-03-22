@@ -293,8 +293,8 @@
                         <div class="form-group{{ $errors->has('banner') ? ' has-error' : '' }}">
                             <label for="banner" class="col-md-4 control-label">Banner</label>
 
-                            <div class="col-md-3">
-                                <input type="file" name="banner">
+                            <div class="col-md-5">
+                                <input type="file" name="banner"><span>Tamanho ideal 600px de largura por 300px de altura</span>
                             </div>
                         </div>
 
