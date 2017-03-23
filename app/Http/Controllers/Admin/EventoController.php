@@ -16,6 +16,8 @@ use App\Mail\CadastradoEvento;
 use App\Mail\CancelarParticipacaoEvento;
 use App\Mail\ExcluidoEvento;
 use App\Mail\Mensagem;
+use Illuminate\Support\Facades\Response;
+
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Input;
@@ -273,30 +275,69 @@ class EventoController extends Controller
 		return redirect()->back();
 	}
 
+	// protected function exportaCSV($id){
+	// 	$evento =  DB::table('events')->where('id',$id)->first();
+	// 	$this->id=$id;
+	// 	Excel::create('participantes_'.$evento->nome,function($excel){
+	// 		$excel = $excel->sheet('sheetname',function($sheet){
+	// 			$data=[];
+	// 			array_push($data, array('Nome','CPF'));
+	// 			$sheet->fromArray($data,null,'A1',false,false);
+	// 			$line  =1;
+	// 			$inscricao = new Evento;
+	// 			$users = $inscricao->users()->orWhere('evento_id',$this->id)->get();
+
+	// 			foreach($users as $user){
+	// 				$sheet->row($line++, array(
+	// 				   $user->name,$user->cpf
+					   
+	// 				));
+	// 			}
+				
+	// 		});	
+
+	// 	})->download('csv');
+
+	// 	return redirect()->back();
+	// }
+
+
 	protected function exportaCSV($id){
 		$evento =  DB::table('events')->where('id',$id)->first();
 		$this->id=$id;
-		Excel::create('participantes_'.$evento->nome,function($excel){
-			$excel = $excel->sheet('sheetname',function($sheet){
-				$data=[];
-				array_push($data, array('Nome','CPF'));
-				$sheet->fromArray($data,null,'A1',false,false);
-				$line  =1;
-				$inscricao = new Evento;
-				$users = $inscricao->users()->orWhere('evento_id',$this->id)->get();
 
-				foreach($users as $user){
-					$sheet->row($line++, array(
-					   $user->name,$user->cpf
-					));
-				}
-				
-			});	
+		$inscricao = new Evento;
+		$users = $inscricao->users()->orWhere('evento_id',$this->id)->get();
+		$name = $evento->id.'.csv';
+		//echo  asset('assets/csv/'.$name);
+		$file = fopen( 'assets/csv/'.$name, 'w');
+		fclose($file);
 
-		})->download('csv');
+		foreach ($users as $user) {
+			$file = fopen( 'assets/csv/'.$name, 'a');
+			fwrite($file, $user->name);
+			fwrite($file, ';');
+			fwrite($file, $user->cpf);
+			fwrite($file, "\n");
+			fclose($file);
+		}
 
-		return redirect()->back();
+		$file= public_path(). "/assets/csv/".$name;
+
+    	$headers = array(
+           'Content-Type: application/csv',
+        );
+
+    	return Response::download($file, $name, $headers);
+		
+
+		
+		
 	}
+
+
+
+
 
 	protected function deletaImagem(Request $request){
 		

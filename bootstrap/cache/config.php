@@ -362,7 +362,7 @@
   array (
     'name' => 'Programa DES',
     'env' => 'local',
-    'debug' => false,
+    'debug' => true,
     'url' => 'http://localhost',
     'timezone' => 'America/Sao_Paulo',
     'locale' => 'pt',
