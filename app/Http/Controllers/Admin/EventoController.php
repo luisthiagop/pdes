@@ -214,7 +214,7 @@ class EventoController extends Controller
 		$request->cpf = implode("",$cpf1);
 		$user= DB::table('users')->where('cpf','=',$request->cpf)->first();		
 		$evento = Evento::find($request->id);
-		if($user){
+		if(count($user)){
 			$insc= new Inscricao();
 			$insc->evento_id= $request->id;
 			$insc->user_id = $user->id;
