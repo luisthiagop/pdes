@@ -22,7 +22,7 @@
                     <a target="_blank" href="{{url('verify/'.$e->id)}}">                        
                           {{$e->nome}}                    
                     </a>
-                    <span style="font-size:12px;background: #27b6f7;">{{date("d/m/Y",strtotime($e->data_inicio))}}</span>
+                    
 
                 </h3>
 
@@ -77,7 +77,7 @@
                             <a target="_blank" href="{{url('verify/'.$e->id)}}">                      
                                   {{$e->nome}}                    
                             </a>
-                            <span style="font-size:12px;background: #27b6f7;">{{date("d/m/Y",strtotime($e->data_inicio))}}</span>
+                            
 
                         </h3>
 
@@ -133,7 +133,7 @@
                     <a target="_blank" href="{{url('verify/'.$e->id)}}">                        
                           {{$e->nome}}                    
                     </a>
-                    <span style="font-size:12px;background: #27b6f7;">{{date("d/m/Y",strtotime($e->data_inicio))}}</span>
+                    
 
                 </h3>
 

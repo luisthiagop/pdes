@@ -44,7 +44,7 @@ class CreateEventsTable extends Migration
             $table->boolean('professor')->default(false);
             $table->boolean('comunidade')->default(false);
 
-            $table->string('fb_link', 500)->nullable();
+            $table->string('fb_link', 500)->default('http://');
 
 
             $table->timestamps();

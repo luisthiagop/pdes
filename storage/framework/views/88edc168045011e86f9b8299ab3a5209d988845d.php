@@ -20,7 +20,7 @@
                     <a target="_blank" href="<?php echo e(url('verify/'.$e->id)); ?>">                        
                           <?php echo e($e->nome); ?>                    
                     </a>
-                    <span style="font-size:12px;background: #27b6f7;"><?php echo e(date("d/m/Y",strtotime($e->data_inicio))); ?></span>
+                    
 
                 </h3>
 
@@ -77,7 +77,7 @@
                             <a target="_blank" href="<?php echo e(url('verify/'.$e->id)); ?>">                      
                                   <?php echo e($e->nome); ?>                    
                             </a>
-                            <span style="font-size:12px;background: #27b6f7;"><?php echo e(date("d/m/Y",strtotime($e->data_inicio))); ?></span>
+                            
 
                         </h3>
 
@@ -136,7 +136,7 @@
                     <a target="_blank" href="<?php echo e(url('verify/'.$e->id)); ?>">                        
                           <?php echo e($e->nome); ?>                    
                     </a>
-                    <span style="font-size:12px;background: #27b6f7;"><?php echo e(date("d/m/Y",strtotime($e->data_inicio))); ?></span>
+                    
 
                 </h3>
 
