@@ -79,11 +79,12 @@
                 </div>
                 <div class="panel-footer">
                     
-                    <center>Não tem cadastro?</center><br>
+                    <center>Não tem cadastro?
                     
-                                <center><a href="<?php echo e(url('/register')); ?>">
-                                    <img src="/img/button_clique-aqui-para-cadastrar.png">
-                                </a></center>
+                                <a href="<?php echo e(url('/register')); ?>">
+                                    <!-- <img src="/img/button_clique-aqui-para-cadastrar.png"> -->
+                                    <span style="font-size: 18px;">clique aqui</span>
+                                </a> para cadastrar</center>
 
                 </div>
                 
