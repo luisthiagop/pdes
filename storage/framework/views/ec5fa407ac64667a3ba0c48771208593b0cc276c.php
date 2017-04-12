@@ -1,10 +1,14 @@
 <?php $__env->startSection('content'); ?>
+
 <div class="container">
+
+
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
+
                     <form class="form-horizontal" role="form" method="POST" action=" <?php if(!isset($id)): ?><?php echo e(url('/login/0')); ?> <?php else: ?> <?php echo e(url('/login/'.$id)); ?> <?php endif; ?> ">
                         <?php echo e(csrf_field()); ?>
 
@@ -62,12 +66,32 @@
                                 </a>
                             </div>
                         </div>
+
+                        
+
+
+
+                                        
+
+
+
                     </form>
                 </div>
+                <div class="panel-footer">
+                    
+                    <center>Não tem cadastro?</center><br>
+                    
+                                <center><a href="<?php echo e(url('/register')); ?>">
+                                    <img src="/img/button_clique-aqui-para-cadastrar.png">
+                                </a></center>
+
+                </div>
+                
             </div>
         </div>
     </div>
-    <span>Solicitar ao NTI o acesso como administrador </span>
+    
+
 </div>
 <?php $__env->stopSection(); ?>
 
